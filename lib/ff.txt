@@ -1,0 +1,44 @@
+lib/
+├── Core/
+│   ├── AppRoute/
+│   │   └── app_route.dart          # রাউটিং এবং স্ক্রিন নেভিগেশন কন্ট্রোল
+│   └── Dependency/
+│       └── dependency.dart         # ডিপেন্ডেন্সি ইনজেকশন (যেমন: Get.lazyPut)
+├── Language/
+│   ├── english.dart                # ইংরেজি ভাষা বা অনুবাদ কী-ভ্যালু
+│   └── translator.dart             # ভাষা পরিবর্তন ও কন্ট্রোল করার ক্লাস
+├── Utils/
+│   ├── AppColors/
+│   │   └── app_colors.dart         # থিম ও কাস্টম কালার প্যালেট
+│   ├── AppConst/
+│   │   └── app_const.dart          # প্রজেক্টের কনস্ট্যান্ট ভ্যালুসমূহ
+│   ├── AppIcons/
+│   │   └── app_icons.dart          # আইকন অ্যাসেটের পাথসমূহ
+│   ├── AppImg/
+│   │   └── app_img.dart            # ইমেজ ও ইলাস্ট্রেশন অ্যাসেটের পাথসমূহ
+│   ├── StaticString/
+│   │   └── static_string.dart      # স্ট্যাটিক ও কাস্টম টেক্সটসমূহ
+│   └── ToastMessage/
+│       └── toast_message.dart      # বিভিন্ন টোস্ট ও অ্যালার্ট মেসেজ ফাংশন
+├── View/
+│   ├── Screen/
+│   │   └── SplashScreen/
+│   │       ├── Controller/         # স্প্ল্যাশ স্ক্রিনের লজিক কন্ট্রোলার
+│   │       └── splash_screen.dart  # স্প্ল্যাশ স্ক্রিন ইউআই
+│   └── Widgegt/
+│       ├── CustomAppBar/           # কাস্টম অ্যাপবার উইজেট
+│       └── CustomBackButton/       # কাস্টম ব্যাক বাটন উইজেট
+├── global/                         # গ্লোবাল ভ্যারিয়েবল ও কনফিগারেশন
+├── helper/
+│   ├── GenerelError/               # সাধারণ বা কাস্টম এরর হ্যান্ডলিং ক্লাস
+│   ├── network_img/                # ক্যাশড নেটওয়ার্ক ইমেজ উইজেট হেল্পার
+│   ├── network_info/               # ইন্টারনেট কানেক্টিভিটি চেক হেল্পার
+│   ├── shared_prefe/
+│   │   └── shared_prefe.dart       # লোকাল ডাটা সেভ বা প্রেফারেন্স হেল্পার
+│   └── time_converter/             # ডেট ও টাইম ফরম্যাটিং হেল্পার
+├── service/
+│   ├── api_check.dart              # এপিআই স্ট্যাটাস ও কানেকশন চেক
+│   ├── api_client.dart             # নেটওয়ার্ক রিকোয়েস্ট ক্লায়েন্ট (যেমন: Dio/Http Wrapper)
+│   ├── api_url.dart                # এপিআই-এর এন্ডপয়েন্ট ও বেইস ইউআরএল (Base URL)
+│   └── socket_service.dart         # রিয়েলটাইম সকেট কানেকশন হ্যান্ডলার
+└── main.dart      
