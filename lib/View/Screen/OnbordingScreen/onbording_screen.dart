@@ -33,7 +33,7 @@ class OnbordingScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 24),
+                const SizedBox(height: 64),
 
                 // Top Green Squircle Logo Container
                 Container(
