@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../Utils/AppColors/app_colors.dart';
-import '../../../Utils/AppIcons/app_icons.dart';
+import '../../../Utils/AppImg/app_img.dart';
 import '../../../Utils/StaticString/static_string.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              AppIcons.homeImgFull,
+              AppImg.homeImgFull,
               width: 140,
               height: 140,
               fit: BoxFit.contain,
