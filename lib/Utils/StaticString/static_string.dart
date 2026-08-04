@@ -66,4 +66,18 @@ class StaticString {
   static const String didntGetCode = 'কোড পাননি? ';
   static const String resendCode = 'পুনরায় পাঠান';
   static const String verify = 'যাচাই করুন';
+
+  // Service Provider Registration Strings
+  static const String serviceProviderTitle = 'সেবাদাতা নিবন্ধন';
+  static const String expertiseLabel = 'বিশেষজ্ঞতা বেছে নিন';
+  static const String seeMore = 'আরও দেখুন';
+  static const String priceLabel = 'দাম';
+  static const String priceHint = '৳ ২,০০০';
+
+  // Expertise Categories
+  static const String expCleaning = 'ক্লিনিং';
+  static const String expElectric = 'ইলেকট্রিক';
+  static const String expPlumbing = 'প্লাম্বিং';
+  static const String expPestControl = 'প্যাস্ট কন্ট্রোল';
+  static const String expCooking = 'রান্না';
 }

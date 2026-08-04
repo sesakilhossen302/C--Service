@@ -11,7 +11,7 @@ class OnbordingController {
   }
 
   void onServiceProviderLoginPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.loginScreen);
+    Navigator.pushNamed(context, AppRoute.serviceProviderSignupScreen);
   }
 
   void onExploreNowPressed(BuildContext context) {

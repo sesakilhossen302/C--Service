@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 
 class OtpController {
   final List<TextEditingController> otpControllers = List.generate(
@@ -23,7 +24,8 @@ class OtpController {
   }
 
   void onVerifyPressed(BuildContext context) {
-    // Handle verify OTP code
+    // Navigate to Service Provider Registration Screen
+    Navigator.pushNamed(context, AppRoute.serviceProviderSignupScreen);
   }
 
   void dispose() {
