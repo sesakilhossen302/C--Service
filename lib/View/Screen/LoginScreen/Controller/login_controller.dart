@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 
 class LoginController {
   final phoneController = TextEditingController();
@@ -10,12 +11,12 @@ class LoginController {
     updateState();
   }
 
-  void onLoginPressed() {
+  void onLoginPressed(BuildContext context) {
     // Handle login API request
   }
 
-  void onForgotPasswordPressed() {
-    // Handle forgot password action
+  void onForgotPasswordPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoute.forgotPasswordScreen);
   }
 
   void dispose() {

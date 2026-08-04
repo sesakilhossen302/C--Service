@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 
 class SignupController {
   final nameController = TextEditingController();
@@ -11,8 +12,8 @@ class SignupController {
     updateState();
   }
 
-  void onSendOtpPressed() {
-    // Handle OTP sending API call
+  void onSendOtpPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoute.otpScreen);
   }
 
   void onTermsPressed() {

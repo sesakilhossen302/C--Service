@@ -176,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: _controller.onForgotPasswordPressed,
+                  onTap: () => _controller.onForgotPasswordPressed(context),
                   child: const Text(
                     StaticString.forgotPassword,
                     style: TextStyle(
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: _controller.onLoginPressed,
+                  onPressed: () => _controller.onLoginPressed(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,

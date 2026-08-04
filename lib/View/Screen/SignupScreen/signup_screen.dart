@@ -240,7 +240,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: _controller.onSendOtpPressed,
+                  onPressed: () => _controller.onSendOtpPressed(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,

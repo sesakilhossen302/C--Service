@@ -55,4 +55,15 @@ class StaticString {
 
   static const String dontHaveAccount = 'একাউন্ট নেই? ';
   static const String alreadyHaveAccount = 'ইতিমধ্যে একাউন্ট আছে? ';
+
+  // Forgot Password & OTP Strings
+  static const String forgotPasswordTitle = 'পাসওয়ার্ড পুনরুদ্ধার';
+  static const String forgotPasswordSubTitle = 'মোবাইল নম্বর দিন। আমরা কোড পাঠাব।';
+  static const String sendCode = 'কোড পাঠান';
+
+  static const String otpTitle = 'ওটিপি যাচাই';
+  static const String otpSubTitle = 'আপনার মোবাইলে পাঠানো ৬ সংখ্যার কোডটি দিন';
+  static const String didntGetCode = 'কোড পাননি? ';
+  static const String resendCode = 'পুনরায় পাঠান';
+  static const String verify = 'যাচাই করুন';
 }
