@@ -25,4 +25,34 @@ class StaticString {
   static const String or = 'অথবা';
   static const String serviceProviderLogin = 'সেবাদাতা হিসেবে লগইন';
   static const String exploreNow = 'এখনই দেখুন';
+
+  // Login & Signup Strings
+  static const String loginTitle = 'লগইন করুন';
+  static const String loginSubTitle = 'আপনার অ্যাকাউন্টে প্রবেশ করুন';
+  static const String signupTitle = 'নিবন্ধন করুন';
+  static const String signupSubTitle = 'নতুন একাউন্ট তৈরি করুন';
+
+  static const String fullNameLabel = 'সম্পূর্ণ নাম';
+  static const String fullNameHint = 'আপনার নাম';
+
+  static const String mobileLabel = 'মোবাইল নম্বর';
+  static const String mobileHint = '01700-000000';
+  static const String countryCodeBD = '+880';
+
+  static const String passwordLabel = 'পাসওয়ার্ড';
+  static const String passwordLoginHint = 'পাসওয়ার্ড দিন';
+  static const String passwordSignupHint = 'কমপক্ষে ৮ অক্ষর';
+
+  static const String forgotPassword = 'পাসওয়ার্ড ভুলেছেন?';
+
+  static const String signupTermsText = 'নিবন্ধন করে আপনি আমাদের ';
+  static const String termsLink = 'শর্তাবলী';
+  static const String andText = ' ও ';
+  static const String privacyLink = 'গোপনীয়তা নীতি';
+  static const String acceptText = ' মেনে নিচ্ছেন।';
+
+  static const String sendOtp = 'ওটিপি পাঠান';
+
+  static const String dontHaveAccount = 'একাউন্ট নেই? ';
+  static const String alreadyHaveAccount = 'ইতিমধ্যে একাউন্ট আছে? ';
 }

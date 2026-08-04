@@ -1,17 +1,20 @@
+import 'package:flutter/material.dart';
+import '../../../../Core/AppRoute/app_route.dart';
+
 class OnbordingController {
-  void onLoginPressed() {
-    // Handle Login navigation
+  void onLoginPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoute.loginScreen);
   }
 
-  void onRegisterPressed() {
-    // Handle Register navigation
+  void onRegisterPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoute.signupScreen);
   }
 
-  void onServiceProviderLoginPressed() {
-    // Handle Service Provider Login navigation
+  void onServiceProviderLoginPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoute.loginScreen);
   }
 
-  void onExploreNowPressed() {
+  void onExploreNowPressed(BuildContext context) {
     // Handle Explore Now action
   }
 }

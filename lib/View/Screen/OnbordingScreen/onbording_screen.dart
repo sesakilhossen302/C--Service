@@ -131,7 +131,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: controller.onLoginPressed,
+                    onPressed: () => controller.onLoginPressed(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       foregroundColor: AppColors.white,
@@ -157,7 +157,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: OutlinedButton(
-                    onPressed: controller.onRegisterPressed,
+                    onPressed: () => controller.onRegisterPressed(context),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.primaryColor,
                       side: const BorderSide(
@@ -215,7 +215,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: controller.onServiceProviderLoginPressed,
+                    onPressed: () => controller.onServiceProviderLoginPressed(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.buttonSecondaryBg,
                       foregroundColor: AppColors.textColor,
@@ -250,7 +250,7 @@ class OnbordingScreen extends StatelessWidget {
 
                 // Explore Now Link
                 TextButton(
-                  onPressed: controller.onExploreNowPressed,
+                  onPressed: () => controller.onExploreNowPressed(context),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
