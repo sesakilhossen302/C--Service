@@ -6,10 +6,7 @@ class OtpController {
     6,
     (_) => TextEditingController(),
   );
-  final List<FocusNode> focusNodes = List.generate(
-    6,
-    (_) => FocusNode(),
-  );
+  final List<FocusNode> focusNodes = List.generate(6, (_) => FocusNode());
 
   void onOtpChanged(String value, int index, BuildContext context) {
     if (value.isNotEmpty && index < 5) {
@@ -25,7 +22,7 @@ class OtpController {
 
   void onVerifyPressed(BuildContext context) {
     // Navigate to Service Provider Registration Screen
-    Navigator.pushNamed(context, AppRoute.serviceProviderSignupScreen);
+    // Navigator.pushNamed(context, AppRoute.serviceProviderSignupScreen);
   }
 
   void dispose() {
