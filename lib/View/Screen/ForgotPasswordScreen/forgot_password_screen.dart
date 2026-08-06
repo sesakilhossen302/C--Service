@@ -1,33 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/forgot_password_controller.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  late final ForgotPasswordController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = ForgotPasswordController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgotPasswordController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -91,7 +75,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                     Expanded(
                       child: TextField(
-                        controller: _controller.phoneController,
+                        controller: controller.phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                           hintText: StaticString.mobileHint,
@@ -115,7 +99,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () => _controller.onSendCodePressed(context),
+                  onPressed: controller.onSendCodePressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,

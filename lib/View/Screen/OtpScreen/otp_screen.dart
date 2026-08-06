@@ -1,34 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/otp_controller.dart';
 
-class OtpScreen extends StatefulWidget {
+class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
-}
-
-class _OtpScreenState extends State<OtpScreen> {
-  late final OtpController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = OtpController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OtpController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -69,7 +53,7 @@ class _OtpScreenState extends State<OtpScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(6, (index) {
-                  return _buildOtpBox(index);
+                  return _buildOtpBox(controller, index);
                 }),
               ),
 
@@ -94,7 +78,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = _controller.onResendOtpPressed,
+                          ..onTap = controller.onResendOtpPressed,
                       ),
                     ],
                   ),
@@ -108,7 +92,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () => _controller.onVerifyPressed(context),
+                  onPressed: controller.onVerifyPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,
@@ -136,9 +120,9 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   // Individual OTP Digit Box Widget
-  Widget _buildOtpBox(int index) {
-    final controller = _controller.otpControllers[index];
-    final focusNode = _controller.focusNodes[index];
+  Widget _buildOtpBox(OtpController controller, int index) {
+    final textController = controller.otpControllers[index];
+    final focusNode = controller.focusNodes[index];
 
     return Container(
       width: 48,
@@ -147,7 +131,7 @@ class _OtpScreenState extends State<OtpScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: controller.text.isNotEmpty
+          color: textController.text.isNotEmpty
               ? AppColors.primaryColor
               : AppColors.cardBorder,
           width: 1.2,
@@ -155,7 +139,7 @@ class _OtpScreenState extends State<OtpScreen> {
       ),
       child: Center(
         child: TextField(
-          controller: controller,
+          controller: textController,
           focusNode: focusNode,
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
@@ -171,8 +155,7 @@ class _OtpScreenState extends State<OtpScreen> {
             contentPadding: EdgeInsets.zero,
           ),
           onChanged: (value) {
-            setState(() {});
-            _controller.onOtpChanged(value, index, context);
+            controller.onOtpChanged(value, index);
           },
         ),
       ),

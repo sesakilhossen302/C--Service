@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 
-class ServiceProviderSignupController {
+class ServiceProviderSignupController extends GetxController {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final priceController = TextEditingController(text: '৳ ২,০০০');
   final passwordController = TextEditingController();
 
-  bool isPasswordVisible = false;
-  final Set<String> selectedExpertise = {'ক্লিনিং'};
+  final isPasswordVisible = false.obs;
+  final selectedExpertise = <String>{'ক্লিনিং'}.obs;
 
-  void togglePasswordVisibility(VoidCallback updateState) {
-    isPasswordVisible = !isPasswordVisible;
-    updateState();
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  void toggleExpertise(String expertise, VoidCallback updateState) {
+  void toggleExpertise(String expertise) {
     if (selectedExpertise.contains(expertise)) {
       selectedExpertise.remove(expertise);
     } else {
       selectedExpertise.add(expertise);
     }
-    updateState();
   }
 
-  void onSendOtpPressed(BuildContext context) {
-    // Navigate to OTP page
-    Navigator.pushNamed(context, AppRoute.otpScreen, arguments: {'isServiceProvider': true});
+  void onSendOtpPressed() {
+    // Navigates to Customer HomeScreen as requested by user
+    Get.offAllNamed(AppRoute.customerHomeScreen);
   }
 
   void onSeeMorePressed() {
     // Show more expertise options modal/sheet
   }
 
-  void dispose() {
+  @override
+  void onClose() {
     nameController.dispose();
     phoneController.dispose();
     priceController.dispose();
     passwordController.dispose();
+    super.onClose();
   }
 }

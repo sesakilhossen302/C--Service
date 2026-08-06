@@ -1,22 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/service_provider_signup_controller.dart';
 
-class ServiceProviderSignupScreen extends StatefulWidget {
+class ServiceProviderSignupScreen extends StatelessWidget {
   const ServiceProviderSignupScreen({super.key});
 
-  @override
-  State<ServiceProviderSignupScreen> createState() => _ServiceProviderSignupScreenState();
-}
-
-class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScreen> {
-  late final ServiceProviderSignupController _controller;
-
-  final List<String> expertiseList = [
+  final List<String> expertiseList = const [
     StaticString.expCleaning,
     StaticString.expElectric,
     StaticString.expPlumbing,
@@ -25,19 +19,9 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _controller = ServiceProviderSignupController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ServiceProviderSignupController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -91,7 +75,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                   border: Border.all(color: AppColors.cardBorder, width: 1),
                 ),
                 child: TextField(
-                  controller: _controller.nameController,
+                  controller: controller.nameController,
                   keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
                     hintText: StaticString.fullNameHint,
@@ -124,7 +108,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                   border: Border.all(color: AppColors.cardBorder, width: 1),
                 ),
                 child: TextField(
-                  controller: _controller.phoneController,
+                  controller: controller.phoneController,
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     hintText: StaticString.mobileHint,
@@ -153,7 +137,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                     ),
                   ),
                   GestureDetector(
-                    onTap: _controller.onSeeMorePressed,
+                    onTap: controller.onSeeMorePressed,
                     child: const Text(
                       StaticString.seeMore,
                       style: TextStyle(
@@ -168,40 +152,38 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
               const SizedBox(height: 12),
 
               // Expertise Chips Wrap
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 10.0,
-                children: expertiseList.map((item) {
-                  final isSelected = _controller.selectedExpertise.contains(item);
-                  return GestureDetector(
-                    onTap: () {
-                      _controller.toggleExpertise(item, () {
-                        setState(() {});
-                      });
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? AppColors.primaryColor.withAlpha(20)
-                            : Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: AppColors.primaryColor,
-                          width: 1.2,
+              Obx(
+                () => Wrap(
+                  spacing: 8.0,
+                  runSpacing: 10.0,
+                  children: expertiseList.map((item) {
+                    final isSelected = controller.selectedExpertise.contains(item);
+                    return GestureDetector(
+                      onTap: () => controller.toggleExpertise(item),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? AppColors.primaryColor.withAlpha(20)
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: AppColors.primaryColor,
+                            width: 1.2,
+                          ),
+                        ),
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                            fontSize: 13.5,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.primaryColor,
+                          ),
                         ),
                       ),
-                      child: Text(
-                        item,
-                        style: const TextStyle(
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                ),
               ),
 
               const SizedBox(height: 20),
@@ -223,7 +205,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                   border: Border.all(color: AppColors.cardBorder, width: 1.2),
                 ),
                 child: TextField(
-                  controller: _controller.priceController,
+                  controller: controller.priceController,
                   keyboardType: TextInputType.number,
                   style: const TextStyle(
                     fontSize: 16,
@@ -254,36 +236,34 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                 ),
               ),
               const SizedBox(height: 8),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: TextField(
-                  controller: _controller.passwordController,
-                  obscureText: !_controller.isPasswordVisible,
-                  decoration: InputDecoration(
-                    hintText: StaticString.passwordSignupHint,
-                    hintStyle: const TextStyle(
-                      color: AppColors.textLightGrey,
-                      fontSize: 15,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _controller.isPasswordVisible
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
+              Obx(
+                () => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: AppColors.cardBorder, width: 1),
+                  ),
+                  child: TextField(
+                    controller: controller.passwordController,
+                    obscureText: !controller.isPasswordVisible.value,
+                    decoration: InputDecoration(
+                      hintText: StaticString.passwordSignupHint,
+                      hintStyle: const TextStyle(
                         color: AppColors.textLightGrey,
-                        size: 20,
+                        fontSize: 15,
                       ),
-                      onPressed: () {
-                        _controller.togglePasswordVisibility(() {
-                          setState(() {});
-                        });
-                      },
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      border: InputBorder.none,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          controller.isPasswordVisible.value
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: AppColors.textLightGrey,
+                          size: 20,
+                        ),
+                        onPressed: controller.togglePasswordVisibility,
+                      ),
                     ),
                   ),
                 ),
@@ -296,7 +276,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () => _controller.onSendOtpPressed(context),
+                  onPressed: controller.onSendOtpPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,
@@ -337,7 +317,7 @@ class _ServiceProviderSignupScreenState extends State<ServiceProviderSignupScree
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushNamed(context, AppRoute.loginScreen);
+                            Get.toNamed(AppRoute.loginScreen);
                           },
                       ),
                     ],

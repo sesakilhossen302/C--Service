@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/AppImg/app_img.dart';
 import '../../../Utils/StaticString/static_string.dart';
@@ -9,7 +10,7 @@ class OnbordingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = OnbordingController();
+    final controller = Get.put(OnbordingController());
 
     return Scaffold(
       body: Container(
@@ -131,7 +132,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: () => controller.onLoginPressed(context),
+                    onPressed: controller.onLoginPressed,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       foregroundColor: AppColors.white,
@@ -157,7 +158,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: OutlinedButton(
-                    onPressed: () => controller.onRegisterPressed(context),
+                    onPressed: controller.onRegisterPressed,
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.primaryColor,
                       side: const BorderSide(
@@ -215,7 +216,7 @@ class OnbordingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: () => controller.onServiceProviderLoginPressed(context),
+                    onPressed: controller.onServiceProviderLoginPressed,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.buttonSecondaryBg,
                       foregroundColor: AppColors.textColor,
@@ -250,7 +251,7 @@ class OnbordingScreen extends StatelessWidget {
 
                 // Explore Now Link
                 TextButton(
-                  onPressed: () => controller.onExploreNowPressed(context),
+                  onPressed: controller.onExploreNowPressed,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [

@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 
-class OnbordingController {
-  void onLoginPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.loginScreen);
+class OnbordingController extends GetxController {
+  void onLoginPressed() {
+    Get.toNamed(AppRoute.loginScreen);
   }
 
-  void onRegisterPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.signupScreen);
+  void onRegisterPressed() {
+    Get.toNamed(AppRoute.signupScreen);
   }
 
-  void onServiceProviderLoginPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.serviceProviderSignupScreen);
+  void onServiceProviderLoginPressed() {
+    Get.toNamed(AppRoute.serviceProviderSignupScreen);
   }
 
-  void onExploreNowPressed(BuildContext context) {
-    // Handle Explore Now action
+  void onExploreNowPressed() {
+    Get.toNamed(AppRoute.customerHomeScreen);
   }
 }

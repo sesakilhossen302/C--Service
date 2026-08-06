@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 
-class ForgotPasswordController {
+class ForgotPasswordController extends GetxController {
   final phoneController = TextEditingController();
 
-  void onSendCodePressed(BuildContext context) {
-    // Navigate to OTP verification screen
-    Navigator.pushNamed(context, AppRoute.otpScreen);
+  void onSendCodePressed() {
+    Get.toNamed(AppRoute.otpScreen);
   }
 
-  void dispose() {
+  @override
+  void onClose() {
     phoneController.dispose();
+    super.onClose();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'Core/AppRoute/app_route.dart';
 import 'Utils/AppColors/app_colors.dart';
 import 'Utils/AppConst/app_const.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: AppConst.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: AppRoute.splashScreen,
-      routes: AppRoute.routes,
+      getPages: AppRoute.getPages,
     );
   }
 }

@@ -1,35 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/signup_controller.dart';
 
-class SignupScreen extends StatefulWidget {
+class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
-
-class _SignupScreenState extends State<SignupScreen> {
-  late final SignupController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = SignupController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -85,7 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   border: Border.all(color: AppColors.cardBorder, width: 1),
                 ),
                 child: TextField(
-                  controller: _controller.nameController,
+                  controller: controller.nameController,
                   keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
                     hintText: StaticString.fullNameHint,
@@ -120,7 +104,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   border: Border.all(color: AppColors.cardBorder, width: 1),
                 ),
                 child: TextField(
-                  controller: _controller.phoneController,
+                  controller: controller.phoneController,
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     hintText: StaticString.mobileHint,
@@ -148,36 +132,34 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(height: 8),
 
               // Password Input Field
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: TextField(
-                  controller: _controller.passwordController,
-                  obscureText: !_controller.isPasswordVisible,
-                  decoration: InputDecoration(
-                    hintText: StaticString.passwordSignupHint,
-                    hintStyle: const TextStyle(
-                      color: AppColors.textLightGrey,
-                      fontSize: 15,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _controller.isPasswordVisible
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
+              Obx(
+                () => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: AppColors.cardBorder, width: 1),
+                  ),
+                  child: TextField(
+                    controller: controller.passwordController,
+                    obscureText: !controller.isPasswordVisible.value,
+                    decoration: InputDecoration(
+                      hintText: StaticString.passwordSignupHint,
+                      hintStyle: const TextStyle(
                         color: AppColors.textLightGrey,
-                        size: 20,
+                        fontSize: 15,
                       ),
-                      onPressed: () {
-                        _controller.togglePasswordVisibility(() {
-                          setState(() {});
-                        });
-                      },
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      border: InputBorder.none,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          controller.isPasswordVisible.value
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: AppColors.textLightGrey,
+                          size: 20,
+                        ),
+                        onPressed: controller.togglePasswordVisibility,
+                      ),
                     ),
                   ),
                 ),
@@ -203,7 +185,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                       recognizer: TapGestureRecognizer()
-                        ..onTap = _controller.onTermsPressed,
+                        ..onTap = controller.onTermsPressed,
                     ),
                     const TextSpan(
                       text: StaticString.andText,
@@ -220,7 +202,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                       recognizer: TapGestureRecognizer()
-                        ..onTap = _controller.onPrivacyPressed,
+                        ..onTap = controller.onPrivacyPressed,
                     ),
                     const TextSpan(
                       text: StaticString.acceptText,
@@ -240,7 +222,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () => _controller.onSendOtpPressed(context),
+                  onPressed: controller.onSendOtpPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,

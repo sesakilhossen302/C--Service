@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 
-class SignupController {
+class SignupController extends GetxController {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isPasswordVisible = false;
 
-  void togglePasswordVisibility(VoidCallback updateState) {
-    isPasswordVisible = !isPasswordVisible;
-    updateState();
+  final isPasswordVisible = false.obs;
+
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  void onSendOtpPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.otpScreen);
+  void onSendOtpPressed() {
+    // Customer signup -> navigate to OTP screen
+    Get.toNamed(
+      AppRoute.otpScreen,
+      arguments: {'fromCustomerSignup': true},
+    );
   }
 
   void onTermsPressed() {
@@ -24,9 +29,11 @@ class SignupController {
     // Open privacy policy page
   }
 
-  void dispose() {
+  @override
+  void onClose() {
     nameController.dispose();
     phoneController.dispose();
     passwordController.dispose();
+    super.onClose();
   }
 }

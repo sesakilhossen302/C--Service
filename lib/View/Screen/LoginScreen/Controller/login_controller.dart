@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 
-class LoginController {
+class LoginController extends GetxController {
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isPasswordVisible = false;
+  final isPasswordVisible = false.obs;
 
-  void togglePasswordVisibility(VoidCallback updateState) {
-    isPasswordVisible = !isPasswordVisible;
-    updateState();
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  void onLoginPressed(BuildContext context) {
-    // Handle login API request
+  void onLoginPressed() {
+    Get.offAllNamed(AppRoute.customerHomeScreen);
   }
 
-  void onForgotPasswordPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoute.forgotPasswordScreen);
+  void onForgotPasswordPressed() {
+    Get.toNamed(AppRoute.forgotPasswordScreen);
   }
 
-  void dispose() {
+  @override
+  void onClose() {
     phoneController.dispose();
     passwordController.dispose();
+    super.onClose();
   }
 }
