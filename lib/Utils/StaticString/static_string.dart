@@ -138,4 +138,13 @@ class StaticString {
   static const String monthPerformance = 'এই মাসের পারফরম্যান্স';
   static const String customerSatisfaction = 'গ্রাহক সন্তুষ্টি';
   static const String onTimePresence = 'সময়মতো উপস্থিতি';
+
+  // Bottom Navigation Bar Strings
+  static const String navHome = 'হোম';
+  static const String navService = 'সেবা';
+  static const String navBooking = 'বুকিং';
+  static const String navTask = 'কাজ';
+  static const String navIncome = 'আয়';
+  static const String navHelp = 'সহায়তা';
+  static const String navProfile = 'প্রোফাইল';
 }

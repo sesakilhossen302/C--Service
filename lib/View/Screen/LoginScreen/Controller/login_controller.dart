@@ -12,7 +12,7 @@ class LoginController extends GetxController {
   }
 
   void onLoginPressed() {
-    Get.offAllNamed(AppRoute.customerHomeScreen);
+    Get.offAllNamed(AppRoute.customerNavBarScreen);
   }
 
   void onForgotPasswordPressed() {

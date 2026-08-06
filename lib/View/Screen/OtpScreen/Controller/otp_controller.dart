@@ -27,7 +27,7 @@ class OtpController extends GetxController {
 
     if (fromCustomerSignup) {
       // From Customer Signup -> OTP -> navigate to Service Provider Signup page
-      Get.toNamed(AppRoute.customerHomeScreen);
+      Get.toNamed(AppRoute.customerNavBarScreen);
     } else {
       // Direct -> navigate to Customer HomeScreen
       Get.offAllNamed(AppRoute.serviceProviderSignupScreen);
