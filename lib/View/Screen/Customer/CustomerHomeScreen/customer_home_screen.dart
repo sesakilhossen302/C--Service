@@ -242,10 +242,12 @@ class CustomerHomeScreen extends StatelessWidget {
                   _buildQuickPill(
                     icon: Icons.badge_outlined,
                     label: StaticString.homePassport,
+                    onTap: () => Get.toNamed(AppRoute.homePassportScreen),
                   ),
                   _buildQuickPill(
                     icon: Icons.star_border_rounded,
                     label: StaticString.reviews,
+                    onTap: () => Get.toNamed(AppRoute.myReviewsScreen),
                   ),
                 ],
               ),
