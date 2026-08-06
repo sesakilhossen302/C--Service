@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../../../Utils/StaticString/static_string.dart';
 import 'Controller/customer_home_controller.dart';
@@ -66,34 +67,37 @@ class CustomerHomeScreen extends StatelessWidget {
                   ),
 
                   // Notification Bell with Red Badge
-                  Stack(
-                    children: [
-                      Container(
-                        width: 44,
-                        height: 44,
-                        decoration: const BoxDecoration(
-                          color: AppColors.buttonSecondaryBg,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.notifications_none_rounded,
-                          color: AppColors.textColor,
-                          size: 22,
-                        ),
-                      ),
-                      Positioned(
-                        right: 8,
-                        top: 8,
-                        child: Container(
-                          width: 9,
-                          height: 9,
+                  GestureDetector(
+                    onTap: () => Get.toNamed(AppRoute.notificationScreen),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 44,
+                          height: 44,
                           decoration: const BoxDecoration(
-                            color: Colors.redAccent,
+                            color: AppColors.buttonSecondaryBg,
                             shape: BoxShape.circle,
                           ),
+                          child: const Icon(
+                            Icons.notifications_none_rounded,
+                            color: AppColors.textColor,
+                            size: 22,
+                          ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            width: 9,
+                            height: 9,
+                            decoration: const BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

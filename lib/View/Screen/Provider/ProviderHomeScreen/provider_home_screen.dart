@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../../../Utils/StaticString/static_string.dart';
 import 'Controller/provider_home_controller.dart';
@@ -48,34 +49,37 @@ class ProviderHomeScreen extends StatelessWidget {
                   ),
 
                   // Notification Bell with Red Badge
-                  Stack(
-                    children: [
-                      Container(
-                        width: 44,
-                        height: 44,
-                        decoration: const BoxDecoration(
-                          color: AppColors.buttonSecondaryBg,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.notifications_none_rounded,
-                          color: AppColors.textColor,
-                          size: 22,
-                        ),
-                      ),
-                      Positioned(
-                        right: 8,
-                        top: 8,
-                        child: Container(
-                          width: 9,
-                          height: 9,
+                  GestureDetector(
+                    onTap: () => Get.toNamed(AppRoute.notificationScreen),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 44,
+                          height: 44,
                           decoration: const BoxDecoration(
-                            color: Colors.redAccent,
+                            color: AppColors.buttonSecondaryBg,
                             shape: BoxShape.circle,
                           ),
+                          child: const Icon(
+                            Icons.notifications_none_rounded,
+                            color: AppColors.textColor,
+                            size: 22,
+                          ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            width: 9,
+                            height: 9,
+                            decoration: const BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -83,93 +87,104 @@ class ProviderHomeScreen extends StatelessWidget {
               const SizedBox(height: 18),
 
               // 2. Online Status Banner Card with Custom Toggle
-              Obx(
-                () {
-                  final isOnline = controller.isOnline.value;
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: isOnline ? AppColors.primaryColor : const Color(0xFFF3F4F6),
-                      borderRadius: BorderRadius.circular(18),
-                      boxShadow: isOnline
-                          ? [
-                              BoxShadow(
-                                color: AppColors.primaryColor.withAlpha(40),
-                                blurRadius: 10,
-                                offset: const Offset(0, 4),
-                              ),
-                            ]
-                          : [],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            AnimatedContainer(
-                              duration: const Duration(milliseconds: 250),
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
-                                shape: BoxShape.circle,
-                              ),
+              Obx(() {
+                final isOnline = controller.isOnline.value;
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isOnline
+                        ? AppColors.primaryColor
+                        : const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: isOnline
+                        ? [
+                            BoxShadow(
+                              color: AppColors.primaryColor.withAlpha(40),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
                             ),
-                            const SizedBox(width: 8),
-                            Text(
-                              isOnline
-                                  ? StaticString.onlineReady
-                                  : StaticString.offlineStatus,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: isOnline ? Colors.white : const Color(0xFF374151),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        // Custom Toggle Switch
-                        GestureDetector(
-                          onTap: controller.toggleOnlineStatus,
-                          child: AnimatedContainer(
+                          ]
+                        : [],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          AnimatedContainer(
                             duration: const Duration(milliseconds: 250),
-                            width: 44,
-                            height: 24,
-                            padding: const EdgeInsets.all(2),
+                            width: 10,
+                            height: 10,
                             decoration: BoxDecoration(
                               color: isOnline
-                                  ? Colors.white.withAlpha(50)
-                                  : const Color(0xFFE5E7EB),
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
-                                width: 1.2,
-                              ),
+                                  ? Colors.white
+                                  : const Color(0xFF9CA3AF),
+                              shape: BoxShape.circle,
                             ),
-                            child: AnimatedAlign(
-                              duration: const Duration(milliseconds: 200),
-                              alignment: isOnline
-                                  ? Alignment.centerRight
-                                  : Alignment.centerLeft,
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: 18,
-                                height: 18,
-                                decoration: BoxDecoration(
-                                  color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
-                                  shape: BoxShape.circle,
-                                ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            isOnline
+                                ? StaticString.onlineReady
+                                : StaticString.offlineStatus,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: isOnline
+                                  ? Colors.white
+                                  : const Color(0xFF374151),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // Custom Toggle Switch
+                      GestureDetector(
+                        onTap: controller.toggleOnlineStatus,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 250),
+                          width: 44,
+                          height: 24,
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: isOnline
+                                ? Colors.white.withAlpha(50)
+                                : const Color(0xFFE5E7EB),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: isOnline
+                                  ? Colors.white
+                                  : const Color(0xFF9CA3AF),
+                              width: 1.2,
+                            ),
+                          ),
+                          child: AnimatedAlign(
+                            duration: const Duration(milliseconds: 200),
+                            alignment: isOnline
+                                ? Alignment.centerRight
+                                : Alignment.centerLeft,
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 250),
+                              width: 18,
+                              height: 18,
+                              decoration: BoxDecoration(
+                                color: isOnline
+                                    ? Colors.white
+                                    : const Color(0xFF9CA3AF),
+                                shape: BoxShape.circle,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
 
               const SizedBox(height: 18),
 
@@ -211,7 +226,8 @@ class ProviderHomeScreen extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.todayTasks.length,
-                separatorBuilder: (context, index) => const SizedBox(height: 12),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   final task = controller.todayTasks[index];
                   return Container(
@@ -236,7 +252,10 @@ class ProviderHomeScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.primaryColor,
                                 borderRadius: BorderRadius.circular(12),
@@ -255,22 +274,36 @@ class ProviderHomeScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         Row(
                           children: [
-                            const Icon(Icons.person_outline_rounded, size: 14, color: AppColors.textGrey),
+                            const Icon(
+                              Icons.person_outline_rounded,
+                              size: 14,
+                              color: AppColors.textGrey,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               task.customerName,
-                              style: const TextStyle(fontSize: 12.5, color: AppColors.textGrey),
+                              style: const TextStyle(
+                                fontSize: 12.5,
+                                color: AppColors.textGrey,
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 4),
                         Row(
                           children: [
-                            const Icon(Icons.location_on_outlined, size: 14, color: AppColors.textGrey),
+                            const Icon(
+                              Icons.location_on_outlined,
+                              size: 14,
+                              color: AppColors.textGrey,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               task.location,
-                              style: const TextStyle(fontSize: 12.5, color: AppColors.textGrey),
+                              style: const TextStyle(
+                                fontSize: 12.5,
+                                color: AppColors.textGrey,
+                              ),
                             ),
                           ],
                         ),
@@ -280,11 +313,18 @@ class ProviderHomeScreen extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                const Icon(Icons.access_time_rounded, size: 14, color: AppColors.textGrey),
+                                const Icon(
+                                  Icons.access_time_rounded,
+                                  size: 14,
+                                  color: AppColors.textGrey,
+                                ),
                                 const SizedBox(width: 4),
                                 Text(
                                   task.timeText,
-                                  style: const TextStyle(fontSize: 12.5, color: AppColors.textGrey),
+                                  style: const TextStyle(
+                                    fontSize: 12.5,
+                                    color: AppColors.textGrey,
+                                  ),
                                 ),
                               ],
                             ),
@@ -416,7 +456,9 @@ class ProviderHomeScreen extends StatelessWidget {
                             child: LinearProgressIndicator(
                               value: metric.progressRatio,
                               backgroundColor: AppColors.buttonSecondaryBg,
-                              valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                AppColors.primaryColor,
+                              ),
                               minHeight: 8,
                             ),
                           ),
@@ -436,7 +478,10 @@ class ProviderHomeScreen extends StatelessWidget {
   }
 
   // Helper Widget for Section Headers
-  Widget _buildSectionHeader({required String title, required VoidCallback onSeeAllTap}) {
+  Widget _buildSectionHeader({
+    required String title,
+    required VoidCallback onSeeAllTap,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
