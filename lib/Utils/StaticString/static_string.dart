@@ -28,24 +28,35 @@ class StaticString {
 
   // Login & Signup Strings
   static const String loginTitle = 'লগইন করুন';
+  static const String welcomeBack = 'লগইন করুন';
   static const String loginSubTitle = 'আপনার অ্যাকাউন্টে প্রবেশ করুন';
+  static const String loginSubtitle = 'আপনার অ্যাকাউন্টে প্রবেশ করুন';
   static const String signupTitle = 'নিবন্ধন করুন';
   static const String signupSubTitle = 'নতুন একাউন্ট তৈরি করুন';
+  static const String createAccountTitle = 'নিবন্ধন করুন';
+  static const String createAccountSub = 'নতুন একাউন্ট তৈরি করুন';
 
   static const String fullNameLabel = 'সম্পূর্ণ নাম';
   static const String fullNameHint = 'আপনার নাম';
+  static const String nameLabel = 'সম্পূর্ণ নাম';
+  static const String nameHint = 'আপনার নাম';
 
   static const String mobileLabel = 'মোবাইল নম্বর';
   static const String mobileHint = '01700-000000';
+  static const String phoneLabel = 'মোবাইল নম্বর';
+  static const String phoneHint = '01700-000000';
   static const String countryCodeBD = '+880';
 
   static const String passwordLabel = 'পাসওয়ার্ড';
   static const String passwordLoginHint = 'পাসওয়ার্ড দিন';
   static const String passwordSignupHint = 'কমপক্ষে ৮ অক্ষর';
+  static const String passwordHint = 'পাসওয়ার্ড দিন';
 
   static const String forgotPassword = 'পাসওয়ার্ড ভুলেছেন?';
+  static const String forgotPasswordLink = 'পাসওয়ার্ড ভুলেছেন?';
 
   static const String signupTermsText = 'নিবন্ধন করে আপনি আমাদের ';
+  static const String termsPrefix = 'নিবন্ধন করে আপনি আমাদের ';
   static const String termsLink = 'শর্তাবলী';
   static const String andText = ' ও ';
   static const String privacyLink = 'গোপনীয়তা নীতি';
@@ -59,19 +70,24 @@ class StaticString {
   // Forgot Password & OTP Strings
   static const String forgotPasswordTitle = 'পাসওয়ার্ড পুনরুদ্ধার';
   static const String forgotPasswordSubTitle = 'মোবাইল নম্বর দিন। আমরা কোড পাঠাব।';
+  static const String forgotPasswordSub = 'মোবাইল নম্বর দিন। আমরা কোড পাঠাব।';
   static const String sendCode = 'কোড পাঠান';
 
   static const String otpTitle = 'ওটিপি যাচাই';
   static const String otpSubTitle = 'আপনার মোবাইলে পাঠানো ৬ সংখ্যার কোডটি দিন';
+  static const String otpSub = 'আপনার মোবাইলে পাঠানো ৬ সংখ্যার কোডটি দিন';
   static const String didntGetCode = 'কোড পাননি? ';
   static const String resendCode = 'পুনরায় পাঠান';
   static const String verify = 'যাচাই করুন';
 
   // Service Provider Registration Strings
   static const String serviceProviderTitle = 'সেবাদাতা নিবন্ধন';
+  static const String providerSignupTitle = 'সেবাদাতা নিবন্ধন';
+  static const String providerSignupSub = 'তথ্য দিন ও সেবাদাতা হিসেবে নিবন্ধন করুন';
   static const String expertiseLabel = 'বিশেষজ্ঞতা বেছে নিন';
   static const String seeMore = 'আরও দেখুন';
   static const String priceLabel = 'দাম';
+  static const String hourlyRateLabel = 'দাম';
   static const String priceHint = '৳ ২,০০০';
 
   // Expertise Categories

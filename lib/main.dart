@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'Core/AppRoute/app_route.dart';
 import 'Utils/AppColors/app_colors.dart';
@@ -14,17 +15,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: AppConst.appName,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: AppColors.primaryColor,
-        scaffoldBackgroundColor: AppColors.backgroundColor,
-        useMaterial3: true,
-      ),
-      initialRoute: AppRoute.splashScreen,
-      getPages: AppRoute.getPages,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          title: AppConst.appName,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: AppColors.primaryColor,
+            scaffoldBackgroundColor: AppColors.backgroundColor,
+            useMaterial3: true,
+          ),
+          initialRoute: AppRoute.splashScreen,
+          getPages: AppRoute.getPages,
+        );
+      },
     );
   }
 }
-

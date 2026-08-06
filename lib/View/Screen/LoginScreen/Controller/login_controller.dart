@@ -19,6 +19,10 @@ class LoginController extends GetxController {
     Get.toNamed(AppRoute.forgotPasswordScreen);
   }
 
+  void onRegisterPressed() {
+    Get.toNamed(AppRoute.signupScreen);
+  }
+
   @override
   void onClose() {
     phoneController.dispose();

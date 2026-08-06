@@ -1,7 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
@@ -15,212 +14,117 @@ class SignupScreen extends StatelessWidget {
     final controller = Get.put(SignupController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 12),
+              SizedBox(height: 10.h),
 
-              // Custom Circular Back Button
+              // Top Row with Back Button
               const CustomBackButton(),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
-              // Header Title & Subtitle
-              const Text(
-                StaticString.signupTitle,
+              // Title
+              Text(
+                StaticString.createAccountTitle,
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
-                StaticString.signupSubTitle,
+
+              SizedBox(height: 8.h),
+
+              // Subtitle
+              Text(
+                StaticString.createAccountSub,
                 style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textLightGrey,
+                  fontSize: 14.sp,
+                  color: AppColors.textGrey,
                 ),
               ),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
-              // Field 1: Full Name Label
-              const Text(
-                StaticString.fullNameLabel,
+              // 1. Full Name Label & Input Field
+              Text(
+                StaticString.nameLabel,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 8),
-
-              // Full Name Input Field
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: TextField(
-                  controller: controller.nameController,
-                  keyboardType: TextInputType.name,
-                  decoration: const InputDecoration(
-                    hintText: StaticString.fullNameHint,
-                    hintStyle: TextStyle(
-                      color: AppColors.textLightGrey,
-                      fontSize: 15,
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    border: InputBorder.none,
-                  ),
-                ),
+              SizedBox(height: 8.h),
+              TextField(
+                controller: controller.nameController,
+                style: TextStyle(fontSize: 14.5.sp),
+                decoration: _buildInputDecoration(StaticString.nameHint),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
 
-              // Field 2: Mobile Number Label
-              const Text(
-                StaticString.mobileLabel,
+              // 2. Phone Number Label & Input Field
+              Text(
+                StaticString.phoneLabel,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 8),
-
-              // Mobile Input Field
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: TextField(
-                  controller: controller.phoneController,
-                  keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(
-                    hintText: StaticString.mobileHint,
-                    hintStyle: TextStyle(
-                      color: AppColors.textLightGrey,
-                      fontSize: 15,
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    border: InputBorder.none,
-                  ),
-                ),
+              SizedBox(height: 8.h),
+              TextField(
+                controller: controller.phoneController,
+                keyboardType: TextInputType.phone,
+                style: TextStyle(fontSize: 14.5.sp),
+                decoration: _buildInputDecoration(StaticString.phoneHint),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
 
-              // Field 3: Password Label
-              const Text(
+              // 3. Password Label & Input Field
+              Text(
                 StaticString.passwordLabel,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 8),
-
-              // Password Input Field
+              SizedBox(height: 8.h),
               Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: AppColors.cardBorder, width: 1),
-                  ),
-                  child: TextField(
-                    controller: controller.passwordController,
-                    obscureText: !controller.isPasswordVisible.value,
-                    decoration: InputDecoration(
-                      hintText: StaticString.passwordSignupHint,
-                      hintStyle: const TextStyle(
+                () => TextField(
+                  controller: controller.passwordController,
+                  obscureText: !controller.isPasswordVisible.value,
+                  style: TextStyle(fontSize: 14.5.sp),
+                  decoration: _buildInputDecoration(
+                    StaticString.passwordHint,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.isPasswordVisible.value
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
                         color: AppColors.textLightGrey,
-                        fontSize: 15,
+                        size: 20.sp,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      border: InputBorder.none,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          controller.isPasswordVisible.value
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.textLightGrey,
-                          size: 20,
-                        ),
-                        onPressed: controller.togglePasswordVisibility,
-                      ),
+                      onPressed: controller.togglePasswordVisibility,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 32.h),
 
-              // Terms and Privacy Policy Text
-              RichText(
-                text: TextSpan(
-                  text: StaticString.signupTermsText,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: AppColors.textLightGrey,
-                    height: 1.4,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: StaticString.termsLink,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = controller.onTermsPressed,
-                    ),
-                    const TextSpan(
-                      text: StaticString.andText,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: AppColors.textLightGrey,
-                      ),
-                    ),
-                    TextSpan(
-                      text: StaticString.privacyLink,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = controller.onPrivacyPressed,
-                    ),
-                    const TextSpan(
-                      text: StaticString.acceptText,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: AppColors.textLightGrey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 40),
-
-              // Send OTP Action Button
+              // Send OTP Button
               SizedBox(
                 width: double.infinity,
-                height: 52,
+                height: 52.h,
                 child: ElevatedButton(
                   onPressed: controller.onSendOtpPressed,
                   style: ElevatedButton.styleFrom(
@@ -228,54 +132,79 @@ class SignupScreen extends StatelessWidget {
                     foregroundColor: AppColors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     StaticString.sendOtp,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
 
-              // Already have account? Login link
+              // Terms Footer
               Center(
                 child: RichText(
+                  textAlign: TextAlign.center,
                   text: TextSpan(
-                    text: StaticString.alreadyHaveAccount,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    text: StaticString.termsPrefix,
+                    style: TextStyle(
+                      fontSize: 12.5.sp,
                       color: AppColors.textGrey,
-                      fontWeight: FontWeight.w400,
                     ),
                     children: [
                       TextSpan(
-                        text: StaticString.login,
-                        style: const TextStyle(
-                          fontSize: 14,
+                        text: StaticString.termsLink,
+                        style: TextStyle(
+                          fontSize: 12.5.sp,
                           color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.pushNamed(context, AppRoute.loginScreen);
-                          },
                       ),
                     ],
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 20.h),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  InputDecoration _buildInputDecoration(String hint, {Widget? suffixIcon}) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(
+        color: AppColors.textLightGrey,
+        fontSize: 14.sp,
+      ),
+      filled: true,
+      fillColor: Colors.white,
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: 16.w,
+        vertical: 16.h,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16.r),
+        borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16.r),
+        borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16.r),
+        borderSide: const BorderSide(color: AppColors.primaryColor, width: 1.5),
+      ),
+      suffixIcon: suffixIcon,
     );
   }
 }

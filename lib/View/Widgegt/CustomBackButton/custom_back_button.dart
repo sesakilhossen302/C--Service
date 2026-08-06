@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 
 class CustomBackButton extends StatelessWidget {
@@ -11,16 +12,16 @@ class CustomBackButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed ?? () => Navigator.maybePop(context),
       child: Container(
-        width: 44,
-        height: 44,
+        width: 44.w,
+        height: 44.h,
         decoration: const BoxDecoration(
           color: AppColors.buttonSecondaryBg,
           shape: BoxShape.circle,
         ),
-        child: const Icon(
+        child: Icon(
           Icons.arrow_back_rounded,
           color: AppColors.textColor,
-          size: 20,
+          size: 20.sp,
         ),
       ),
     );

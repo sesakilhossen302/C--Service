@@ -9,6 +9,10 @@ class ForgotPasswordController extends GetxController {
     Get.toNamed(AppRoute.otpScreen);
   }
 
+  void onSendOtpPressed() {
+    onSendCodePressed();
+  }
+
   @override
   void onClose() {
     phoneController.dispose();

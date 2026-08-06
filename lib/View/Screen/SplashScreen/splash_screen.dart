@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/AppImg/app_img.dart';
@@ -33,25 +34,25 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(
               AppImg.homeImgFull,
-              width: 140,
-              height: 140,
+              width: 140.w,
+              height: 140.h,
               fit: BoxFit.contain,
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20.h),
+            Text(
               StaticString.appName,
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.white,
                 letterSpacing: 0.5,
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               StaticString.appSubtitle,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.white.withAlpha(216),
               ),
@@ -62,4 +63,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
@@ -16,49 +17,54 @@ class CustomerHomeScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Top Header (Greeting, User Name, Location & Notification Bell)
+              SizedBox(height: 6.h),
+
+              // 1. Top Header Row (Greeting, Name, Location & Notification Bell)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        StaticString.greeting,
-                        style: TextStyle(
-                          fontSize: 13.5,
-                          color: AppColors.textLightGrey,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            StaticString.greeting,
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              color: AppColors.textGrey,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 2),
-                      const Text(
+                      SizedBox(height: 2.h),
+                      Text(
                         StaticString.userName,
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textColor,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 4.h),
                       Row(
-                        children: const [
+                        children: [
                           Icon(
                             Icons.location_on_outlined,
-                            size: 14,
-                            color: AppColors.textGrey,
+                            size: 14.sp,
+                            color: AppColors.primaryColor,
                           ),
-                          SizedBox(width: 4),
+                          SizedBox(width: 4.w),
                           Text(
                             StaticString.location,
                             style: TextStyle(
-                              fontSize: 12.5,
+                              fontSize: 12.5.sp,
                               color: AppColors.textGrey,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
@@ -72,24 +78,24 @@ class CustomerHomeScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          width: 44,
-                          height: 44,
+                          width: 44.w,
+                          height: 44.h,
                           decoration: const BoxDecoration(
                             color: AppColors.buttonSecondaryBg,
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(
+                          child: Icon(
                             Icons.notifications_none_rounded,
                             color: AppColors.textColor,
-                            size: 22,
+                            size: 22.sp,
                           ),
                         ),
                         Positioned(
-                          right: 8,
-                          top: 8,
+                          right: 8.w,
+                          top: 8.h,
                           child: Container(
-                            width: 9,
-                            height: 9,
+                            width: 9.w,
+                            height: 9.h,
                             decoration: const BoxDecoration(
                               color: Colors.redAccent,
                               shape: BoxShape.circle,
@@ -102,47 +108,57 @@ class CustomerHomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 18),
+              SizedBox(height: 18.h),
 
-              // 2. Search Bar
+              // 2. Search Input Bar
               Container(
                 decoration: BoxDecoration(
-                  color: AppColors.buttonSecondaryBg,
-                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(color: AppColors.cardBorder, width: 1.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(8),
+                      blurRadius: 10.r,
+                      offset: Offset(0, 2.h),
+                    ),
+                  ],
                 ),
                 child: TextField(
-                  controller: controller.searchController,
-                  onChanged: controller.onSearchChanged,
-                  decoration: const InputDecoration(
+                  style: TextStyle(fontSize: 14.sp),
+                  decoration: InputDecoration(
                     hintText: StaticString.searchHint,
                     hintStyle: TextStyle(
                       color: AppColors.textLightGrey,
-                      fontSize: 14.5,
+                      fontSize: 14.sp,
                     ),
                     prefixIcon: Icon(
                       Icons.search_rounded,
                       color: AppColors.textLightGrey,
-                      size: 22,
+                      size: 22.sp,
                     ),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(vertical: 14),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 14.h,
+                    ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 18.h),
 
-              // 3. AI Assistant Banner Card
+              // 3. AI Assistant Banner (Green Card)
               Container(
-                padding: const EdgeInsets.all(18),
+                padding: EdgeInsets.all(18.r),
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryColor.withAlpha(50),
-                      blurRadius: 12,
-                      offset: const Offset(0, 6),
+                      color: AppColors.primaryColor.withAlpha(60),
+                      blurRadius: 14.r,
+                      offset: Offset(0, 6.h),
                     ),
                   ],
                 ),
@@ -152,82 +168,83 @@ class CustomerHomeScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.smart_toy_outlined,
-                                size: 16,
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 6),
-                              Text(
-                                'AI ASSISTANT',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          Text(
                             StaticString.aiTitle,
                             style: TextStyle(
-                              fontSize: 16.5,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               height: 1.3,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 12.h),
                           GestureDetector(
-                            onTap: controller.onAiChatPressed,
-                            child: const Text(
-                              StaticString.chatNow,
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
+                            onTap: controller.onChatNowPressed,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 14.w,
+                                vertical: 8.h,
+                              ),
+                              decoration: BoxDecoration(
                                 color: Colors.white,
+                                borderRadius: BorderRadius.circular(20.r),
+                              ),
+                              child: Text(
+                                StaticString.chatNow,
+                                style: TextStyle(
+                                  fontSize: 12.5.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primaryColor,
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
+
+                    SizedBox(width: 12.w),
+
+                    // Robot Icon Box
                     Container(
-                      width: 72,
-                      height: 72,
+                      width: 56.w,
+                      height: 56.h,
                       decoration: BoxDecoration(
                         color: Colors.white.withAlpha(40),
-                        borderRadius: BorderRadius.circular(18),
+                        shape: BoxShape.circle,
                       ),
-                      child: const Center(
-                        child: Text(
-                          '🤖',
-                          style: TextStyle(fontSize: 36),
-                        ),
+                      child: Icon(
+                        Icons.smart_toy_outlined,
+                        size: 32.sp,
+                        color: Colors.white,
                       ),
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 20.h),
 
-              // 4. Quick Feature Cards Row (Timeline, Home Passport, Review)
+              // 4. Quick Pills Navigation Row (Timeline, Passport, Reviews)
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildQuickFeatureCard('📅 ১৭', StaticString.timeline),
-                  const SizedBox(width: 8),
-                  _buildQuickFeatureCard('🏠', StaticString.homePassport),
-                  const SizedBox(width: 8),
-                  _buildQuickFeatureCard('⭐', StaticString.reviews),
+                  _buildQuickPill(
+                    icon: Icons.timeline_rounded,
+                    label: StaticString.timeline,
+                  ),
+                  _buildQuickPill(
+                    icon: Icons.badge_outlined,
+                    label: StaticString.homePassport,
+                  ),
+                  _buildQuickPill(
+                    icon: Icons.star_border_rounded,
+                    label: StaticString.reviews,
+                  ),
                 ],
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 28.h),
 
               // 5. Popular Services Section Header
               _buildSectionHeader(
@@ -235,17 +252,17 @@ class CustomerHomeScreen extends StatelessWidget {
                 onSeeAllTap: () {},
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Grid of 8 Popular Services
+              // 4 Columns Grid of Popular Services
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.popularServices.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 12.h,
                   childAspectRatio: 0.8,
                 ),
                 itemBuilder: (context, index) {
@@ -253,24 +270,24 @@ class CustomerHomeScreen extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: AppColors.cardBorder, width: 1),
+                      borderRadius: BorderRadius.circular(18.r),
+                      border: Border.all(color: AppColors.cardBorder, width: 1.w),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           item.iconEmoji,
-                          style: const TextStyle(fontSize: 26),
+                          style: TextStyle(fontSize: 26.sp),
                         ),
-                        const SizedBox(height: 6),
+                        SizedBox(height: 6.h),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
                           child: Text(
                             item.title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 11,
+                            style: TextStyle(
+                              fontSize: 11.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.textColor,
                             ),
@@ -282,7 +299,7 @@ class CustomerHomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
               // 6. Upcoming Services Section Header
               _buildSectionHeader(
@@ -290,15 +307,15 @@ class CustomerHomeScreen extends StatelessWidget {
                 onSeeAllTap: () {},
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               // Upcoming Service Booking Card
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16.r),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(color: AppColors.cardBorder, width: 1.w),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,22 +325,22 @@ class CustomerHomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           controller.upcomingBooking.serviceTitle,
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
                             color: AppColors.textColor,
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                           decoration: BoxDecoration(
                             color: AppColors.primaryColor.withAlpha(20),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Text(
                             controller.upcomingBooking.status,
-                            style: const TextStyle(
-                              fontSize: 12,
+                            style: TextStyle(
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.bold,
                               color: AppColors.primaryColor,
                             ),
@@ -331,30 +348,30 @@ class CustomerHomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Row(
                       children: [
-                        const Icon(Icons.calendar_today_outlined, size: 14, color: AppColors.textGrey),
-                        const SizedBox(width: 4),
+                        Icon(Icons.calendar_today_outlined, size: 14.sp, color: AppColors.textGrey),
+                        SizedBox(width: 4.w),
                         Text(
                           controller.upcomingBooking.dateText,
-                          style: const TextStyle(fontSize: 12.5, color: AppColors.textGrey),
+                          style: TextStyle(fontSize: 12.5.sp, color: AppColors.textGrey),
                         ),
-                        const SizedBox(width: 14),
-                        const Icon(Icons.access_time_rounded, size: 14, color: AppColors.textGrey),
-                        const SizedBox(width: 4),
+                        SizedBox(width: 14.w),
+                        Icon(Icons.access_time_rounded, size: 14.sp, color: AppColors.textGrey),
+                        SizedBox(width: 4.w),
                         Text(
                           controller.upcomingBooking.timeText,
-                          style: const TextStyle(fontSize: 12.5, color: AppColors.textGrey),
+                          style: TextStyle(fontSize: 12.5.sp, color: AppColors.textGrey),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 14),
+                    SizedBox(height: 14.h),
                     Row(
                       children: [
                         Expanded(
                           child: SizedBox(
-                            height: 42,
+                            height: 42.h,
                             child: ElevatedButton(
                               onPressed: controller.onTrackServicePressed,
                               style: ElevatedButton.styleFrom(
@@ -362,36 +379,36 @@ class CustomerHomeScreen extends StatelessWidget {
                                 foregroundColor: Colors.white,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(12.r),
                                 ),
                               ),
-                              child: const Text(
+                              child: Text(
                                 StaticString.trackService,
                                 style: TextStyle(
-                                  fontSize: 13.5,
+                                  fontSize: 13.5.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         Expanded(
                           child: SizedBox(
-                            height: 42,
+                            height: 42.h,
                             child: OutlinedButton(
                               onPressed: controller.onServiceDetailsPressed,
                               style: OutlinedButton.styleFrom(
                                 foregroundColor: AppColors.textColor,
-                                side: const BorderSide(color: AppColors.cardBorder, width: 1),
+                                side: BorderSide(color: AppColors.cardBorder, width: 1.w),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(12.r),
                                 ),
                               ),
-                              child: const Text(
+                              child: Text(
                                 StaticString.details,
                                 style: TextStyle(
-                                  fontSize: 13.5,
+                                  fontSize: 13.5.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -404,7 +421,7 @@ class CustomerHomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
               // 7. Categories Section Header
               _buildSectionHeader(
@@ -412,35 +429,35 @@ class CustomerHomeScreen extends StatelessWidget {
                 onSeeAllTap: () {},
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               // 2x2 Grid of Categories
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.categories.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 10.h,
                   childAspectRatio: 2.2,
                 ),
                 itemBuilder: (context, index) {
                   final cat = controller.categories[index];
                   return Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: EdgeInsets.all(12.r),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.cardBorder, width: 1),
+                      borderRadius: BorderRadius.circular(16.r),
+                      border: Border.all(color: AppColors.cardBorder, width: 1.w),
                     ),
                     child: Row(
                       children: [
                         Text(
                           cat.iconEmoji,
-                          style: const TextStyle(fontSize: 26),
+                          style: TextStyle(fontSize: 24.sp),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -448,18 +465,18 @@ class CustomerHomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 cat.title,
-                                style: const TextStyle(
-                                  fontSize: 13.5,
+                                style: TextStyle(
+                                  fontSize: 13.5.sp,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.textColor,
                                 ),
                               ),
-                              const SizedBox(height: 2),
+                              SizedBox(height: 2.h),
                               Text(
                                 cat.countText,
-                                style: const TextStyle(
-                                  fontSize: 11.5,
-                                  color: AppColors.textLightGrey,
+                                style: TextStyle(
+                                  fontSize: 11.5.sp,
+                                  color: AppColors.textGrey,
                                 ),
                               ),
                             ],
@@ -471,44 +488,57 @@ class CustomerHomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
-              // 8. Prime Membership Banner Card
+              // 8. HomeCare Prime Offer Banner (Gold Card)
               Container(
-                padding: const EdgeInsets.all(18),
+                padding: EdgeInsets.all(18.r),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF16251E),
-                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF1E293B), Color(0xFF0F172A)],
+                  ),
+                  borderRadius: BorderRadius.circular(20.r),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(20),
+                      blurRadius: 12.r,
+                      offset: Offset(0, 4.h),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
+                    Container(
+                      width: 44.w,
+                      height: 44.h,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFF59E0B),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.workspace_premium_rounded,
+                        color: Colors.white,
+                        size: 24.sp,
+                      ),
+                    ),
+                    SizedBox(width: 14.w),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            '🎗️ PRIME MEMBERSHIP',
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFF59E0B),
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          SizedBox(height: 6),
+                        children: [
                           Text(
                             StaticString.primeTitle,
                             style: TextStyle(
-                              fontSize: 16.5,
+                              fontSize: 15.5.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 4),
+                          SizedBox(height: 4.h),
                           Text(
                             StaticString.primeSubtitle,
                             style: TextStyle(
-                              fontSize: 12.5,
+                              fontSize: 12.5.sp,
                               color: AppColors.textLightGrey,
                             ),
                           ),
@@ -521,15 +551,15 @@ class CustomerHomeScreen extends StatelessWidget {
                         backgroundColor: const Color(0xFFF59E0B),
                         foregroundColor: AppColors.textColor,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(20.r),
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         StaticString.joinNow,
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -538,43 +568,43 @@ class CustomerHomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
-              // 9. Why HomeCare OS? Card
-              const Text(
+              // 9. Why HomeCare OS? Section Card
+              Text(
                 StaticString.whyHomeCare,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(18.r),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(color: AppColors.cardBorder, width: 1.w),
                 ),
                 child: Column(
                   children: [
-                    _buildWhyItem(
-                      icon: Icons.shield_outlined,
+                    _buildWhyFeatureRow(
+                      icon: Icons.verified_user_outlined,
                       title: StaticString.trustedProf,
                       subtitle: StaticString.trustedProfSub,
                     ),
-                    const Divider(height: 24, color: AppColors.cardBorder),
-                    _buildWhyItem(
+                    Divider(color: AppColors.cardBorder, height: 24.h),
+                    _buildWhyFeatureRow(
                       icon: Icons.bolt_outlined,
                       title: StaticString.fastService,
                       subtitle: StaticString.fastServiceSub,
                     ),
-                    const Divider(height: 24, color: AppColors.cardBorder),
-                    _buildWhyItem(
-                      icon: Icons.verified_outlined,
+                    Divider(color: AppColors.cardBorder, height: 24.h),
+                    _buildWhyFeatureRow(
+                      icon: Icons.thumb_up_alt_outlined,
                       title: StaticString.satisfactionGar,
                       subtitle: StaticString.satisfactionGarSub,
                     ),
@@ -582,7 +612,7 @@ class CustomerHomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
             ],
           ),
         ),
@@ -590,25 +620,55 @@ class CustomerHomeScreen extends StatelessWidget {
     );
   }
 
-  // Helper Widget for Section Headers
-  Widget _buildSectionHeader({required String title, required VoidCallback onSeeAllTap}) {
+  Widget _buildQuickPill({required IconData icon, required String label}) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 4.w),
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(color: AppColors.cardBorder, width: 1.w),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, color: AppColors.primaryColor, size: 22.sp),
+            SizedBox(height: 4.h),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11.5.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader({
+    required String title,
+    required VoidCallback onSeeAllTap,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.textColor,
           ),
         ),
         GestureDetector(
           onTap: onSeeAllTap,
-          child: const Text(
+          child: Text(
             StaticString.seeAll,
             style: TextStyle(
-              fontSize: 13.5,
+              fontSize: 13.sp,
               fontWeight: FontWeight.bold,
               color: AppColors.primaryColor,
             ),
@@ -618,40 +678,7 @@ class CustomerHomeScreen extends StatelessWidget {
     );
   }
 
-  // Helper Widget for Quick Feature Card
-  Widget _buildQuickFeatureCard(String icon, String title) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.cardBorder, width: 1),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(icon, style: const TextStyle(fontSize: 14)),
-            const SizedBox(width: 6),
-            Flexible(
-              child: Text(
-                title,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textColor,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // Helper Widget for Why HomeCare item
-  Widget _buildWhyItem({
+  Widget _buildWhyFeatureRow({
     required IconData icon,
     required String title,
     required String subtitle,
@@ -659,32 +686,32 @@ class CustomerHomeScreen extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 42,
-          height: 42,
+          width: 40.w,
+          height: 40.h,
           decoration: BoxDecoration(
             color: AppColors.primaryColor.withAlpha(20),
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: AppColors.primaryColor, size: 20),
+          child: Icon(icon, color: AppColors.primaryColor, size: 20.sp),
         ),
-        const SizedBox(width: 14),
+        SizedBox(width: 14.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 14.5,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.textColor,
               ),
             ),
-            const SizedBox(height: 2),
+            SizedBox(height: 2.h),
             Text(
               subtitle,
-              style: const TextStyle(
-                fontSize: 12,
-                color: AppColors.textLightGrey,
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: AppColors.textGrey,
               ),
             ),
           ],

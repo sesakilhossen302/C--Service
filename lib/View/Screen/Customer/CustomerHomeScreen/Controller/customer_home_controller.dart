@@ -38,6 +38,10 @@ class CustomerHomeController extends GetxController {
     // Handle AI Assistant chat action
   }
 
+  void onChatNowPressed() {
+    onAiChatPressed();
+  }
+
   void onTrackServicePressed() {
     // Handle track booking service
   }

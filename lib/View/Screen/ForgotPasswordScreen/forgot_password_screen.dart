@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
@@ -13,112 +14,114 @@ class ForgotPasswordScreen extends StatelessWidget {
     final controller = Get.put(ForgotPasswordController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 12),
+              SizedBox(height: 10.h),
 
-              // Custom Circular Back Button
+              // Back Button
               const CustomBackButton(),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
-              // Header Title & Subtitle
-              const Text(
+              // Title
+              Text(
                 StaticString.forgotPasswordTitle,
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
-                StaticString.forgotPasswordSubTitle,
+
+              SizedBox(height: 8.h),
+
+              // Subtitle
+              Text(
+                StaticString.forgotPasswordSub,
                 style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textLightGrey,
+                  fontSize: 14.sp,
+                  color: AppColors.textGrey,
+                  height: 1.4,
                 ),
               ),
 
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
 
-              // Mobile Input Field with +880 Prefix
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          right: BorderSide(color: AppColors.cardBorder, width: 1),
-                        ),
-                      ),
-                      child: const Text(
-                        StaticString.countryCodeBD,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textColor,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: TextField(
-                        controller: controller.phoneController,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          hintText: StaticString.mobileHint,
-                          hintStyle: TextStyle(
-                            color: AppColors.textLightGrey,
-                            fontSize: 15,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ],
+              // Phone Label & Field
+              Text(
+                StaticString.phoneLabel,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textColor,
                 ),
               ),
 
-              const Spacer(),
+              SizedBox(height: 8.h),
 
-              // Send Code Action Button
+              TextField(
+                controller: controller.phoneController,
+                keyboardType: TextInputType.phone,
+                style: TextStyle(fontSize: 14.5.sp),
+                decoration: InputDecoration(
+                  hintText: StaticString.phoneHint,
+                  hintStyle: TextStyle(
+                    color: AppColors.textLightGrey,
+                    fontSize: 14.sp,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(color: AppColors.primaryColor, width: 1.5),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 36.h),
+
+              // Send OTP Button
               SizedBox(
                 width: double.infinity,
-                height: 52,
+                height: 52.h,
                 child: ElevatedButton(
-                  onPressed: controller.onSendCodePressed,
+                  onPressed: controller.onSendOtpPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                  child: const Text(
-                    StaticString.sendCode,
+                  child: Text(
+                    StaticString.sendOtp,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

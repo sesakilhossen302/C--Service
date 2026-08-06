@@ -1,6 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
@@ -13,84 +14,94 @@ class OtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(OtpController());
 
+    final defaultPinTheme = PinTheme(
+      width: 48.w,
+      height: 54.h,
+      textStyle: TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.bold,
+        color: AppColors.textColor,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14.r),
+        border: Border.all(color: AppColors.cardBorder, width: 1.w),
+      ),
+    );
+
+    final focusedPinTheme = defaultPinTheme.copyWith(
+      decoration: defaultPinTheme.decoration!.copyWith(
+        border: Border.all(color: AppColors.primaryColor, width: 1.8.w),
+      ),
+    );
+
+    final submittedPinTheme = defaultPinTheme.copyWith(
+      decoration: defaultPinTheme.decoration!.copyWith(
+        color: AppColors.primaryColor.withAlpha(15),
+        border: Border.all(color: AppColors.primaryColor, width: 1.w),
+      ),
+    );
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 12),
+              SizedBox(height: 10.h),
 
-              // Custom Circular Back Button
+              // Back Button
               const CustomBackButton(),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
-              // Header Title & Subtitle
-              const Text(
+              // Title
+              Text(
                 StaticString.otpTitle,
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
-                StaticString.otpSubTitle,
+
+              SizedBox(height: 8.h),
+
+              // Subtitle
+              Text(
+                StaticString.otpSub,
                 style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textLightGrey,
+                  fontSize: 14.sp,
+                  color: AppColors.textGrey,
+                  height: 1.4,
                 ),
               ),
 
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
 
-              // 6 OTP Digit Input Boxes Row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(6, (index) {
-                  return _buildOtpBox(controller, index);
-                }),
-              ),
-
-              const SizedBox(height: 24),
-
-              // Resend Code Link
+              // Pinput Widget (6 Digits with native Copy-Paste and AutoFill)
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: StaticString.didntGetCode,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: AppColors.textGrey,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: StaticString.resendCode,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = controller.onResendOtpPressed,
-                      ),
-                    ],
-                  ),
+                child: Pinput(
+                  length: 6,
+                  controller: controller.pinController,
+                  focusNode: controller.focusNode,
+                  defaultPinTheme: defaultPinTheme,
+                  focusedPinTheme: focusedPinTheme,
+                  submittedPinTheme: submittedPinTheme,
+                  separatorBuilder: (index) => SizedBox(width: 8.w),
+                  hapticFeedbackType: HapticFeedbackType.lightImpact,
+                  onCompleted: (pin) => controller.onVerifyPressed(),
                 ),
               ),
 
-              const Spacer(),
+              SizedBox(height: 36.h),
 
-              // Verify Action Button
+              // Verify Button
               SizedBox(
                 width: double.infinity,
-                height: 52,
+                height: 52.h,
                 child: ElevatedButton(
                   onPressed: controller.onVerifyPressed,
                   style: ElevatedButton.styleFrom(
@@ -98,65 +109,52 @@ class OtpScreen extends StatelessWidget {
                     foregroundColor: AppColors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     StaticString.verify,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 28.h),
+
+              // Resend OTP Link
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      StaticString.didntGetCode,
+                      style: TextStyle(
+                        fontSize: 13.5.sp,
+                        color: AppColors.textGrey,
+                      ),
+                    ),
+                    SizedBox(width: 4.w),
+                    GestureDetector(
+                      onTap: controller.onResendOtpPressed,
+                      child: Text(
+                        StaticString.resendCode,
+                        style: TextStyle(
+                          fontSize: 13.5.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20.h),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  // Individual OTP Digit Box Widget
-  Widget _buildOtpBox(OtpController controller, int index) {
-    final textController = controller.otpControllers[index];
-    final focusNode = controller.focusNodes[index];
-
-    return Container(
-      width: 48,
-      height: 54,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: textController.text.isNotEmpty
-              ? AppColors.primaryColor
-              : AppColors.cardBorder,
-          width: 1.2,
-        ),
-      ),
-      child: Center(
-        child: TextField(
-          controller: textController,
-          focusNode: focusNode,
-          keyboardType: TextInputType.number,
-          textAlign: TextAlign.center,
-          maxLength: 1,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppColors.textColor,
-          ),
-          decoration: const InputDecoration(
-            counterText: '',
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.zero,
-          ),
-          onChanged: (value) {
-            controller.onOtpChanged(value, index);
-          },
         ),
       ),
     );

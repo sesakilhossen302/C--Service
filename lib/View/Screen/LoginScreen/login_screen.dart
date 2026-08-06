@@ -1,7 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
@@ -15,154 +14,172 @@ class LoginScreen extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 12),
+              SizedBox(height: 10.h),
 
-              // Custom Circular Back Button
+              // Circular Back Button
               const CustomBackButton(),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
-              // Header Title & Subtitle
-              const Text(
-                StaticString.loginTitle,
+              // Headline Title
+              Text(
+                StaticString.welcomeBack,
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
-                StaticString.loginSubTitle,
+
+              SizedBox(height: 8.h),
+
+              // Subtitle
+              Text(
+                StaticString.loginSubtitle,
                 style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textLightGrey,
+                  fontSize: 14.sp,
+                  color: AppColors.textGrey,
                 ),
               ),
 
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
 
-              // Mobile Number Field Label
-              const Text(
-                StaticString.mobileLabel,
+              // Phone Number Label & Input Field
+              Text(
+                StaticString.phoneLabel,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 8),
 
-              // Mobile Input Field with +880 Prefix
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          right: BorderSide(color: AppColors.cardBorder, width: 1),
-                        ),
-                      ),
-                      child: const Text(
-                        StaticString.countryCodeBD,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textColor,
-                        ),
-                      ),
+              SizedBox(height: 8.h),
+
+              TextField(
+                controller: controller.phoneController,
+                keyboardType: TextInputType.phone,
+                style: TextStyle(fontSize: 14.5.sp),
+                decoration: InputDecoration(
+                  hintText: StaticString.phoneHint,
+                  hintStyle: TextStyle(
+                    color: AppColors.textLightGrey,
+                    fontSize: 14.sp,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(
+                      color: AppColors.cardBorder,
+                      width: 1,
                     ),
-                    Expanded(
-                      child: TextField(
-                        controller: controller.phoneController,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          hintText: StaticString.mobileHint,
-                          hintStyle: TextStyle(
-                            color: AppColors.textLightGrey,
-                            fontSize: 15,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                          border: InputBorder.none,
-                        ),
-                      ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(
+                      color: AppColors.cardBorder,
+                      width: 1,
                     ),
-                  ],
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.r),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryColor,
+                      width: 1.5,
+                    ),
+                  ),
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 20.h),
 
-              // Password Field Label
-              const Text(
+              // Password Label & Input Field
+              Text(
                 StaticString.passwordLabel,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 8),
 
-              // Password Input Field
+              SizedBox(height: 8.h),
+
               Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: AppColors.cardBorder, width: 1),
-                  ),
-                  child: TextField(
-                    controller: controller.passwordController,
-                    obscureText: !controller.isPasswordVisible.value,
-                    decoration: InputDecoration(
-                      hintText: StaticString.passwordLoginHint,
-                      hintStyle: const TextStyle(
+                () => TextField(
+                  controller: controller.passwordController,
+                  obscureText: !controller.isPasswordVisible.value,
+                  style: TextStyle(fontSize: 14.5.sp),
+                  decoration: InputDecoration(
+                    hintText: StaticString.passwordHint,
+                    hintStyle: TextStyle(
+                      color: AppColors.textLightGrey,
+                      fontSize: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 16.h,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.r),
+                      borderSide: const BorderSide(
+                        color: AppColors.cardBorder,
+                        width: 1,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.r),
+                      borderSide: const BorderSide(
+                        color: AppColors.cardBorder,
+                        width: 1,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.r),
+                      borderSide: const BorderSide(
+                        color: AppColors.primaryColor,
+                        width: 1.5,
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.isPasswordVisible.value
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
                         color: AppColors.textLightGrey,
-                        fontSize: 15,
+                        size: 20.sp,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      border: InputBorder.none,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          controller.isPasswordVisible.value
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.textLightGrey,
-                          size: 20,
-                        ),
-                        onPressed: controller.togglePasswordVisibility,
-                      ),
+                      onPressed: controller.togglePasswordVisibility,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
 
-              // Forgot Password Link
+              // Forgot Password Right-aligned Link
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: controller.onForgotPasswordPressed,
-                  child: const Text(
-                    StaticString.forgotPassword,
+                  child: Text(
+                    StaticString.forgotPasswordLink,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 13.5.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primaryColor,
                     ),
@@ -170,12 +187,12 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 48),
+              SizedBox(height: 36.h),
 
-              // Login Action Button
+              // Login Button (Filled Green)
               SizedBox(
                 width: double.infinity,
-                height: 52,
+                height: 52.h,
                 child: ElevatedButton(
                   onPressed: controller.onLoginPressed,
                   style: ElevatedButton.styleFrom(
@@ -183,50 +200,48 @@ class LoginScreen extends StatelessWidget {
                     foregroundColor: AppColors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     StaticString.login,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 28.h),
 
-              // Don't have account? Register link
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: StaticString.dontHaveAccount,
-                    style: const TextStyle(
-                      fontSize: 14,
+              // Bottom Signup Prompt
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    StaticString.dontHaveAccount,
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       color: AppColors.textGrey,
-                      fontWeight: FontWeight.w400,
                     ),
-                    children: [
-                      TextSpan(
-                        text: StaticString.register,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.toNamed(AppRoute.signupScreen);
-                          },
-                      ),
-                    ],
                   ),
-                ),
+                  SizedBox(width: 4.w),
+                  GestureDetector(
+                    onTap: controller.onRegisterPressed,
+                    child: Text(
+                      StaticString.register,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

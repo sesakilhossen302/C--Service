@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../Widgegt/CustomBackButton/custom_back_button.dart';
@@ -18,18 +19,18 @@ class NotificationScreen extends StatelessWidget {
           children: [
             // Top Header Bar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const [
-                      CustomBackButton(),
-                      SizedBox(width: 14),
+                    children: [
+                      const CustomBackButton(),
+                      SizedBox(width: 14.w),
                       Text(
                         'নোটিফিকেশন',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textColor,
                         ),
@@ -38,10 +39,10 @@ class NotificationScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: controller.markAllAsRead,
-                    child: const Text(
+                    child: Text(
                       'সব পড়েছি',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor,
                       ),
@@ -51,39 +52,39 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 6),
+            SizedBox(height: 6.h),
 
             // Notification List
             Expanded(
               child: Obx(
                 () => ListView.separated(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
                   itemCount: controller.notifications.length,
-                  separatorBuilder: (context, index) => const SizedBox(height: 12),
+                  separatorBuilder: (context, index) => SizedBox(height: 12.h),
                   itemBuilder: (context, index) {
                     final item = controller.notifications[index];
                     return GestureDetector(
                       onTap: () => controller.markAsRead(index),
                       child: Container(
-                        padding: const EdgeInsets.all(14),
+                        padding: EdgeInsets.all(14.r),
                         decoration: BoxDecoration(
                           color: item.isRead
                               ? Colors.white
                               : const Color(0xFFF0FDF4),
-                          borderRadius: BorderRadius.circular(18),
+                          borderRadius: BorderRadius.circular(18.r),
                           border: Border.all(
                             color: item.isRead
                                 ? AppColors.cardBorder
                                 : AppColors.primaryColor.withAlpha(40),
-                            width: 1,
+                            width: 1.w,
                           ),
                           boxShadow: item.isRead
                               ? []
                               : [
                                   BoxShadow(
                                     color: AppColors.primaryColor.withAlpha(12),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 2),
+                                    blurRadius: 8.r,
+                                    offset: Offset(0, 2.h),
                                   ),
                                 ],
                         ),
@@ -92,8 +93,8 @@ class NotificationScreen extends StatelessWidget {
                           children: [
                             // Icon Box
                             Container(
-                              width: 44,
-                              height: 44,
+                              width: 44.w,
+                              height: 44.h,
                               decoration: BoxDecoration(
                                 color: item.iconBgColor,
                                 shape: BoxShape.circle,
@@ -101,11 +102,11 @@ class NotificationScreen extends StatelessWidget {
                               child: Icon(
                                 item.icon,
                                 color: item.iconColor,
-                                size: 20,
+                                size: 20.sp,
                               ),
                             ),
 
-                            const SizedBox(width: 12),
+                            SizedBox(width: 12.w),
 
                             // Details Column
                             Expanded(
@@ -118,8 +119,8 @@ class NotificationScreen extends StatelessWidget {
                                       Expanded(
                                         child: Text(
                                           item.title,
-                                          style: const TextStyle(
-                                            fontSize: 15,
+                                          style: TextStyle(
+                                            fontSize: 15.sp,
                                             fontWeight: FontWeight.bold,
                                             color: AppColors.textColor,
                                           ),
@@ -127,8 +128,8 @@ class NotificationScreen extends StatelessWidget {
                                       ),
                                       if (!item.isRead)
                                         Container(
-                                          width: 9,
-                                          height: 9,
+                                          width: 9.w,
+                                          height: 9.h,
                                           decoration: const BoxDecoration(
                                             color: AppColors.primaryColor,
                                             shape: BoxShape.circle,
@@ -136,20 +137,20 @@ class NotificationScreen extends StatelessWidget {
                                         ),
                                     ],
                                   ),
-                                  const SizedBox(height: 4),
+                                  SizedBox(height: 4.h),
                                   Text(
                                     item.body,
-                                    style: const TextStyle(
-                                      fontSize: 13,
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
                                       color: AppColors.textGrey,
                                       height: 1.35,
                                     ),
                                   ),
-                                  const SizedBox(height: 6),
+                                  SizedBox(height: 6.h),
                                   Text(
                                     item.timeText,
-                                    style: const TextStyle(
-                                      fontSize: 11.5,
+                                    style: TextStyle(
+                                      fontSize: 11.5.sp,
                                       color: AppColors.textLightGrey,
                                     ),
                                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../../../Utils/StaticString/static_string.dart';
@@ -19,15 +20,15 @@ class CustomerNavBarScreen extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha(12),
-              blurRadius: 10,
-              offset: const Offset(0, -2),
+              blurRadius: 10.r,
+              offset: Offset(0, -2.h),
             ),
           ],
         ),
         child: SafeArea(
           child: Container(
-            height: 64,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            height: 64.h,
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: Obx(
               () => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -95,13 +96,13 @@ class CustomerNavBarScreen extends StatelessWidget {
           Icon(
             isSelected ? activeIcon : icon,
             color: color,
-            size: 24,
+            size: 24.sp,
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Text(
             label,
             style: TextStyle(
-              fontSize: 11.5,
+              fontSize: 11.5.sp,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               color: color,
             ),

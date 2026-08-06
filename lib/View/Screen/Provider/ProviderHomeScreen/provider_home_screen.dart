@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
@@ -16,31 +17,31 @@ class ProviderHomeScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF8FAF8),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Top Header (Greeting, Provider Name & Notification Bell)
+              SizedBox(height: 6.h),
+
+              // 1. Top Header Row (Greeting, Provider Name & Notification Bell)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         StaticString.providerGreeting,
                         style: TextStyle(
-                          fontSize: 13.5,
-                          color: AppColors.textLightGrey,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 13.sp,
+                          color: AppColors.textGrey,
                         ),
                       ),
-                      SizedBox(height: 2),
+                      SizedBox(height: 2.h),
                       Text(
                         StaticString.providerName,
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textColor,
                         ),
@@ -54,24 +55,24 @@ class ProviderHomeScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          width: 44,
-                          height: 44,
+                          width: 44.w,
+                          height: 44.h,
                           decoration: const BoxDecoration(
                             color: AppColors.buttonSecondaryBg,
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(
+                          child: Icon(
                             Icons.notifications_none_rounded,
                             color: AppColors.textColor,
-                            size: 22,
+                            size: 22.sp,
                           ),
                         ),
                         Positioned(
-                          right: 8,
-                          top: 8,
+                          right: 8.w,
+                          top: 8.h,
                           child: Container(
-                            width: 9,
-                            height: 9,
+                            width: 9.w,
+                            height: 9.h,
                             decoration: const BoxDecoration(
                               color: Colors.redAccent,
                               shape: BoxShape.circle,
@@ -84,109 +85,98 @@ class ProviderHomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 18),
+              SizedBox(height: 18.h),
 
               // 2. Online Status Banner Card with Custom Toggle
-              Obx(() {
-                final isOnline = controller.isOnline.value;
-                return AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  decoration: BoxDecoration(
-                    color: isOnline
-                        ? AppColors.primaryColor
-                        : const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: isOnline
-                        ? [
-                            BoxShadow(
-                              color: AppColors.primaryColor.withAlpha(40),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
+              Obx(
+                () {
+                  final isOnline = controller.isOnline.value;
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                    decoration: BoxDecoration(
+                      color: isOnline ? AppColors.primaryColor : const Color(0xFFF3F4F6),
+                      borderRadius: BorderRadius.circular(18.r),
+                      boxShadow: isOnline
+                          ? [
+                              BoxShadow(
+                                color: AppColors.primaryColor.withAlpha(40),
+                                blurRadius: 10.r,
+                                offset: Offset(0, 4.h),
+                              ),
+                            ]
+                          : [],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 250),
+                              width: 10.w,
+                              height: 10.h,
+                              decoration: BoxDecoration(
+                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
+                                shape: BoxShape.circle,
+                              ),
                             ),
-                          ]
-                        : [],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          AnimatedContainer(
+                            SizedBox(width: 8.w),
+                            Text(
+                              isOnline
+                                  ? StaticString.onlineReady
+                                  : StaticString.offlineStatus,
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.bold,
+                                color: isOnline ? Colors.white : const Color(0xFF374151),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // Custom Toggle Switch
+                        GestureDetector(
+                          onTap: controller.toggleOnlineStatus,
+                          child: AnimatedContainer(
                             duration: const Duration(milliseconds: 250),
-                            width: 10,
-                            height: 10,
+                            width: 44.w,
+                            height: 24.h,
+                            padding: EdgeInsets.all(2.r),
                             decoration: BoxDecoration(
                               color: isOnline
-                                  ? Colors.white
-                                  : const Color(0xFF9CA3AF),
-                              shape: BoxShape.circle,
+                                  ? Colors.white.withAlpha(50)
+                                  : const Color(0xFFE5E7EB),
+                              borderRadius: BorderRadius.circular(12.r),
+                              border: Border.all(
+                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
+                                width: 1.2.w,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            isOnline
-                                ? StaticString.onlineReady
-                                : StaticString.offlineStatus,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: isOnline
-                                  ? Colors.white
-                                  : const Color(0xFF374151),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // Custom Toggle Switch
-                      GestureDetector(
-                        onTap: controller.toggleOnlineStatus,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 250),
-                          width: 44,
-                          height: 24,
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: isOnline
-                                ? Colors.white.withAlpha(50)
-                                : const Color(0xFFE5E7EB),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: isOnline
-                                  ? Colors.white
-                                  : const Color(0xFF9CA3AF),
-                              width: 1.2,
-                            ),
-                          ),
-                          child: AnimatedAlign(
-                            duration: const Duration(milliseconds: 200),
-                            alignment: isOnline
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 250),
-                              width: 18,
-                              height: 18,
-                              decoration: BoxDecoration(
-                                color: isOnline
-                                    ? Colors.white
-                                    : const Color(0xFF9CA3AF),
-                                shape: BoxShape.circle,
+                            child: AnimatedAlign(
+                              duration: const Duration(milliseconds: 200),
+                              alignment: isOnline
+                                  ? Alignment.centerRight
+                                  : Alignment.centerLeft,
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 250),
+                                width: 18.w,
+                                height: 18.h,
+                                decoration: BoxDecoration(
+                                  color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
+                                  shape: BoxShape.circle,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              }),
+                      ],
+                    ),
+                  );
+                },
+              ),
 
-              const SizedBox(height: 18),
+              SizedBox(height: 18.h),
 
               // 3. 3 Statistics Cards Row (Income, Completed Work, Rating)
               Row(
@@ -196,13 +186,13 @@ class ProviderHomeScreen extends StatelessWidget {
                     label: StaticString.todayIncome,
                     valColor: AppColors.primaryColor,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   _buildStatCard(
                     value: controller.completedWorkCount,
                     label: StaticString.completedWork,
                     valColor: const Color(0xFF3B82F6),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   _buildStatCard(
                     value: controller.ratingVal,
                     label: StaticString.ratingLabel,
@@ -211,7 +201,7 @@ class ProviderHomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
 
               // 4. Today's Tasks Section Header
               _buildSectionHeader(
@@ -219,23 +209,22 @@ class ProviderHomeScreen extends StatelessWidget {
                 onSeeAllTap: () {},
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               // Today's Task Cards List
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.todayTasks.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 12),
+                separatorBuilder: (context, index) => SizedBox(height: 12.h),
                 itemBuilder: (context, index) {
                   final task = controller.todayTasks[index];
                   return Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: EdgeInsets.all(16.r),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: AppColors.cardBorder, width: 1),
+                      borderRadius: BorderRadius.circular(18.r),
+                      border: Border.all(color: AppColors.cardBorder, width: 1.w),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,25 +234,22 @@ class ProviderHomeScreen extends StatelessWidget {
                           children: [
                             Text(
                               task.title,
-                              style: const TextStyle(
-                                fontSize: 16,
+                              style: TextStyle(
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.textColor,
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 4,
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                               decoration: BoxDecoration(
                                 color: AppColors.primaryColor,
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.r),
                               ),
                               child: Text(
                                 task.statusText,
-                                style: const TextStyle(
-                                  fontSize: 11.5,
+                                style: TextStyle(
+                                  fontSize: 11.5.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -271,67 +257,46 @@ class ProviderHomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         Row(
                           children: [
-                            const Icon(
-                              Icons.person_outline_rounded,
-                              size: 14,
-                              color: AppColors.textGrey,
-                            ),
-                            const SizedBox(width: 4),
+                            Icon(Icons.person_outline_rounded, size: 14.sp, color: AppColors.textGrey),
+                            SizedBox(width: 4.w),
                             Text(
                               task.customerName,
-                              style: const TextStyle(
-                                fontSize: 12.5,
-                                color: AppColors.textGrey,
-                              ),
+                              style: TextStyle(fontSize: 12.5.sp, color: AppColors.textGrey),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4.h),
                         Row(
                           children: [
-                            const Icon(
-                              Icons.location_on_outlined,
-                              size: 14,
-                              color: AppColors.textGrey,
-                            ),
-                            const SizedBox(width: 4),
+                            Icon(Icons.location_on_outlined, size: 14.sp, color: AppColors.textGrey),
+                            SizedBox(width: 4.w),
                             Text(
                               task.location,
-                              style: const TextStyle(
-                                fontSize: 12.5,
-                                color: AppColors.textGrey,
-                              ),
+                              style: TextStyle(fontSize: 12.5.sp, color: AppColors.textGrey),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
-                                const Icon(
-                                  Icons.access_time_rounded,
-                                  size: 14,
-                                  color: AppColors.textGrey,
-                                ),
-                                const SizedBox(width: 4),
+                                Icon(Icons.access_time_rounded, size: 14.sp, color: AppColors.textGrey),
+                                SizedBox(width: 4.w),
                                 Text(
                                   task.timeText,
-                                  style: const TextStyle(
-                                    fontSize: 12.5,
-                                    color: AppColors.textGrey,
-                                  ),
+                                  style: TextStyle(fontSize: 12.5.sp, color: AppColors.textGrey),
                                 ),
                               ],
                             ),
                             Text(
                               task.priceText,
-                              style: const TextStyle(
-                                fontSize: 15,
+                              style: TextStyle(
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primaryColor,
                               ),
@@ -344,52 +309,52 @@ class ProviderHomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
               // 5. Quick Actions Section Header
-              const Text(
+              Text(
                 StaticString.quickActions,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               // 2x2 Grid of Quick Actions
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.quickActions.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 10.h,
                   childAspectRatio: 2.2,
                 ),
                 itemBuilder: (context, index) {
                   final action = controller.quickActions[index];
                   return Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: EdgeInsets.all(12.r),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.cardBorder, width: 1),
+                      borderRadius: BorderRadius.circular(16.r),
+                      border: Border.all(color: AppColors.cardBorder, width: 1.w),
                     ),
                     child: Row(
                       children: [
                         Text(
                           action.iconEmoji,
-                          style: const TextStyle(fontSize: 24),
+                          style: TextStyle(fontSize: 24.sp),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         Expanded(
                           child: Text(
                             action.title,
-                            style: const TextStyle(
-                              fontSize: 13.5,
+                            style: TextStyle(
+                              fontSize: 13.5.sp,
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
                             ),
@@ -401,31 +366,31 @@ class ProviderHomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
               // 6. This Month's Performance Section Card
-              const Text(
+              Text(
                 StaticString.monthPerformance,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               Container(
-                padding: const EdgeInsets.all(18),
+                padding: EdgeInsets.all(18.r),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppColors.cardBorder, width: 1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(color: AppColors.cardBorder, width: 1.w),
                 ),
                 child: Column(
                   children: controller.performanceMetrics.map((metric) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
+                      padding: EdgeInsets.only(bottom: 16.0.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -434,32 +399,32 @@ class ProviderHomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 metric.title,
-                                style: const TextStyle(
-                                  fontSize: 13,
+                                style: TextStyle(
+                                  fontSize: 13.5.sp,
+                                  fontWeight: FontWeight.w600,
                                   color: AppColors.textColor,
-                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
-                                metric.valText,
-                                style: const TextStyle(
-                                  fontSize: 13.5,
+                                '${(metric.progressRatio * 100).toInt()}%',
+                                style: TextStyle(
+                                  fontSize: 13.5.sp,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryColor,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 6),
+                          SizedBox(height: 8.h),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(6.r),
                             child: LinearProgressIndicator(
                               value: metric.progressRatio,
+                              minHeight: 8.h,
                               backgroundColor: AppColors.buttonSecondaryBg,
                               valueColor: const AlwaysStoppedAnimation<Color>(
                                 AppColors.primaryColor,
                               ),
-                              minHeight: 8,
                             ),
                           ),
                         ],
@@ -469,7 +434,7 @@ class ProviderHomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
             ],
           ),
         ),
@@ -477,7 +442,43 @@ class ProviderHomeScreen extends StatelessWidget {
     );
   }
 
-  // Helper Widget for Section Headers
+  Widget _buildStatCard({
+    required String value,
+    required String label,
+    required Color valColor,
+  }) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 4.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18.r),
+          border: Border.all(color: AppColors.cardBorder, width: 1.w),
+        ),
+        child: Column(
+          children: [
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+                color: valColor,
+              ),
+            ),
+            SizedBox(height: 4.h),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11.5.sp,
+                color: AppColors.textGrey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildSectionHeader({
     required String title,
     required VoidCallback onSeeAllTap,
@@ -487,63 +488,24 @@ class ProviderHomeScreen extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.textColor,
           ),
         ),
         GestureDetector(
           onTap: onSeeAllTap,
-          child: const Text(
+          child: Text(
             StaticString.seeAll,
             style: TextStyle(
-              fontSize: 13.5,
+              fontSize: 13.sp,
               fontWeight: FontWeight.bold,
               color: AppColors.primaryColor,
             ),
           ),
         ),
       ],
-    );
-  }
-
-  // Helper Widget for 3 Stat Cards
-  Widget _buildStatCard({
-    required String value,
-    required String label,
-    required Color valColor,
-  }) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.cardBorder, width: 1),
-        ),
-        child: Column(
-          children: [
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: valColor,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: const TextStyle(
-                fontSize: 11.5,
-                fontWeight: FontWeight.w400,
-                color: AppColors.textLightGrey,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
