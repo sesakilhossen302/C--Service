@@ -30,7 +30,7 @@ class OtpController extends GetxController {
       Get.toNamed(AppRoute.customerNavBarScreen);
     } else {
       // Direct -> navigate to Customer HomeScreen
-      Get.offAllNamed(AppRoute.serviceProviderSignupScreen);
+      Get.offAllNamed(AppRoute.providerNavBarScreen);
     }
   }
 

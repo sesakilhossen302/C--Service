@@ -25,7 +25,7 @@ class ServiceProviderSignupController extends GetxController {
 
   void onSendOtpPressed() {
     // Navigates to Customer NavBar Screen as requested by user
-    Get.offAllNamed(AppRoute.providerNavBarScreen);
+    Get.offAllNamed(AppRoute.otpScreen);
   }
 
   void onSeeMorePressed() {

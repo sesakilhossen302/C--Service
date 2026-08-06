@@ -84,77 +84,91 @@ class ProviderHomeScreen extends StatelessWidget {
 
               // 2. Online Status Banner Card with Custom Toggle
               Obx(
-                () => Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primaryColor.withAlpha(40),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: controller.isOnline.value ? Colors.white : Colors.grey,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            controller.isOnline.value
-                                ? StaticString.onlineReady
-                                : StaticString.offlineStatus,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // Custom Toggle Switch
-                      GestureDetector(
-                        onTap: controller.toggleOnlineStatus,
-                        child: Container(
-                          width: 44,
-                          height: 24,
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withAlpha(50),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Colors.white, width: 1.2),
-                          ),
-                          child: AnimatedAlign(
-                            duration: const Duration(milliseconds: 200),
-                            alignment: controller.isOnline.value
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
-                            child: Container(
-                              width: 18,
-                              height: 18,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
+                () {
+                  final isOnline = controller.isOnline.value;
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                    decoration: BoxDecoration(
+                      color: isOnline ? AppColors.primaryColor : const Color(0xFFF3F4F6),
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: isOnline
+                          ? [
+                              BoxShadow(
+                                color: AppColors.primaryColor.withAlpha(40),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ]
+                          : [],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 250),
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
                                 shape: BoxShape.circle,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              isOnline
+                                  ? StaticString.onlineReady
+                                  : StaticString.offlineStatus,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: isOnline ? Colors.white : const Color(0xFF374151),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // Custom Toggle Switch
+                        GestureDetector(
+                          onTap: controller.toggleOnlineStatus,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 250),
+                            width: 44,
+                            height: 24,
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: isOnline
+                                  ? Colors.white.withAlpha(50)
+                                  : const Color(0xFFE5E7EB),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
+                                width: 1.2,
+                              ),
+                            ),
+                            child: AnimatedAlign(
+                              duration: const Duration(milliseconds: 200),
+                              alignment: isOnline
+                                  ? Alignment.centerRight
+                                  : Alignment.centerLeft,
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 250),
+                                width: 18,
+                                height: 18,
+                                decoration: BoxDecoration(
+                                  color: isOnline ? Colors.white : const Color(0xFF9CA3AF),
+                                  shape: BoxShape.circle,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                      ],
+                    ),
+                  );
+                },
               ),
 
               const SizedBox(height: 18),
