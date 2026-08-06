@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../View/Screen/Customer/CustomerHomeScreen/customer_home_screen.dart';
 import '../../View/Screen/Customer/CustomerNavBarScreen/customer_nav_bar_screen.dart';
+import '../../View/Screen/Customer/SearchServiceScreen/search_service_screen.dart';
 import '../../View/Screen/ForgotPasswordScreen/forgot_password_screen.dart';
 import '../../View/Screen/LoginScreen/login_screen.dart';
 import '../../View/Screen/NotificationScreen/notification_screen.dart';
@@ -25,6 +26,7 @@ class AppRoute {
   static const String customerNavBarScreen = '/customer_nav_bar_screen';
   static const String providerNavBarScreen = '/provider_nav_bar_screen';
   static const String notificationScreen = '/notification_screen';
+  static const String searchServiceScreen = '/search_service_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -39,5 +41,6 @@ class AppRoute {
     GetPage(name: customerNavBarScreen, page: () => const CustomerNavBarScreen()),
     GetPage(name: providerNavBarScreen, page: () => const ProviderNavBarScreen()),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
+    GetPage(name: searchServiceScreen, page: () => const SearchServiceScreen()),
   ];
 }

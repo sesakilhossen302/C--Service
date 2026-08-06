@@ -111,36 +111,41 @@ class CustomerHomeScreen extends StatelessWidget {
               SizedBox(height: 18.h),
 
               // 2. Search Input Bar
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16.r),
-                  border: Border.all(color: AppColors.cardBorder, width: 1.w),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withAlpha(8),
-                      blurRadius: 10.r,
-                      offset: Offset(0, 2.h),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  style: TextStyle(fontSize: 14.sp),
-                  decoration: InputDecoration(
-                    hintText: StaticString.searchHint,
-                    hintStyle: TextStyle(
-                      color: AppColors.textLightGrey,
-                      fontSize: 14.sp,
-                    ),
-                    prefixIcon: Icon(
-                      Icons.search_rounded,
-                      color: AppColors.textLightGrey,
-                      size: 22.sp,
-                    ),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 14.h,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppRoute.searchServiceScreen),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16.r),
+                    border: Border.all(color: AppColors.cardBorder, width: 1.w),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withAlpha(8),
+                        blurRadius: 10.r,
+                        offset: Offset(0, 2.h),
+                      ),
+                    ],
+                  ),
+                  child: TextField(
+                    readOnly: true,
+                    onTap: () => Get.toNamed(AppRoute.searchServiceScreen),
+                    style: TextStyle(fontSize: 14.sp),
+                    decoration: InputDecoration(
+                      hintText: StaticString.searchHint,
+                      hintStyle: TextStyle(
+                        color: AppColors.textLightGrey,
+                        fontSize: 14.sp,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search_rounded,
+                        color: AppColors.textLightGrey,
+                        size: 22.sp,
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 14.h,
+                      ),
                     ),
                   ),
                 ),
