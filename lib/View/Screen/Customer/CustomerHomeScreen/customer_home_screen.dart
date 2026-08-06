@@ -237,6 +237,7 @@ class CustomerHomeScreen extends StatelessWidget {
                   _buildQuickPill(
                     icon: Icons.timeline_rounded,
                     label: StaticString.timeline,
+                    onTap: () => Get.toNamed(AppRoute.homeTimelineScreen),
                   ),
                   _buildQuickPill(
                     icon: Icons.badge_outlined,
@@ -625,29 +626,36 @@ class CustomerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickPill({required IconData icon, required String label}) {
+  Widget _buildQuickPill({
+    required IconData icon,
+    required String label,
+    VoidCallback? onTap,
+  }) {
     return Expanded(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 4.w),
-        padding: EdgeInsets.symmetric(vertical: 12.h),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: AppColors.cardBorder, width: 1.w),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, color: AppColors.primaryColor, size: 22.sp),
-            SizedBox(height: 4.h),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11.5.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textColor,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          padding: EdgeInsets.symmetric(vertical: 12.h),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: AppColors.cardBorder, width: 1.w),
+          ),
+          child: Column(
+            children: [
+              Icon(icon, color: AppColors.primaryColor, size: 22.sp),
+              SizedBox(height: 4.h),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 11.5.sp,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textColor,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
