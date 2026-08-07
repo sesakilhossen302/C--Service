@@ -12,12 +12,13 @@ class BookingSuccessController extends GetxController {
   ).obs;
 
   void onTrackBooking() {
-    Get.offAllNamed(AppRoute.customerNavBarScreen);
-    final navBarController = Get.find<CustomerNavBarController>();
-    navBarController.changeIndex(2);
+    Get.toNamed(AppRoute.bookingTrackingScreen);
   }
 
   void onBackToHome() {
     Get.offAllNamed(AppRoute.customerNavBarScreen);
+    if (Get.isRegistered<CustomerNavBarController>()) {
+      Get.find<CustomerNavBarController>().changeIndex(0);
+    }
   }
 }

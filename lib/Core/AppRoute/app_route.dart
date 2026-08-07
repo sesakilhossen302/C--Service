@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../View/Screen/Customer/Booking/BookingReviewScreen/booking_review_screen.dart';
 import '../../View/Screen/Customer/Booking/BookingSuccessScreen/booking_success_screen.dart';
+import '../../View/Screen/Customer/Booking/BookingTrackingScreen/booking_tracking_screen.dart';
 import '../../View/Screen/Customer/Booking/PaymentScreen/payment_screen.dart';
 import '../../View/Screen/Customer/Booking/SelectAddressScreen/select_address_screen.dart';
 import '../../View/Screen/Customer/Booking/SelectDateTimeScreen/select_date_time_screen.dart';
@@ -45,6 +46,7 @@ class AppRoute {
   static const String bookingReviewScreen = '/booking_review_screen';
   static const String paymentScreen = '/payment_screen';
   static const String bookingSuccessScreen = '/booking_success_screen';
+  static const String bookingTrackingScreen = '/booking_tracking_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -69,5 +71,6 @@ class AppRoute {
     GetPage(name: bookingReviewScreen, page: () => const BookingReviewScreen()),
     GetPage(name: paymentScreen, page: () => const PaymentScreen()),
     GetPage(name: bookingSuccessScreen, page: () => const BookingSuccessScreen()),
+    GetPage(name: bookingTrackingScreen, page: () => const BookingTrackingScreen()),
   ];
 }
