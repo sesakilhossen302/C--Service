@@ -24,8 +24,11 @@ class ServiceProviderSignupController extends GetxController {
   }
 
   void onSendOtpPressed() {
-    // Navigates to Customer NavBar Screen as requested by user
-    Get.offAllNamed(AppRoute.otpScreen);
+    // Provider signup -> navigate to OTP screen with 'provider_signup' role
+    Get.toNamed(
+      AppRoute.otpScreen,
+      arguments: {'role': 'provider_signup'},
+    );
   }
 
   void onSeeMorePressed() {

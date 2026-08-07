@@ -13,16 +13,16 @@ class OtpController extends GetxController {
 
   void onVerifyPressed() {
     final Map<String, dynamic>? args = Get.arguments as Map<String, dynamic>?;
-    final String role = args?['role'] ?? (args?['fromCustomerSignup'] == true ? 'customer_signup' : 'customer_home');
+    final String role = args?['role'] ?? 'customer_home';
 
     if (role == 'customer_signup') {
-      // From Customer Signup -> OTP -> navigate to Service Provider Signup page
-      Get.toNamed(AppRoute.serviceProviderSignupScreen);
+      // From Customer Signup -> OTP -> Customer Home (NavBar)
+      Get.offAllNamed(AppRoute.customerNavBarScreen);
     } else if (role == 'provider_signup') {
-      // From Service Provider Signup -> OTP -> navigate to Provider NavBar Screen
+      // From Service Provider Signup -> OTP -> Provider Home (NavBar)
       Get.offAllNamed(AppRoute.providerNavBarScreen);
     } else {
-      // Direct -> navigate to Customer NavBar Screen
+      // Default / Login flow -> Customer NavBar Screen
       Get.offAllNamed(AppRoute.customerNavBarScreen);
     }
   }

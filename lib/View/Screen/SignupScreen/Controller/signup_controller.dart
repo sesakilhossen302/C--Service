@@ -14,10 +14,10 @@ class SignupController extends GetxController {
   }
 
   void onSendOtpPressed() {
-    // Customer signup -> navigate to OTP screen
+    // Customer signup -> navigate to OTP screen with 'customer_signup' role
     Get.toNamed(
       AppRoute.otpScreen,
-      arguments: {'fromCustomerSignup': true},
+      arguments: {'role': 'customer_signup'},
     );
   }
 
