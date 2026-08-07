@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../../../../Core/AppRoute/app_route.dart';
 import '../Model/booking_tracking_model.dart';
 
 class BookingTrackingController extends GetxController {
@@ -52,10 +53,10 @@ class BookingTrackingController extends GetxController {
   }
 
   void onCompleteAndRate() {
-    Get.back();
+    Get.toNamed(AppRoute.rateServiceScreen);
   }
 
   void onHelpPressed() {
-    Get.snackbar('সাহায্য কেন্দ্র', 'আমাদের সাপোর্ট টিম আপনার সাথে শীঘ্রই যোগাযোগ করবে।');
+    Get.toNamed(AppRoute.helpSupportScreen);
   }
 }
