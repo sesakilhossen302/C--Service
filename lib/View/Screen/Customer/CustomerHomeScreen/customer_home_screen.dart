@@ -328,7 +328,11 @@ class CustomerHomeScreen extends StatelessWidget {
               // 6. Upcoming Services Section Header
               _buildSectionHeader(
                 title: StaticString.upcomingServices,
-                onSeeAllTap: () {},
+                onSeeAllTap: () {
+                  if (Get.isRegistered<CustomerNavBarController>()) {
+                    Get.find<CustomerNavBarController>().changeIndex(2);
+                  }
+                },
               ),
 
               SizedBox(height: 14.h),

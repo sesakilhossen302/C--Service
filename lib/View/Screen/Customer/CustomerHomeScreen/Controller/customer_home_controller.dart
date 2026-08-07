@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../Core/AppRoute/app_route.dart';
 import '../Model/customer_home_model.dart';
 
 class CustomerHomeController extends GetxController {
@@ -43,11 +44,18 @@ class CustomerHomeController extends GetxController {
   }
 
   void onTrackServicePressed() {
-    // Handle track booking service
+    Get.toNamed(AppRoute.bookingTrackingScreen);
   }
 
   void onServiceDetailsPressed() {
-    // Handle service details
+    Get.toNamed(
+      AppRoute.serviceDetailsScreen,
+      arguments: {
+        'title': upcomingBooking.serviceTitle,
+        'price': '৳৮০০',
+        'emoji': '🏠',
+      },
+    );
   }
 
   void onJoinPrimePressed() {
