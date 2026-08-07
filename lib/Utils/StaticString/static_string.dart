@@ -325,4 +325,15 @@ class StaticString {
   // Notification Screen
   static const String notificationsTitle = 'নোটিফিকেশন';
   static const String markAllRead = 'সব পড়েছি';
+
+  // AI Assistant Screen
+  static const String aiAssistantTitle = 'ai_assistant_title';
+  static const String aiAssistantSub = 'ai_assistant_sub';
+  static const String writeMessageHint = 'write_message_hint';
+  static const String chipAcClean = 'chip_ac_clean';
+  static const String chipHomeClean = 'chip_home_clean';
+  static const String chipPriceInfo = 'chip_price_info';
+  static const String chipHealthScore = 'chip_health_score';
 }
+
+

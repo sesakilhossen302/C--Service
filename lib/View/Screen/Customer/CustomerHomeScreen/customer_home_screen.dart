@@ -155,38 +155,38 @@ class CustomerHomeScreen extends StatelessWidget {
               SizedBox(height: 18.h),
 
               // 3. AI Assistant Banner (Green Card)
-              Container(
-                padding: EdgeInsets.all(18.r),
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(20.r),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primaryColor.withAlpha(60),
-                      blurRadius: 14.r,
-                      offset: Offset(0, 6.h),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            StaticString.aiTitle,
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              height: 1.3,
+              GestureDetector(
+                onTap: controller.onChatNowPressed,
+                child: Container(
+                  padding: EdgeInsets.all(18.r),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(20.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primaryColor.withAlpha(60),
+                        blurRadius: 14.r,
+                        offset: Offset(0, 6.h),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              StaticString.aiTitle,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                height: 1.3,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 12.h),
-                          GestureDetector(
-                            onTap: controller.onChatNowPressed,
-                            child: Container(
+                            SizedBox(height: 12.h),
+                            Container(
                               padding: EdgeInsets.symmetric(
                                 horizontal: 14.w,
                                 vertical: 8.h,
@@ -204,28 +204,28 @@ class CustomerHomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
 
-                    SizedBox(width: 12.w),
+                      SizedBox(width: 12.w),
 
-                    // Robot Icon Box
-                    Container(
-                      width: 56.w,
-                      height: 56.h,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withAlpha(40),
-                        shape: BoxShape.circle,
+                      // Robot Icon Box
+                      Container(
+                        width: 56.w,
+                        height: 56.h,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withAlpha(40),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.smart_toy_outlined,
+                          size: 32.sp,
+                          color: Colors.white,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.smart_toy_outlined,
-                        size: 32.sp,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
 

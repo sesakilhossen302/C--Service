@@ -36,7 +36,7 @@ class CustomerHomeController extends GetxController {
   }
 
   void onAiChatPressed() {
-    // Handle AI Assistant chat action
+    Get.toNamed(AppRoute.aiAssistantScreen);
   }
 
   void onChatNowPressed() {

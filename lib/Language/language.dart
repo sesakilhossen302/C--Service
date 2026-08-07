@@ -263,6 +263,16 @@ class Language extends Translations {
           // Notification
           StaticString.notificationsTitle: 'নোটিফিকেশন',
           StaticString.markAllRead: 'সব পড়েছি',
+
+          // AI Assistant
+          StaticString.aiAssistantTitle: 'AI Home Assistant',
+          StaticString.aiAssistantSub: 'সবসময় সাহায্যের জন্য প্রস্তুত',
+          StaticString.writeMessageHint: 'বার্তা লিখুন...',
+          StaticString.chipAcClean: 'এসি পরিষ্কার',
+          StaticString.chipHomeClean: 'বাড়ি ক্লিন',
+          StaticString.chipPriceInfo: 'দাম জানতে চাই',
+          StaticString.chipHealthScore: 'হেলথ স্কোর',
+
         },
         'en_US': {
           StaticString.appName: 'HomeCare OS',
@@ -523,6 +533,16 @@ class Language extends Translations {
           // Notification
           StaticString.notificationsTitle: 'Notifications',
           StaticString.markAllRead: 'Mark All Read',
+
+          // AI Assistant
+          StaticString.aiAssistantTitle: 'AI Home Assistant',
+          StaticString.aiAssistantSub: 'Ready to help anytime',
+          StaticString.writeMessageHint: 'Type a message...',
+          StaticString.chipAcClean: 'AC Cleaning',
+          StaticString.chipHomeClean: 'Home Clean',
+          StaticString.chipPriceInfo: 'Check Prices',
+          StaticString.chipHealthScore: 'Health Score',
         },
       };
 }
+
