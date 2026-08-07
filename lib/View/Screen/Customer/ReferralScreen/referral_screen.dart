@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/referral_controller.dart';
 
@@ -28,7 +29,7 @@ class ReferralScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'রেফারেল',
+                    StaticString.referralHeaderTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -71,7 +72,7 @@ class ReferralScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 12.h),
                           Text(
-                            'বন্ধুকে রেফার করুন',
+                            StaticString.referFriendTitle.tr,
                             style: TextStyle(
                               fontSize: 22.sp,
                               fontWeight: FontWeight.bold,
@@ -80,7 +81,7 @@ class ReferralScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 6.h),
                           Text(
-                            'প্রতি রেফারেলে আপনি পাবেন ১০০',
+                            StaticString.referFriendSub.tr,
                             style: TextStyle(
                               fontSize: 13.sp,
                               color: const Color(0xFFE8F5E9),
@@ -111,7 +112,7 @@ class ReferralScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'আপনার রেফারেল কোড',
+                            StaticString.yourReferralCode.tr,
                             style: TextStyle(
                               fontSize: 12.5.sp,
                               color: AppColors.textLightGrey,
@@ -165,7 +166,7 @@ class ReferralScreen extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    'কপি',
+                                    StaticString.copy.tr,
                                     style: TextStyle(
                                       fontSize: 14.5.sp,
                                       fontWeight: FontWeight.bold,
@@ -200,7 +201,7 @@ class ReferralScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'আপনার আয়',
+                            StaticString.yourEarnings.tr,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
@@ -225,7 +226,7 @@ class ReferralScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 4.h),
                                       Text(
-                                        'রেফারেল',
+                                        StaticString.referralCount.tr,
                                         style: TextStyle(
                                           fontSize: 11.5.sp,
                                           color: AppColors.textGrey,
@@ -249,7 +250,7 @@ class ReferralScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 4.h),
                                       Text(
-                                        'অর্জিত',
+                                        StaticString.earnedAmount.tr,
                                         style: TextStyle(
                                           fontSize: 11.5.sp,
                                           color: AppColors.textGrey,
@@ -273,7 +274,7 @@ class ReferralScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 4.h),
                                       Text(
-                                        'ব্যালেন্স',
+                                        StaticString.balanceAmount.tr,
                                         style: TextStyle(
                                           fontSize: 11.5.sp,
                                           color: AppColors.textGrey,
@@ -306,7 +307,7 @@ class ReferralScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'শেয়ার করুন',
+                          StaticString.share.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,

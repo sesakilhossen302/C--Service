@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/edit_profile_controller.dart';
 
@@ -28,7 +29,7 @@ class EditProfileScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'প্রোফাইল সম্পাদনা',
+                    StaticString.editProfile.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class EditProfileScreen extends StatelessWidget {
 
                     // Field 1: সম্পূর্ণ নাম
                     _buildInputField(
-                      label: 'সম্পূর্ণ নাম',
+                      label: StaticString.fullNameLabel.tr,
                       controller: controller.nameController,
                     ),
 
@@ -111,7 +112,7 @@ class EditProfileScreen extends StatelessWidget {
 
                     // Field 2: মোবাইল নম্বর
                     _buildInputField(
-                      label: 'মোবাইল নম্বর',
+                      label: StaticString.mobileLabel.tr,
                       controller: controller.mobileController,
                       keyboardType: TextInputType.phone,
                     ),
@@ -120,7 +121,7 @@ class EditProfileScreen extends StatelessWidget {
 
                     // Field 3: ইমেইল
                     _buildInputField(
-                      label: 'ইমেইল',
+                      label: StaticString.emailLabel.tr,
                       controller: controller.emailController,
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -129,7 +130,7 @@ class EditProfileScreen extends StatelessWidget {
 
                     // Field 4: ঠিকানা
                     _buildInputField(
-                      label: 'ঠিকানা',
+                      label: StaticString.addressLabel.tr,
                       controller: controller.addressController,
                     ),
 
@@ -150,7 +151,7 @@ class EditProfileScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'সংরক্ষণ করুন',
+                          StaticString.save.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,

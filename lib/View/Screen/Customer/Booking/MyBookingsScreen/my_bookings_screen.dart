@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import 'Controller/my_bookings_controller.dart';
 import 'Model/my_bookings_model.dart';
 
@@ -24,7 +25,7 @@ class MyBookingsScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Text(
-                'আমার বুকিং',
+                StaticString.myBookings.tr,
                 style: TextStyle(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.bold,
@@ -47,7 +48,7 @@ class MyBookingsScreen extends StatelessWidget {
                 if (bookings.isEmpty) {
                   return Center(
                     child: Text(
-                      'কোনো বুকিং পাওয়া যায়নি',
+                      StaticString.noBookingsFound.tr,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: AppColors.textGrey,
@@ -188,7 +189,11 @@ class MyBookingsScreen extends StatelessWidget {
 
   // 3 Tabs Header Bar (আসন্ন, সম্পন্ন, বাতিল)
   Widget _buildTabBar(MyBookingsController controller) {
-    final tabs = ['আসন্ন', 'সম্পন্ন', 'বাতিল'];
+    final tabs = [
+      StaticString.upcomingBadge.tr,
+      StaticString.tabCompleted.tr,
+      StaticString.tabCancelled.tr,
+    ];
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
@@ -247,17 +252,17 @@ class MyBookingsScreen extends StatelessWidget {
 
     switch (status) {
       case BookingStatus.upcoming:
-        label = 'আসন্ন';
+        label = StaticString.upcomingBadge.tr;
         bgColor = const Color(0xFFE8F5E9);
         textColor = AppColors.primaryColor;
         break;
       case BookingStatus.completed:
-        label = 'সম্পন্ন';
+        label = StaticString.tabCompleted.tr;
         bgColor = const Color(0xFFEFF6FF);
         textColor = const Color(0xFF2563EB);
         break;
       case BookingStatus.cancelled:
-        label = 'বাতিল';
+        label = StaticString.tabCancelled.tr;
         bgColor = const Color(0xFFFEF2F2);
         textColor = const Color(0xFFEF4444);
         break;

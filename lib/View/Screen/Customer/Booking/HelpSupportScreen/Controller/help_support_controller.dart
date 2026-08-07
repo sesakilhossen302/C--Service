@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../../../../../../Core/AppRoute/app_route.dart';
+import '../../../../../../Utils/CustomSnackbar/custom_snackbar.dart';
 import '../Model/help_support_model.dart';
 
 class HelpSupportController extends GetxController {
@@ -48,6 +49,9 @@ class HelpSupportController extends GetxController {
   }
 
   void onCallSupport() {
-    Get.snackbar('কল করা হচ্ছে', '09678-123456 নম্বরে কল করা হচ্ছে...');
+    CustomSnackbar.showInfo(
+      title: 'কল করা হচ্ছে',
+      message: '09678-123456 নম্বরে কল করা হচ্ছে...',
+    );
   }
 }

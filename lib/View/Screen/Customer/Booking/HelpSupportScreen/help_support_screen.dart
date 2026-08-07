@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/help_support_controller.dart';
 
@@ -28,7 +29,7 @@ class HelpSupportScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'সাহায্য ও সহায়তা',
+                    StaticString.helpSupportTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -86,7 +87,7 @@ class HelpSupportScreen extends StatelessWidget {
                                   ),
                                   SizedBox(height: 12.h),
                                   Text(
-                                    'লাইভ চ্যাট',
+                                    StaticString.liveChatTitle.tr,
                                     style: TextStyle(
                                       fontSize: 15.sp,
                                       fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class HelpSupportScreen extends StatelessWidget {
                                   ),
                                   SizedBox(height: 4.h),
                                   Text(
-                                    'এখনই চ্যাট করুন',
+                                    StaticString.chatNowSubtitle.tr,
                                     style: TextStyle(
                                       fontSize: 11.5.sp,
                                       color: AppColors.textGrey,
@@ -144,7 +145,7 @@ class HelpSupportScreen extends StatelessWidget {
                                   ),
                                   SizedBox(height: 12.h),
                                   Text(
-                                    'কল করুন',
+                                    StaticString.callUsTitle.tr,
                                     style: TextStyle(
                                       fontSize: 15.sp,
                                       fontWeight: FontWeight.bold,
@@ -171,7 +172,7 @@ class HelpSupportScreen extends StatelessWidget {
 
                     // Section Title: সচরাচর জিজ্ঞাসা
                     Text(
-                      'সচরাচর জিজ্ঞাসা',
+                      StaticString.faqTitle.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,

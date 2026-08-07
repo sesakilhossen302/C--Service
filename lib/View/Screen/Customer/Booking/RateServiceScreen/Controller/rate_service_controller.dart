@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../Core/AppRoute/app_route.dart';
+import '../../../../../../Utils/CustomSnackbar/custom_snackbar.dart';
 import '../Model/rate_service_model.dart';
 
 class RateServiceController extends GetxController {
@@ -27,7 +28,10 @@ class RateServiceController extends GetxController {
   }
 
   void onSubmitRating() {
-    Get.snackbar('ধন্যবাদ!', 'আপনার মূল্যবান ফিডব্যাক সফলভাবে জমা নেওয়া হয়েছে।');
+    CustomSnackbar.showSuccess(
+      title: 'ধন্যবাদ!',
+      message: 'আপনার মূল্যবান ফিডব্যাক সফলভাবে জমা নেওয়া হয়েছে।',
+    );
     Get.offAllNamed(AppRoute.customerNavBarScreen);
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/terms_conditions_controller.dart';
 
@@ -28,7 +29,7 @@ class TermsConditionsScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'শর্তাবলী',
+                    StaticString.termsConditions.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,

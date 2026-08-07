@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/home_timeline_controller.dart';
 
@@ -28,7 +29,7 @@ class HomeTimelineScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'হোম টাইমলাইন',
+                    StaticString.homeTimelineTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -59,7 +60,7 @@ class HomeTimelineScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'বাড়ির হেলথ স্কোর',
+                      StaticString.houseHealthScoreTitle.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -109,7 +110,7 @@ class HomeTimelineScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10.h),
                     Text(
-                      'এসি সার্ভিসিং ও ট্যাংক পরিষ্কার করলে স্কোর বাড়বে',
+                      StaticString.healthScoreTip.tr,
                       style: TextStyle(
                         fontSize: 12.sp,
                         color: AppColors.textGrey,
@@ -123,7 +124,7 @@ class HomeTimelineScreen extends StatelessWidget {
 
               // 2. Service History Section Header (সেবার ইতিহাস)
               Text(
-                'সেবার ইতিহাস',
+                StaticString.serviceHistoryTitle.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -239,7 +240,7 @@ class HomeTimelineScreen extends StatelessWidget {
 
               // 3. Upcoming Maintenance Section Header (আসন্ন রক্ষণাবেক্ষণ)
               Text(
-                'আসন্ন রক্ষণাবেক্ষণ',
+                StaticString.upcomingMaintenanceTitle.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -323,7 +324,7 @@ class HomeTimelineScreen extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              'বুক করুন',
+                              StaticString.bookNowAction.tr,
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,

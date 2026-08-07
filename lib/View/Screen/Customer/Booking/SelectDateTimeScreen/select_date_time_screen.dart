@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/select_date_time_controller.dart';
 
@@ -28,7 +29,7 @@ class SelectDateTimeScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'তারিখ ও সময়',
+                    StaticString.dateTimeTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -55,7 +56,7 @@ class SelectDateTimeScreen extends StatelessWidget {
                   children: [
                     // Section Title: তারিখ বেছে নিন
                     Text(
-                      'তারিখ বেছে নিন',
+                      StaticString.selectDateTitle.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
@@ -119,7 +120,7 @@ class SelectDateTimeScreen extends StatelessWidget {
 
                     // Section Title: সময় বেছে নিন
                     Text(
-                      'সময় বেছে নিন',
+                      StaticString.selectTimeTitle.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
@@ -216,7 +217,7 @@ class SelectDateTimeScreen extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'পরবর্তী',
+                      StaticString.next.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -234,7 +235,12 @@ class SelectDateTimeScreen extends StatelessWidget {
 
   // Step Progress Indicator Bar (ঠিকানা, সময়, রিভিউ, পেমেন্ট)
   Widget _buildStepProgressIndicator() {
-    final steps = ['ঠিকানা', 'সময়', 'রিভিউ', 'পেমেন্ট'];
+    final steps = [
+      StaticString.stepAddress.tr,
+      StaticString.stepTime.tr,
+      StaticString.stepReview.tr,
+      StaticString.stepPayment.tr,
+    ];
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Row(

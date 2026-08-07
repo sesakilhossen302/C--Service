@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/select_address_controller.dart';
 
@@ -29,7 +30,7 @@ class SelectAddressScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    isManageOnly ? 'সংরক্ষিত ঠিকানা' : 'ঠিকানা নির্বাচন',
+                    isManageOnly ? StaticString.savedAddresses.tr : StaticString.selectAddressTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -58,7 +59,7 @@ class SelectAddressScreen extends StatelessWidget {
                     // Section Title: (Show only if booking flow)
                     if (!isManageOnly) ...[
                       Text(
-                        'সংরক্ষিত ঠিকানা',
+                        StaticString.savedAddresses.tr,
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
@@ -158,7 +159,7 @@ class SelectAddressScreen extends StatelessWidget {
                                                     borderRadius: BorderRadius.circular(10.r),
                                                   ),
                                                   child: Text(
-                                                    'ডিফল্ট',
+                                                    StaticString.defaultLabel.tr,
                                                     style: TextStyle(
                                                       fontSize: 11.sp,
                                                       fontWeight: FontWeight.bold,
@@ -181,7 +182,7 @@ class SelectAddressScreen extends StatelessWidget {
                                           if (item.isDefault) ...[
                                             SizedBox(height: 3.h),
                                             Text(
-                                              'ডিফল্ট',
+                                              StaticString.defaultLabel.tr,
                                               style: TextStyle(
                                                 fontSize: 12.sp,
                                                 fontWeight: FontWeight.bold,
@@ -249,7 +250,7 @@ class SelectAddressScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 6.w),
                             Text(
-                              'নতুন ঠিকানা যোগ করুন',
+                              StaticString.addNewAddress.tr,
                               style: TextStyle(
                                 fontSize: 14.5.sp,
                                 fontWeight: FontWeight.bold,
@@ -296,7 +297,7 @@ class SelectAddressScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'পরবর্তী',
+                        StaticString.next.tr,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -314,7 +315,12 @@ class SelectAddressScreen extends StatelessWidget {
 
   // Step Progress Indicator Bar (ঠিকানা, সময়, রিভিউ, পেমেন্ট)
   Widget _buildStepProgressIndicator() {
-    final steps = ['ঠিকানা', 'সময়', 'রিভিউ', 'পেমেন্ট'];
+    final steps = [
+      StaticString.stepAddress.tr,
+      StaticString.stepTime.tr,
+      StaticString.stepReview.tr,
+      StaticString.stepPayment.tr,
+    ];
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Row(
@@ -372,7 +378,7 @@ class SelectAddressScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'যোগ করুন',
+                StaticString.add.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -387,7 +393,7 @@ class SelectAddressScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'ঠিকানা',
+                    StaticString.addressLabel.tr,
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
@@ -454,7 +460,7 @@ class SelectAddressScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'বাতিল\nকরুন',
+                          StaticString.cancel.tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 13.5.sp,
@@ -482,7 +488,7 @@ class SelectAddressScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'সংরক্ষণ\nকরুন',
+                          StaticString.save.tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 13.5.sp,

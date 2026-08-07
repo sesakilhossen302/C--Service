@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import 'Controller/all_services_controller.dart';
 
 class AllServicesScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class AllServicesScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 18.w),
               child: Text(
-                'সব সেবা',
+                StaticString.allServicesTitle.tr,
                 style: TextStyle(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.bold,
@@ -48,7 +49,7 @@ class AllServicesScreen extends StatelessWidget {
                   controller: controller.searchController,
                   style: TextStyle(fontSize: 14.sp),
                   decoration: InputDecoration(
-                    hintText: 'সেবা খুঁজুন...',
+                    hintText: StaticString.searchServiceHint.tr,
                     hintStyle: TextStyle(
                       color: AppColors.textLightGrey,
                       fontSize: 14.sp,
@@ -125,7 +126,7 @@ class AllServicesScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 12.h),
                         Text(
-                          'কোনো সেবা পাওয়া যায়নি',
+                          StaticString.noServicesFound.tr,
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
@@ -162,90 +163,90 @@ class AllServicesScreen extends StatelessWidget {
                         );
                       },
                       child: Container(
-                      padding: EdgeInsets.all(14.r),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(color: AppColors.cardBorder, width: 1.w),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha(6),
-                            blurRadius: 8.r,
-                            offset: Offset(0, 2.h),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Top Emoji Icon Box
-                          Container(
-                            width: 52.w,
-                            height: 52.h,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFE8F5E9),
-                              borderRadius: BorderRadius.circular(16.r),
+                        padding: EdgeInsets.all(14.r),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: Border.all(color: AppColors.cardBorder, width: 1.w),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(6),
+                              blurRadius: 8.r,
+                              offset: Offset(0, 2.h),
                             ),
-                            child: Center(
-                              child: Text(
-                                item.iconEmoji,
-                                style: TextStyle(fontSize: 26.sp),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Top Emoji Icon Box
+                            Container(
+                              width: 52.w,
+                              height: 52.h,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE8F5E9),
+                                borderRadius: BorderRadius.circular(16.r),
                               ),
-                            ),
-                          ),
-
-                          const Spacer(),
-
-                          // Title
-                          Text(
-                            item.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 14.5.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textColor,
-                            ),
-                          ),
-
-                          SizedBox(height: 4.h),
-
-                          // Rating
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star_rounded,
-                                size: 15.sp,
-                                color: const Color(0xFFF59E0B),
-                              ),
-                              SizedBox(width: 4.w),
-                              Text(
-                                '${item.rating}',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
-                                  color: AppColors.textGrey,
-                                  fontWeight: FontWeight.w500,
+                              child: Center(
+                                child: Text(
+                                  item.iconEmoji,
+                                  style: TextStyle(fontSize: 26.sp),
                                 ),
                               ),
-                            ],
-                          ),
-
-                          SizedBox(height: 6.h),
-
-                          // Price
-                          Text(
-                            item.priceText,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryColor,
                             ),
-                          ),
-                        ],
+
+                            const Spacer(),
+
+                            // Title
+                            Text(
+                              item.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 14.5.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textColor,
+                              ),
+                            ),
+
+                            SizedBox(height: 4.h),
+
+                            // Rating
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star_rounded,
+                                  size: 15.sp,
+                                  color: const Color(0xFFF59E0B),
+                                ),
+                                SizedBox(width: 4.w),
+                                Text(
+                                  '${item.rating}',
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
+                                    color: AppColors.textGrey,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            SizedBox(height: 6.h),
+
+                            // Price
+                            Text(
+                              item.priceText,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
                 );
               }),
             ),

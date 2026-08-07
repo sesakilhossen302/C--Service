@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'Core/AppRoute/app_route.dart';
+import 'Language/language.dart';
 import 'Utils/AppColors/app_colors.dart';
 import 'Utils/AppConst/app_const.dart';
+import 'helper/shared_prefe/shared_prefe.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  final savedCode = await SharedPrefe.getString(SharedPrefe.languageKey);
+  final initialLocale = savedCode == 'en'
+      ? const Locale('en', 'US')
+      : const Locale('bn', 'BD');
+
+  runApp(MyApp(initialLocale: initialLocale));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Locale initialLocale;
+
+  const MyApp({super.key, required this.initialLocale});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +32,11 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: AppConst.appName,
           debugShowCheckedModeBanner: false,
+          translations: Language(),
+          locale: initialLocale,
+          fallbackLocale: const Locale('bn', 'BD'),
+          defaultTransition: Transition.rightToLeftWithFade,
+          transitionDuration: const Duration(milliseconds: 300),
           theme: ThemeData(
             primaryColor: AppColors.primaryColor,
             scaffoldBackgroundColor: AppColors.backgroundColor,

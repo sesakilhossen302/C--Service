@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/home_passport_controller.dart';
 
@@ -28,7 +29,7 @@ class HomePassportScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'হোম পাসপোর্ট',
+                    StaticString.homePassport.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -64,7 +65,7 @@ class HomePassportScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'HOME PASSPORT',
+                        StaticString.homePassport.tr.toUpperCase(),
                         style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w600,
@@ -102,10 +103,10 @@ class HomePassportScreen extends StatelessWidget {
                         mainAxisSpacing: 10.h,
                         childAspectRatio: 2.0,
                         children: [
-                          _buildPassportStatPill('হেলথ স্কোর', info.healthScore),
-                          _buildPassportStatPill('মোট সেবা', info.totalServices),
-                          _buildPassportStatPill('এই মাসে', info.thisMonthServices),
-                          _buildPassportStatPill('সাশ্রয়', info.totalSavings),
+                          _buildPassportStatPill(StaticString.healthScoreLabel.tr, info.healthScore),
+                          _buildPassportStatPill(StaticString.totalServicesLabel.tr, info.totalServices),
+                          _buildPassportStatPill(StaticString.thisMonthLabel.tr, info.thisMonthServices),
+                          _buildPassportStatPill(StaticString.savingsLabel.tr, info.totalSavings),
                         ],
                       ),
                     ],
@@ -136,7 +137,7 @@ class HomePassportScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'বাড়ির তথ্য',
+                        StaticString.houseInfoTitle.tr,
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
@@ -146,19 +147,19 @@ class HomePassportScreen extends StatelessWidget {
 
                       SizedBox(height: 14.h),
 
-                      _buildInfoRow('ঠিকানা', info.address),
+                      _buildInfoRow(StaticString.addressLabel.tr, info.address),
                       Divider(color: AppColors.cardBorder.withAlpha(120), height: 20.h),
 
-                      _buildInfoRow('ধরন', info.propertyType),
+                      _buildInfoRow(StaticString.propertyTypeLabel.tr, info.propertyType),
                       Divider(color: AppColors.cardBorder.withAlpha(120), height: 20.h),
 
-                      _buildInfoRow('আকার', info.propertySize),
+                      _buildInfoRow(StaticString.propertySizeLabel.tr, info.propertySize),
                       Divider(color: AppColors.cardBorder.withAlpha(120), height: 20.h),
 
-                      _buildInfoRow('ঘর', info.rooms),
+                      _buildInfoRow(StaticString.roomsLabel.tr, info.rooms),
                       Divider(color: AppColors.cardBorder.withAlpha(120), height: 20.h),
 
-                      _buildInfoRow('নিবন্ধিত', info.registrationDate),
+                      _buildInfoRow(StaticString.registeredLabel.tr, info.registrationDate),
 
                       SizedBox(height: 16.h),
 
@@ -181,7 +182,7 @@ class HomePassportScreen extends StatelessWidget {
                           ),
                           icon: Icon(Icons.edit_outlined, size: 18.sp),
                           label: Text(
-                            'এডিট করুন',
+                            StaticString.editTitle.tr,
                             style: TextStyle(
                               fontSize: 13.5.sp,
                               fontWeight: FontWeight.bold,
@@ -198,7 +199,7 @@ class HomePassportScreen extends StatelessWidget {
 
               // 3. Smart Recommendations Section (স্মার্ট সুপারিশ)
               Text(
-                'স্মার্ট সুপারিশ',
+                StaticString.smartRecommendationsTitle.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -284,7 +285,7 @@ class HomePassportScreen extends StatelessWidget {
                                   ),
                                 ),
                                 child: Text(
-                                  'বুক',
+                                  StaticString.bookAction.tr,
                                   style: TextStyle(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.bold,
@@ -389,7 +390,7 @@ class HomePassportScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'এডিট করুন',
+                StaticString.editTitle.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -399,19 +400,19 @@ class HomePassportScreen extends StatelessWidget {
 
               SizedBox(height: 18.h),
 
-              _buildModalInputField('ঠিকানা', controller.addressController),
+              _buildModalInputField(StaticString.addressLabel.tr, controller.addressController),
               SizedBox(height: 14.h),
 
-              _buildModalInputField('ধরন', controller.typeController),
+              _buildModalInputField(StaticString.propertyTypeLabel.tr, controller.typeController),
               SizedBox(height: 14.h),
 
-              _buildModalInputField('আকার', controller.sizeController),
+              _buildModalInputField(StaticString.propertySizeLabel.tr, controller.sizeController),
               SizedBox(height: 14.h),
 
-              _buildModalInputField('ঘর', controller.roomsController),
+              _buildModalInputField(StaticString.roomsLabel.tr, controller.roomsController),
               SizedBox(height: 14.h),
 
-              _buildModalInputField('নিবন্ধিত', controller.regDateController),
+              _buildModalInputField(StaticString.registeredLabel.tr, controller.regDateController),
               SizedBox(height: 22.h),
 
               // Action Buttons Row (Cancel & Save)
@@ -430,7 +431,7 @@ class HomePassportScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'বাতিল করুন',
+                          StaticString.cancel.tr,
                           style: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.bold,
@@ -456,7 +457,7 @@ class HomePassportScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'সংরক্ষণ করুন',
+                          StaticString.save.tr,
                           style: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.bold,

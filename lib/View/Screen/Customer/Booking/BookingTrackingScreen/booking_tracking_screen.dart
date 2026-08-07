@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/booking_tracking_controller.dart';
 import 'Model/booking_tracking_model.dart';
@@ -29,7 +30,7 @@ class BookingTrackingScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'বুকিং ট্র্যাকিং',
+                    StaticString.bookingTrackingTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -180,7 +181,7 @@ class BookingTrackingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(width: 3.w),
                                       Text(
-                                        '${controller.trackingData.value.technician.rating} • ${controller.trackingData.value.technician.totalServicesCount} সেবা',
+                                        '${controller.trackingData.value.technician.rating} • ${controller.trackingData.value.technician.totalServicesCount} ${StaticString.navService.tr}',
                                         style: TextStyle(
                                           fontSize: 12.sp,
                                           color: AppColors.textGrey,
@@ -235,7 +236,7 @@ class BookingTrackingScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'অগ্রগতি',
+                            StaticString.progressTitle.tr,
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
@@ -280,7 +281,7 @@ class BookingTrackingScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'সেবা সম্পন্ন করুন ও রেট করুন',
+                          StaticString.completeAndRateButton.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
@@ -305,7 +306,7 @@ class BookingTrackingScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'সমস্যা হচ্ছে?',
+                              StaticString.havingIssueText.tr,
                               style: TextStyle(
                                 fontSize: 14.5.sp,
                                 fontWeight: FontWeight.bold,

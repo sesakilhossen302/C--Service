@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/homecare_prime_controller.dart';
 import 'Model/homecare_prime_model.dart';
@@ -29,7 +30,7 @@ class HomeCarePrimeScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'HomeCare Prime',
+                    StaticString.homeCarePrime.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -70,7 +71,7 @@ class HomeCarePrimeScreen extends StatelessWidget {
                 SizedBox(height: 14.h),
 
                 Text(
-                  'Prime সদস্যপদ',
+                  StaticString.primeMembershipTitle.tr,
                   style: TextStyle(
                     fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class HomeCarePrimeScreen extends StatelessWidget {
                 SizedBox(height: 4.h),
 
                 Text(
-                  'বাড়ির সম্পূর্ণ যত্নে সেরা মূল্য',
+                  StaticString.primeMembershipSub.tr,
                   style: TextStyle(
                     fontSize: 13.sp,
                     color: const Color(0xFF9CA3AF),
@@ -168,7 +169,7 @@ class HomeCarePrimeScreen extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'Prime সদস্য হন',
+                            StaticString.joinPrimeButton.tr,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/search_service_controller.dart';
 
@@ -39,7 +40,7 @@ class SearchServiceScreen extends StatelessWidget {
                         autofocus: true,
                         style: TextStyle(fontSize: 14.sp),
                         decoration: InputDecoration(
-                          hintText: 'কী সেবা চান?',
+                          hintText: StaticString.searchHint.tr,
                           hintStyle: TextStyle(
                             color: AppColors.textLightGrey,
                             fontSize: 14.sp,
@@ -119,7 +120,7 @@ class SearchServiceScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 12.h),
                         Text(
-                          'কোনো সেবা পাওয়া যায়নি',
+                          StaticString.noServicesFound.tr,
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,

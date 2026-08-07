@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/booking_review_controller.dart';
 
@@ -28,7 +29,7 @@ class BookingReviewScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'বুকিং রিভিউ',
+                    StaticString.bookingReviewTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -73,7 +74,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'সেবার বিবরণ',
+                                StaticString.serviceDetails.tr,
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
@@ -83,7 +84,7 @@ class BookingReviewScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: controller.onChangeService,
                                 child: Text(
-                                  'পরিবর্তন',
+                                  StaticString.changeText.tr,
                                   style: TextStyle(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.bold,
@@ -167,7 +168,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'ঠিকানা',
+                                StaticString.addressLabel.tr,
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
@@ -177,7 +178,7 @@ class BookingReviewScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: controller.onChangeAddress,
                                 child: Text(
-                                  'পরিবর্তন',
+                                  StaticString.changeText.tr,
                                   style: TextStyle(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.bold,
@@ -236,7 +237,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'তারিখ ও সময়',
+                                StaticString.dateTimeTitle.tr,
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
@@ -246,7 +247,7 @@ class BookingReviewScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: controller.onChangeDateTime,
                                 child: Text(
-                                  'পরিবর্তন',
+                                  StaticString.changeText.tr,
                                   style: TextStyle(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.bold,
@@ -315,7 +316,7 @@ class BookingReviewScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'মূল্য বিবরণ',
+                            StaticString.priceDetails.tr,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
@@ -327,7 +328,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'সেবা মূল্য',
+                                StaticString.servicePriceLabel.tr,
                                 style: TextStyle(
                                   fontSize: 13.5.sp,
                                   color: AppColors.textGrey,
@@ -350,7 +351,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'ভ্রমণ চার্জ',
+                                StaticString.travelChargeLabel.tr,
                                 style: TextStyle(
                                   fontSize: 13.5.sp,
                                   color: AppColors.textGrey,
@@ -373,7 +374,7 @@ class BookingReviewScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'মোট',
+                                StaticString.totalLabel.tr,
                                 style: TextStyle(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
@@ -430,7 +431,7 @@ class BookingReviewScreen extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'পেমেন্ট করুন',
+                      StaticString.proceedToPayment.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -448,7 +449,12 @@ class BookingReviewScreen extends StatelessWidget {
 
   // Step Progress Indicator Bar (ঠিকানা, সময়, রিভিউ, পেমেন্ট)
   Widget _buildStepProgressIndicator() {
-    final steps = ['ঠিকানা', 'সময়', 'রিভিউ', 'পেমেন্ট'];
+    final steps = [
+      StaticString.stepAddress.tr,
+      StaticString.stepTime.tr,
+      StaticString.stepReview.tr,
+      StaticString.stepPayment.tr,
+    ];
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Row(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import 'Controller/booking_success_controller.dart';
 
 class BookingSuccessScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class BookingSuccessScreen extends StatelessWidget {
 
               // 2. Success Heading
               Text(
-                'বুকিং সম্পন্ন! 🎉',
+                StaticString.bookingSuccessHeading.tr,
                 style: TextStyle(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class BookingSuccessScreen extends StatelessWidget {
               SizedBox(height: 8.h),
 
               Text(
-                'আপনার বুকিং নিশ্চিত হয়েছে।',
+                StaticString.bookingSuccessSubheading.tr,
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: AppColors.textGrey,
@@ -69,7 +70,7 @@ class BookingSuccessScreen extends StatelessWidget {
                       color: AppColors.textColor,
                     ),
                     children: [
-                      const TextSpan(text: 'বুকিং আইডি: '),
+                      TextSpan(text: StaticString.bookingIdLabel.tr),
                       TextSpan(
                         text: controller.successData.value.bookingId,
                         style: const TextStyle(fontWeight: FontWeight.bold),
@@ -183,7 +184,7 @@ class BookingSuccessScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'বুকিং ট্র্যাক করুন',
+                    StaticString.trackBookingButton.tr,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
@@ -207,7 +208,7 @@ class BookingSuccessScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'হোমে ফিরুন',
+                    StaticString.backToHomeButton.tr,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,

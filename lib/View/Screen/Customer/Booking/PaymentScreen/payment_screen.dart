@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/payment_controller.dart';
 
@@ -28,7 +29,7 @@ class PaymentScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'পেমেন্ট',
+                    StaticString.paymentTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class PaymentScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'মোট পেমেন্ট',
+                            StaticString.totalPayment.tr,
                             style: TextStyle(
                               fontSize: 15.sp,
                               color: AppColors.textGrey,
@@ -96,7 +97,7 @@ class PaymentScreen extends StatelessWidget {
 
                     // Section Title: পেমেন্ট পদ্ধতি
                     Text(
-                      'পেমেন্ট পদ্ধতি',
+                      StaticString.paymentMethod.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
@@ -217,7 +218,7 @@ class PaymentScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'bKash নম্বর',
+                                StaticString.bkashNumberLabel.tr,
                                 style: TextStyle(
                                   fontSize: 13.sp,
                                   fontWeight: FontWeight.bold,
@@ -290,7 +291,7 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 8.w),
                           Text(
-                            'SSL এনক্রিপ্টেড নিরাপদ পেমেন্ট',
+                            StaticString.sslSecureBadge.tr,
                             style: TextStyle(
                               fontSize: 12.5.sp,
                               fontWeight: FontWeight.w600,
@@ -335,7 +336,7 @@ class PaymentScreen extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'পেমেন্ট নিশ্চিত করুন',
+                      StaticString.confirmPayment.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -370,7 +371,12 @@ class PaymentScreen extends StatelessWidget {
 
   // Step Progress Indicator Bar (ঠিকানা, সময়, রিভিউ, পেমেন্ট - ALL COMPLETED GREEN)
   Widget _buildStepProgressIndicator() {
-    final steps = ['ঠিকানা', 'সময়', 'রিভিউ', 'পেমেন্ট'];
+    final steps = [
+      StaticString.stepAddress.tr,
+      StaticString.stepTime.tr,
+      StaticString.stepReview.tr,
+      StaticString.stepPayment.tr,
+    ];
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Row(

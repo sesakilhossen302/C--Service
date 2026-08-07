@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/service_details_controller.dart';
 
@@ -21,7 +22,7 @@ class ServiceDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 1. Top Banner Banner Container
+                  // 1. Top Banner Container
                   Stack(
                     children: [
                       Container(
@@ -189,9 +190,9 @@ class ServiceDetailsScreen extends StatelessWidget {
 
                         SizedBox(height: 22.h),
 
-                        // "সেবায় যা থাকবে" Section Header
+                        // "সেবায় যা থাকবে" Section Header
                         Text(
-                          'সেবায় যা থাকবে',
+                          StaticString.whatIsIncludedTitle.tr,
                           style: TextStyle(
                             fontSize: 17.5.sp,
                             fontWeight: FontWeight.bold,
@@ -242,7 +243,7 @@ class ServiceDetailsScreen extends StatelessWidget {
 
                         // "গ্রাহকদের মতামত" Section Header
                         Text(
-                          'গ্রাহকদের মতামত',
+                          StaticString.customerReviewsTitle.tr,
                           style: TextStyle(
                             fontSize: 17.5.sp,
                             fontWeight: FontWeight.bold,
@@ -324,7 +325,7 @@ class ServiceDetailsScreen extends StatelessWidget {
             ),
           ),
 
-          // 3. Bottom Sticky Action Button Bar (এখনই বুক করুন — ৳৬০০)
+          // 3. Bottom Sticky Action Button Bar
           Container(
             padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
             decoration: BoxDecoration(
@@ -353,7 +354,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   ),
                   child: Obx(
                     () => Text(
-                      'এখনই বুক করুন — ${controller.serviceDetails.value.priceText}',
+                      '${StaticString.bookNowPrefix.tr} — ${controller.serviceDetails.value.priceText}',
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,

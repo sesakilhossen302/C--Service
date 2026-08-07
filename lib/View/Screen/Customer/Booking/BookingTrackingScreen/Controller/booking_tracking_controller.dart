@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../../../../../../Core/AppRoute/app_route.dart';
+import '../../../../../../Utils/CustomSnackbar/custom_snackbar.dart';
 import '../Model/booking_tracking_model.dart';
 
 class BookingTrackingController extends GetxController {
@@ -49,7 +50,10 @@ class BookingTrackingController extends GetxController {
   ).obs;
 
   void onCallTechnician() {
-    Get.snackbar('কল করা হচ্ছে', '${trackingData.value.technician.name}-কে কল করা হচ্ছে...');
+    CustomSnackbar.showInfo(
+      title: 'কল করা হচ্ছে',
+      message: '${trackingData.value.technician.name}-কে কল করা হচ্ছে...',
+    );
   }
 
   void onCompleteAndRate() {

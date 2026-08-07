@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/contact_us_controller.dart';
 
@@ -28,7 +29,7 @@ class ContactUsScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'যোগাযোগ করুন',
+                    StaticString.contactUs.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -166,7 +167,7 @@ class ContactUsScreen extends StatelessWidget {
 
                     // Section Title: বার্তা পাঠান
                     Text(
-                      'বার্তা পাঠান',
+                      StaticString.sendMessageTitle.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
@@ -178,7 +179,7 @@ class ContactUsScreen extends StatelessWidget {
 
                     // Field 1: বিষয়
                     Text(
-                      'বিষয়',
+                      StaticString.subjectLabel.tr,
                       style: TextStyle(
                         fontSize: 13.5.sp,
                         fontWeight: FontWeight.bold,
@@ -212,7 +213,7 @@ class ContactUsScreen extends StatelessWidget {
 
                     // Field 2: বিবরণ
                     Text(
-                      'বিবরণ',
+                      StaticString.descriptionLabel.tr,
                       style: TextStyle(
                         fontSize: 13.5.sp,
                         fontWeight: FontWeight.bold,
@@ -227,7 +228,7 @@ class ContactUsScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'আপনার সমস্যার বিবরণ লিখুন...',
+                        hintText: StaticString.describeIssueHint.tr,
                         hintStyle: TextStyle(color: AppColors.textLightGrey),
                         contentPadding: EdgeInsets.all(14.r),
                         border: OutlineInputBorder(
@@ -262,7 +263,7 @@ class ContactUsScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'পাঠান',
+                          StaticString.sendButton.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,

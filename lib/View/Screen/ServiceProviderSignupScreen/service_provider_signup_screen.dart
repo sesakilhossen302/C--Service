@@ -30,7 +30,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
 
               // Title
               Text(
-                StaticString.providerSignupTitle,
+                StaticString.providerSignupTitle.tr,
                 style: TextStyle(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
 
               // Subtitle
               Text(
-                StaticString.providerSignupSub,
+                StaticString.providerSignupSub.tr,
                 style: TextStyle(
                   fontSize: 13.5.sp,
                   color: AppColors.textGrey,
@@ -53,7 +53,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
 
               // 1. Full Name Label & Field
               Text(
-                StaticString.nameLabel,
+                StaticString.nameLabel.tr,
                 style: TextStyle(
                   fontSize: 13.5.sp,
                   fontWeight: FontWeight.w600,
@@ -64,14 +64,14 @@ class ServiceProviderSignupScreen extends StatelessWidget {
               TextField(
                 controller: controller.nameController,
                 style: TextStyle(fontSize: 14.sp),
-                decoration: _buildInputDecoration(StaticString.nameHint),
+                decoration: _buildInputDecoration(StaticString.nameHint.tr),
               ),
 
               SizedBox(height: 16.h),
 
               // 2. Phone Number Label & Field
               Text(
-                StaticString.phoneLabel,
+                StaticString.phoneLabel.tr,
                 style: TextStyle(
                   fontSize: 13.5.sp,
                   fontWeight: FontWeight.w600,
@@ -83,7 +83,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                 controller: controller.phoneController,
                 keyboardType: TextInputType.phone,
                 style: TextStyle(fontSize: 14.sp),
-                decoration: _buildInputDecoration(StaticString.phoneHint),
+                decoration: _buildInputDecoration(StaticString.phoneHint.tr),
               ),
 
               SizedBox(height: 16.h),
@@ -93,7 +93,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    StaticString.expertiseLabel,
+                    StaticString.expertiseLabel.tr,
                     style: TextStyle(
                       fontSize: 13.5.sp,
                       fontWeight: FontWeight.w600,
@@ -103,7 +103,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: controller.onSeeMorePressed,
                     child: Text(
-                      StaticString.seeMore,
+                      StaticString.seeMore.tr,
                       style: TextStyle(
                         fontSize: 12.5.sp,
                         fontWeight: FontWeight.bold,
@@ -121,12 +121,12 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                   spacing: 8.w,
                   runSpacing: 8.h,
                   children: [
-                    _buildExpertiseChip('ক্লিনিং', controller),
-                    _buildExpertiseChip('এসি সার্ভিস', controller),
-                    _buildExpertiseChip('ইলেকট্রিশিয়ান', controller),
-                    _buildExpertiseChip('প্লাম্বিং', controller),
-                    _buildExpertiseChip('প্যাস্ট কন্ট্রোল', controller),
-                    _buildExpertiseChip('রান্না', controller),
+                    _buildExpertiseChip(StaticString.expCleaning.tr, controller),
+                    _buildExpertiseChip(StaticString.expAcService.tr, controller),
+                    _buildExpertiseChip(StaticString.expElectric.tr, controller),
+                    _buildExpertiseChip(StaticString.expPlumbing.tr, controller),
+                    _buildExpertiseChip(StaticString.expPestControl.tr, controller),
+                    _buildExpertiseChip(StaticString.expCooking.tr, controller),
                   ],
                 ),
               ),
@@ -135,7 +135,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
 
               // 4. Starting Hourly Rate Label & Field
               Text(
-                StaticString.hourlyRateLabel,
+                StaticString.hourlyRateLabel.tr,
                 style: TextStyle(
                   fontSize: 13.5.sp,
                   fontWeight: FontWeight.w600,
@@ -146,14 +146,14 @@ class ServiceProviderSignupScreen extends StatelessWidget {
               TextField(
                 controller: controller.priceController,
                 style: TextStyle(fontSize: 14.sp),
-                decoration: _buildInputDecoration('৳ ২,০০০'),
+                decoration: _buildInputDecoration(StaticString.priceHint),
               ),
 
               SizedBox(height: 16.h),
 
               // 5. Password Label & Field
               Text(
-                StaticString.passwordLabel,
+                StaticString.passwordLabel.tr,
                 style: TextStyle(
                   fontSize: 13.5.sp,
                   fontWeight: FontWeight.w600,
@@ -167,7 +167,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                   obscureText: !controller.isPasswordVisible.value,
                   style: TextStyle(fontSize: 14.sp),
                   decoration: _buildInputDecoration(
-                    StaticString.passwordHint,
+                    StaticString.passwordHint.tr,
                     suffixIcon: IconButton(
                       icon: Icon(
                         controller.isPasswordVisible.value
@@ -199,7 +199,7 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    StaticString.sendOtp,
+                    StaticString.sendOtp.tr,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
@@ -215,14 +215,14 @@ class ServiceProviderSignupScreen extends StatelessWidget {
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    text: StaticString.termsPrefix,
+                    text: StaticString.termsPrefix.tr,
                     style: TextStyle(
                       fontSize: 12.sp,
                       color: AppColors.textGrey,
                     ),
                     children: [
                       TextSpan(
-                        text: StaticString.termsLink,
+                        text: StaticString.termsLink.tr,
                         style: TextStyle(
                           fontSize: 12.sp,
                           color: AppColors.primaryColor,

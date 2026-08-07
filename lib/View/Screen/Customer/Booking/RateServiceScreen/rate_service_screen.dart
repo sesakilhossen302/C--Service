@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/AppColors/app_colors.dart';
+import '../../../../../Utils/StaticString/static_string.dart';
 import '../../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/rate_service_controller.dart';
 
@@ -27,7 +28,7 @@ class RateServiceScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'রেটিং দিন',
+                    StaticString.rateServiceTitle.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -88,7 +89,7 @@ class RateServiceScreen extends StatelessWidget {
 
                     // "সেবা কেমন ছিল?" Star Rating Section
                     Text(
-                      'সেবা কেমন ছিল?',
+                      StaticString.howWasServiceQuestion.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -125,7 +126,7 @@ class RateServiceScreen extends StatelessWidget {
                     SizedBox(height: 6.h),
 
                     Text(
-                      'তারকা ছুঁয়ে রেট করুন',
+                      StaticString.touchStarToRate.tr,
                       style: TextStyle(
                         fontSize: 12.5.sp,
                         fontWeight: FontWeight.w500,
@@ -139,7 +140,7 @@ class RateServiceScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'কী ভালো লেগেছে?',
+                        StaticString.whatWasGoodQuestion.tr,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -202,7 +203,7 @@ class RateServiceScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'মন্তব্য (ঐচ্ছিক)',
+                        StaticString.commentOptionalLabel.tr,
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
@@ -220,7 +221,7 @@ class RateServiceScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'আপনার অভিজ্ঞতা শেয়ার করুন...',
+                        hintText: StaticString.shareExperienceHint.tr,
                         hintStyle: TextStyle(color: AppColors.textLightGrey),
                         contentPadding: EdgeInsets.all(14.r),
                         border: OutlineInputBorder(
@@ -255,7 +256,7 @@ class RateServiceScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'রেটিং জমা দিন',
+                          StaticString.submitRatingButton.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
@@ -279,7 +280,7 @@ class RateServiceScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'এড়িয়ে যান',
+                          StaticString.skipButton.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,

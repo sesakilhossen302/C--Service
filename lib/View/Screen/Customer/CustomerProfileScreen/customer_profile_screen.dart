@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import 'Controller/customer_profile_controller.dart';
 
 class CustomerProfileScreen extends StatelessWidget {
@@ -104,69 +105,69 @@ class CustomerProfileScreen extends StatelessWidget {
               // 2. Menu Items List
               _buildMenuItem(
                 icon: Icons.edit_outlined,
-                title: 'প্রোফাইল সম্পাদনা',
+                title: StaticString.editProfile.tr,
                 onTap: controller.onEditProfile,
               ),
               _buildMenuItem(
                 icon: Icons.calendar_today_outlined,
-                title: 'আমার বুকিং',
+                title: StaticString.myBookings.tr,
                 onTap: controller.onMyBookings,
               ),
               _buildMenuItem(
                 icon: Icons.star_border_rounded,
-                title: 'আমার রিভিউ',
+                title: StaticString.myReviews.tr,
                 onTap: controller.onMyReviews,
               ),
               _buildMenuItem(
                 icon: Icons.workspace_premium_outlined,
-                title: 'HomeCare Prime',
+                title: StaticString.homeCarePrime.tr,
                 onTap: controller.onHomeCarePrime,
               ),
               _buildMenuItem(
                 icon: Icons.card_giftcard_outlined,
-                title: 'রেফারেল',
+                title: StaticString.referral.tr,
                 onTap: controller.onReferral,
               ),
               _buildMenuItem(
                 icon: Icons.location_on_outlined,
-                title: 'সংরক্ষিত ঠিকানা',
+                title: StaticString.savedAddresses.tr,
                 onTap: controller.onSavedAddresses,
               ),
               _buildMenuItem(
                 icon: Icons.help_outline_rounded,
-                title: 'সাহায্য',
+                title: StaticString.navHelp.tr,
                 onTap: controller.onHelp,
               ),
               _buildMenuItem(
                 icon: Icons.chat_bubble_outline_rounded,
-                title: 'যোগাযোগ করুন',
+                title: StaticString.contactUs.tr,
                 onTap: controller.onContactUs,
               ),
               _buildMenuItem(
                 icon: Icons.language_rounded,
-                title: 'ভাষা পরিবর্তন',
+                title: StaticString.changeLanguage.tr,
                 onTap: controller.onChangeLanguage,
               ),
               _buildMenuItem(
                 icon: Icons.lock_outline_rounded,
-                title: 'গোপনীয়তা নীতি',
+                title: StaticString.privacyPolicy.tr,
                 onTap: controller.onPrivacyPolicy,
               ),
               _buildMenuItem(
                 icon: Icons.article_outlined,
-                title: 'শর্তাবলী',
+                title: StaticString.termsConditions.tr,
                 onTap: controller.onTermsAndConditions,
               ),
               _buildMenuItem(
                 icon: Icons.settings_outlined,
-                title: 'সেটিংস',
+                title: StaticString.settings.tr,
                 onTap: controller.onSettings,
               ),
 
               // Logout Red Card
               _buildMenuItem(
                 icon: Icons.logout_rounded,
-                title: 'লগআউট',
+                title: StaticString.logout.tr,
                 isDestructive: true,
                 onTap: controller.onLogout,
               ),

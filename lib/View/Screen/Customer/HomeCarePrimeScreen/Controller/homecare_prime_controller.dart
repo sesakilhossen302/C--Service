@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../../../Utils/CustomSnackbar/custom_snackbar.dart';
 import '../Model/homecare_prime_model.dart';
 
 class HomeCarePrimeController extends GetxController {
@@ -36,7 +37,10 @@ class HomeCarePrimeController extends GetxController {
 
   void onJoinPrime() {
     final selected = plans.firstWhere((p) => p.isSelected, orElse: () => plans.last);
-    Get.snackbar('ধন্যবাদ!', '${selected.title} সফলভাবে সাবস্ক্রাইব করা হয়েছে।');
+    CustomSnackbar.showSuccess(
+      title: 'ধন্যবাদ!',
+      message: '${selected.title} সফলভাবে সাবস্ক্রাইব করা হয়েছে।',
+    );
     Get.back();
   }
 }

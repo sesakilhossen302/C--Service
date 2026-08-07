@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/settings_controller.dart';
 
@@ -28,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'সেটিংস',
+                    StaticString.settings.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -49,8 +50,8 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     // Item 1: পুশ নোটিফিকেশন
                     _buildSwitchCard(
-                      title: 'পুশ নোটিফিকেশন',
-                      subtitle: 'বুকিং আপডেট ও অফার',
+                      title: StaticString.pushNotification.tr,
+                      subtitle: StaticString.pushNotificationSub.tr,
                       value: controller.isPushEnabled,
                       onChanged: controller.togglePush,
                     ),
@@ -59,8 +60,8 @@ class SettingsScreen extends StatelessWidget {
 
                     // Item 2: SMS নোটিফিকেশন
                     _buildSwitchCard(
-                      title: 'SMS নোটিফিকেশন',
-                      subtitle: 'মোবাইলে এসএমএস পান',
+                      title: StaticString.smsNotification.tr,
+                      subtitle: StaticString.smsNotificationSub.tr,
                       value: controller.isSmsEnabled,
                       onChanged: controller.toggleSms,
                     ),
@@ -91,7 +92,7 @@ class SettingsScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'ভাষা',
+                                  StaticString.languageLabel.tr,
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
@@ -99,11 +100,13 @@ class SettingsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 4.h),
-                                Text(
-                                  'Language',
-                                  style: TextStyle(
-                                    fontSize: 12.sp,
-                                    color: AppColors.textGrey,
+                                Obx(
+                                  () => Text(
+                                    controller.currentLanguage.value,
+                                    style: TextStyle(
+                                      fontSize: 12.sp,
+                                      color: AppColors.textGrey,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -154,7 +157,7 @@ class SettingsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'অ্যাপ ভার্সন',
+                            StaticString.appVersionLabel.tr,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,

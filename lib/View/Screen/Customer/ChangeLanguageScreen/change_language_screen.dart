@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/change_language_controller.dart';
 import 'Model/change_language_model.dart';
@@ -29,7 +30,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'ভাষা পরিবর্তন',
+                    StaticString.changeLanguage.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -74,7 +75,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'সংরক্ষণ করুন',
+                          StaticString.save.tr,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,

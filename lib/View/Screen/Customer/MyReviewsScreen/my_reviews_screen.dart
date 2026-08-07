@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
+import '../../../../Utils/StaticString/static_string.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/my_reviews_controller.dart';
 
@@ -28,7 +29,7 @@ class MyReviewsScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'আমার রিভিউ',
+                    StaticString.myReviews.tr,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ class MyReviewsScreen extends StatelessWidget {
                         SizedBox(height: 4.h),
                         Obx(
                           () => Text(
-                            '${controller.totalReviewsCount.value}টি রিভিউ',
+                            '${controller.totalReviewsCount.value} ${StaticString.reviews.tr}',
                             style: TextStyle(
                               fontSize: 12.sp,
                               color: AppColors.textLightGrey,
