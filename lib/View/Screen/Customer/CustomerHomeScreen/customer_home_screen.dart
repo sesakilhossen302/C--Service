@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../../../Utils/StaticString/static_string.dart';
+import '../CustomerNavBarScreen/Controller/customer_nav_bar_controller.dart';
 import 'Controller/customer_home_controller.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
@@ -257,7 +258,11 @@ class CustomerHomeScreen extends StatelessWidget {
               // 5. Popular Services Section Header
               _buildSectionHeader(
                 title: StaticString.popularServices,
-                onSeeAllTap: () {},
+                onSeeAllTap: () {
+                  if (Get.isRegistered<CustomerNavBarController>()) {
+                    Get.find<CustomerNavBarController>().changeIndex(1);
+                  }
+                },
               ),
 
               SizedBox(height: 14.h),
