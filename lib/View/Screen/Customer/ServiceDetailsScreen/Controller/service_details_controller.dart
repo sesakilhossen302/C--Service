@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../../../Core/AppRoute/app_route.dart';
 import '../Model/service_details_model.dart';
 
 class ServiceDetailsController extends GetxController {
@@ -52,6 +53,12 @@ class ServiceDetailsController extends GetxController {
   }
 
   void onBookNowPressed() {
-    // Handle Booking action
+    Get.toNamed(
+      AppRoute.selectAddressScreen,
+      arguments: {
+        'title': serviceDetails.value.title,
+        'price': serviceDetails.value.priceText,
+      },
+    );
   }
 }

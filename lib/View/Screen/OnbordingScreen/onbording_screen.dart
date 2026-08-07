@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../Utils/AppColors/app_colors.dart';
 import '../../../Utils/AppImg/app_img.dart';
@@ -31,36 +30,36 @@ class OnbordingScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 64.h),
+                const SizedBox(height: 64),
 
                 // Top Green Squircle Logo Container
                 Container(
-                  width: 96.w,
-                  height: 96.h,
+                  width: 96,
+                  height: 96,
                   decoration: BoxDecoration(
                     color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(26.r),
+                    borderRadius: BorderRadius.circular(26),
                     boxShadow: [
                       BoxShadow(
                         color: AppColors.primaryColor.withAlpha(70),
-                        blurRadius: 20.r,
-                        offset: Offset(0, 10.h),
+                        blurRadius: 20,
+                        offset: const Offset(0, 10),
                       ),
                     ],
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(26.r),
+                    borderRadius: BorderRadius.circular(26),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         Image.asset(
                           AppImg.homeImgFull,
-                          width: 80.w,
-                          height: 80.h,
+                          width: 80,
+                          height: 80,
                           fit: BoxFit.cover,
                         ),
                       ],
@@ -68,43 +67,43 @@ class OnbordingScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 28.h),
+                const SizedBox(height: 28),
 
                 // Title Text
-                Text(
+                const Text(
                   StaticString.onboardingTitle1,
                   style: TextStyle(
-                    fontSize: 26.sp,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textColor,
                     height: 1.2,
                   ),
                 ),
-                Text(
+                const Text(
                   StaticString.onboardingTitle2,
                   style: TextStyle(
-                    fontSize: 26.sp,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryColor,
                     height: 1.2,
                   ),
                 ),
 
-                SizedBox(height: 12.h),
+                const SizedBox(height: 12),
 
                 // Subtitle Text
-                Text(
+                const Text(
                   '${StaticString.onboardingSub1}\n${StaticString.onboardingSub2}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 13.5.sp,
+                    fontSize: 13.5,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textGrey,
                     height: 1.4,
                   ),
                 ),
 
-                SizedBox(height: 24.h),
+                const SizedBox(height: 24),
 
                 // 3 Statistics Cards Row
                 Row(
@@ -113,12 +112,12 @@ class OnbordingScreen extends StatelessWidget {
                       value: StaticString.statBookingVal,
                       label: StaticString.statBookingLabel,
                     ),
-                    SizedBox(width: 10.w),
+                    const SizedBox(width: 10),
                     _buildStatCard(
                       value: StaticString.statProfessionalVal,
                       label: StaticString.statProfessionalLabel,
                     ),
-                    SizedBox(width: 10.w),
+                    const SizedBox(width: 10),
                     _buildStatCard(
                       value: StaticString.statRatingVal,
                       label: StaticString.statRatingLabel,
@@ -126,12 +125,12 @@ class OnbordingScreen extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: 32.h),
+                const SizedBox(height: 32),
 
                 // Login Button (Primary Filled Green)
                 SizedBox(
                   width: double.infinity,
-                  height: 52.h,
+                  height: 52,
                   child: ElevatedButton(
                     onPressed: controller.onLoginPressed,
                     style: ElevatedButton.styleFrom(
@@ -139,69 +138,69 @@ class OnbordingScreen extends StatelessWidget {
                       foregroundColor: AppColors.white,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.r),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       StaticString.login,
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
 
-                SizedBox(height: 12.h),
+                const SizedBox(height: 12),
 
                 // Register Button (Outlined Green)
                 SizedBox(
                   width: double.infinity,
-                  height: 52.h,
+                  height: 52,
                   child: OutlinedButton(
                     onPressed: controller.onRegisterPressed,
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.primaryColor,
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: AppColors.primaryColor,
-                        width: 1.5.w,
+                        width: 1.5,
                       ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.r),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       StaticString.register,
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
 
-                SizedBox(height: 20.h),
+                const SizedBox(height: 20),
 
                 // Divider with "অথবা"
                 Row(
-                  children: [
-                    const Expanded(
+                  children: const [
+                    Expanded(
                       child: Divider(
                         color: AppColors.cardBorder,
                         thickness: 1,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         StaticString.or,
                         style: TextStyle(
-                          fontSize: 13.sp,
+                          fontSize: 13,
                           color: AppColors.textLightGrey,
                         ),
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Divider(
                         color: AppColors.cardBorder,
                         thickness: 1,
@@ -210,12 +209,12 @@ class OnbordingScreen extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: 20.h),
+                const SizedBox(height: 20),
 
                 // Service Provider Login Button
                 SizedBox(
                   width: double.infinity,
-                  height: 52.h,
+                  height: 52,
                   child: ElevatedButton(
                     onPressed: controller.onServiceProviderLoginPressed,
                     style: ElevatedButton.styleFrom(
@@ -223,22 +222,22 @@ class OnbordingScreen extends StatelessWidget {
                       foregroundColor: AppColors.textColor,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.r),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Icon(
                           Icons.work_outline_rounded,
-                          size: 20.sp,
+                          size: 20,
                           color: AppColors.textColor,
                         ),
-                        SizedBox(width: 8.w),
+                        SizedBox(width: 8),
                         Text(
                           StaticString.serviceProviderLogin,
                           style: TextStyle(
-                            fontSize: 15.sp,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textColor,
                           ),
@@ -248,33 +247,33 @@ class OnbordingScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 20.h),
+                const SizedBox(height: 20),
 
                 // Explore Now Link
                 TextButton(
                   onPressed: controller.onExploreNowPressed,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
+                    children: const [
                       Text(
                         StaticString.exploreNow,
                         style: TextStyle(
-                          fontSize: 14.sp,
+                          fontSize: 14,
                           color: AppColors.textGrey,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(width: 4.w),
+                      SizedBox(width: 4),
                       Icon(
                         Icons.arrow_forward_rounded,
-                        size: 16.sp,
+                        size: 16,
                         color: AppColors.textGrey,
                       ),
                     ],
                   ),
                 ),
 
-                SizedBox(height: 12.h),
+                const SizedBox(height: 12),
               ],
             ),
           ),
@@ -287,16 +286,16 @@ class OnbordingScreen extends StatelessWidget {
   Widget _buildStatCard({required String value, required String label}) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 4.w),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: AppColors.cardBorder, width: 1.w),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.cardBorder, width: 1),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha(6),
-              blurRadius: 8.r,
-              offset: Offset(0, 2.h),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -304,17 +303,17 @@ class OnbordingScreen extends StatelessWidget {
           children: [
             Text(
               value,
-              style: TextStyle(
-                fontSize: 15.sp,
+              style: const TextStyle(
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primaryColor,
               ),
             ),
-            SizedBox(height: 4.h),
+            const SizedBox(height: 4),
             Text(
               label,
-              style: TextStyle(
-                fontSize: 11.5.sp,
+              style: const TextStyle(
+                fontSize: 11.5,
                 fontWeight: FontWeight.w400,
                 color: AppColors.textGrey,
               ),

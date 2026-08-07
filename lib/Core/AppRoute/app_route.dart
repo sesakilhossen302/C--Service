@@ -1,4 +1,9 @@
 import 'package:get/get.dart';
+import '../../View/Screen/Customer/Booking/BookingReviewScreen/booking_review_screen.dart';
+import '../../View/Screen/Customer/Booking/BookingSuccessScreen/booking_success_screen.dart';
+import '../../View/Screen/Customer/Booking/PaymentScreen/payment_screen.dart';
+import '../../View/Screen/Customer/Booking/SelectAddressScreen/select_address_screen.dart';
+import '../../View/Screen/Customer/Booking/SelectDateTimeScreen/select_date_time_screen.dart';
 import '../../View/Screen/Customer/CustomerHomeScreen/customer_home_screen.dart';
 import '../../View/Screen/Customer/CustomerNavBarScreen/customer_nav_bar_screen.dart';
 import '../../View/Screen/Customer/HomePassportScreen/home_passport_screen.dart';
@@ -35,6 +40,11 @@ class AppRoute {
   static const String homePassportScreen = '/home_passport_screen';
   static const String myReviewsScreen = '/my_reviews_screen';
   static const String serviceDetailsScreen = '/service_details_screen';
+  static const String selectAddressScreen = '/select_address_screen';
+  static const String selectDateTimeScreen = '/select_date_time_screen';
+  static const String bookingReviewScreen = '/booking_review_screen';
+  static const String paymentScreen = '/payment_screen';
+  static const String bookingSuccessScreen = '/booking_success_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -54,5 +64,10 @@ class AppRoute {
     GetPage(name: homePassportScreen, page: () => const HomePassportScreen()),
     GetPage(name: myReviewsScreen, page: () => const MyReviewsScreen()),
     GetPage(name: serviceDetailsScreen, page: () => const ServiceDetailsScreen()),
+    GetPage(name: selectAddressScreen, page: () => const SelectAddressScreen()),
+    GetPage(name: selectDateTimeScreen, page: () => const SelectDateTimeScreen()),
+    GetPage(name: bookingReviewScreen, page: () => const BookingReviewScreen()),
+    GetPage(name: paymentScreen, page: () => const PaymentScreen()),
+    GetPage(name: bookingSuccessScreen, page: () => const BookingSuccessScreen()),
   ];
 }
