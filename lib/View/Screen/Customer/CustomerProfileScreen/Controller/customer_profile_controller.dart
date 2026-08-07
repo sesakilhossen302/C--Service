@@ -13,7 +13,7 @@ class CustomerProfileController extends GetxController {
   ).obs;
 
   void onEditProfile() {
-    Get.snackbar('প্রোফাইল সম্পাদনা', 'প্রোফাইল তথ্য আপডেট ফিচার শীঘ্রই আসছে।');
+    Get.toNamed(AppRoute.editProfileScreen);
   }
 
   void onMyBookings() {
@@ -34,15 +34,15 @@ class CustomerProfileController extends GetxController {
   }
 
   void onHomeCarePrime() {
-    Get.toNamed(AppRoute.homePassportScreen);
+    Get.toNamed(AppRoute.homeCarePrimeScreen);
   }
 
   void onReferral() {
-    Get.snackbar('রেফারেল', 'বন্ধুকে রেফার করুন এবং পান ২০০ টাকা ছাড়!');
+    Get.toNamed(AppRoute.referralScreen);
   }
 
   void onSavedAddresses() {
-    Get.toNamed(AppRoute.selectAddressScreen);
+    Get.toNamed(AppRoute.selectAddressScreen, arguments: {'isManageOnly': true});
   }
 
   void onHelp() {
@@ -63,19 +63,19 @@ class CustomerProfileController extends GetxController {
   }
 
   void onChangeLanguage() {
-    Get.snackbar('ভাষা পরিবর্তন', 'বর্তমান ভাষা: বাংলা');
+    Get.toNamed(AppRoute.changeLanguageScreen);
   }
 
   void onPrivacyPolicy() {
-    Get.snackbar('গোপনীয়তা নীতি', 'আমাদের গোপনীয়তা নীতি পেজ শীঘ্রই হালনাগাদ হবে।');
+    Get.toNamed(AppRoute.privacyPolicyScreen);
   }
 
   void onTermsAndConditions() {
-    Get.snackbar('শর্তাবলী', 'ব্যবহারের সকল নিয়ামবলী পড়ুন।');
+    Get.toNamed(AppRoute.termsConditionsScreen);
   }
 
   void onSettings() {
-    Get.snackbar('সেটিংস', 'অ্যাপ সেটিংস পরিবর্তন করুন।');
+    Get.toNamed(AppRoute.settingsScreen);
   }
 
   void onLogout() {

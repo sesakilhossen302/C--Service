@@ -9,14 +9,21 @@ import '../../View/Screen/Customer/Booking/PaymentScreen/payment_screen.dart';
 import '../../View/Screen/Customer/Booking/RateServiceScreen/rate_service_screen.dart';
 import '../../View/Screen/Customer/Booking/SelectAddressScreen/select_address_screen.dart';
 import '../../View/Screen/Customer/Booking/SelectDateTimeScreen/select_date_time_screen.dart';
+import '../../View/Screen/Customer/ChangeLanguageScreen/change_language_screen.dart';
 import '../../View/Screen/Customer/CustomerHomeScreen/customer_home_screen.dart';
 import '../../View/Screen/Customer/CustomerNavBarScreen/customer_nav_bar_screen.dart';
 import '../../View/Screen/Customer/CustomerProfileScreen/customer_profile_screen.dart';
+import '../../View/Screen/Customer/EditProfileScreen/edit_profile_screen.dart';
+import '../../View/Screen/Customer/HomeCarePrimeScreen/homecare_prime_screen.dart';
 import '../../View/Screen/Customer/HomePassportScreen/home_passport_screen.dart';
 import '../../View/Screen/Customer/HomeTimelineScreen/home_timeline_screen.dart';
 import '../../View/Screen/Customer/MyReviewsScreen/my_reviews_screen.dart';
+import '../../View/Screen/Customer/PrivacyPolicyScreen/privacy_policy_screen.dart';
+import '../../View/Screen/Customer/ReferralScreen/referral_screen.dart';
 import '../../View/Screen/Customer/SearchServiceScreen/search_service_screen.dart';
 import '../../View/Screen/Customer/ServiceDetailsScreen/service_details_screen.dart';
+import '../../View/Screen/Customer/SettingsScreen/settings_screen.dart';
+import '../../View/Screen/Customer/TermsConditionsScreen/terms_conditions_screen.dart';
 import '../../View/Screen/ForgotPasswordScreen/forgot_password_screen.dart';
 import '../../View/Screen/LoginScreen/login_screen.dart';
 import '../../View/Screen/NotificationScreen/notification_screen.dart';
@@ -57,6 +64,13 @@ class AppRoute {
   static const String contactUsScreen = '/contact_us_screen';
   static const String myBookingsScreen = '/my_bookings_screen';
   static const String customerProfileScreen = '/customer_profile_screen';
+  static const String editProfileScreen = '/edit_profile_screen';
+  static const String homeCarePrimeScreen = '/homecare_prime_screen';
+  static const String referralScreen = '/referral_screen';
+  static const String changeLanguageScreen = '/change_language_screen';
+  static const String privacyPolicyScreen = '/privacy_policy_screen';
+  static const String termsConditionsScreen = '/terms_conditions_screen';
+  static const String settingsScreen = '/settings_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -87,5 +101,12 @@ class AppRoute {
     GetPage(name: contactUsScreen, page: () => const ContactUsScreen()),
     GetPage(name: myBookingsScreen, page: () => const MyBookingsScreen()),
     GetPage(name: customerProfileScreen, page: () => const CustomerProfileScreen()),
+    GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
+    GetPage(name: homeCarePrimeScreen, page: () => const HomeCarePrimeScreen()),
+    GetPage(name: referralScreen, page: () => const ReferralScreen()),
+    GetPage(name: changeLanguageScreen, page: () => const ChangeLanguageScreen()),
+    GetPage(name: privacyPolicyScreen, page: () => const PrivacyPolicyScreen()),
+    GetPage(name: termsConditionsScreen, page: () => const TermsConditionsScreen()),
+    GetPage(name: settingsScreen, page: () => const SettingsScreen()),
   ];
 }

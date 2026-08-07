@@ -11,6 +11,7 @@ class SelectAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SelectAddressController());
+    final bool isManageOnly = (Get.arguments != null && Get.arguments['isManageOnly'] == true);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAF8),
@@ -28,7 +29,7 @@ class SelectAddressScreen extends StatelessWidget {
                   const CustomBackButton(),
                   SizedBox(width: 14.w),
                   Text(
-                    'ঠিকানা নির্বাচন',
+                    isManageOnly ? 'সংরক্ষিত ঠিকানা' : 'ঠিকানা নির্বাচন',
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -41,10 +42,11 @@ class SelectAddressScreen extends StatelessWidget {
 
             SizedBox(height: 16.h),
 
-            // 2. Booking Step Progress Indicator Bar (ঠিকানা, সময়, রিভিউ, পেমেন্ট)
-            _buildStepProgressIndicator(),
-
-            SizedBox(height: 20.h),
+            // 2. Booking Step Progress Indicator Bar (Hide if isManageOnly)
+            if (!isManageOnly) ...[
+              _buildStepProgressIndicator(),
+              SizedBox(height: 20.h),
+            ],
 
             // Main Body Content
             Expanded(
@@ -53,17 +55,18 @@ class SelectAddressScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Section Title: সংরক্ষিত ঠিকানা
-                    Text(
-                      'সংরক্ষিত ঠিকানা',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textColor,
+                    // Section Title: (Show only if booking flow)
+                    if (!isManageOnly) ...[
+                      Text(
+                        'সংরক্ষিত ঠিকানা',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textColor,
+                        ),
                       ),
-                    ),
-
-                    SizedBox(height: 14.h),
+                      SizedBox(height: 14.h),
+                    ],
 
                     // Saved Address Cards List
                     Obx(
@@ -133,13 +136,38 @@ class SelectAddressScreen extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            item.title,
-                                            style: TextStyle(
-                                              fontSize: 16.sp,
-                                              fontWeight: FontWeight.bold,
-                                              color: AppColors.textColor,
-                                            ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                item.title,
+                                                style: TextStyle(
+                                                  fontSize: 16.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: AppColors.textColor,
+                                                ),
+                                              ),
+                                              if (item.isDefault) ...[
+                                                SizedBox(width: 8.w),
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 8.w,
+                                                    vertical: 2.h,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFE8F5E9),
+                                                    borderRadius: BorderRadius.circular(10.r),
+                                                  ),
+                                                  child: Text(
+                                                    'ডিফল্ট',
+                                                    style: TextStyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppColors.primaryColor,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ],
                                           ),
                                           SizedBox(height: 3.h),
                                           Text(
@@ -151,7 +179,7 @@ class SelectAddressScreen extends StatelessWidget {
                                             ),
                                           ),
                                           if (item.isDefault) ...[
-                                            SizedBox(height: 4.h),
+                                            SizedBox(height: 3.h),
                                             Text(
                                               'ডিফল্ট',
                                               style: TextStyle(
@@ -239,44 +267,45 @@ class SelectAddressScreen extends StatelessWidget {
               ),
             ),
 
-            // 3. Bottom Sticky Action Button (পরবর্তী)
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withAlpha(12),
-                    blurRadius: 10.r,
-                    offset: Offset(0, -2.h),
-                  ),
-                ],
-              ),
-              child: SafeArea(
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 52.h,
-                  child: ElevatedButton(
-                    onPressed: controller.onNextPressed,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryColor,
-                      foregroundColor: Colors.white,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
+            // 3. Bottom Sticky Action Button (পরবর্তী - Hide if isManageOnly)
+            if (!isManageOnly)
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(12),
+                      blurRadius: 10.r,
+                      offset: Offset(0, -2.h),
                     ),
-                    child: Text(
-                      'পরবর্তী',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
+                  ],
+                ),
+                child: SafeArea(
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 52.h,
+                    child: ElevatedButton(
+                      onPressed: controller.onNextPressed,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryColor,
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.r),
+                        ),
+                      ),
+                      child: Text(
+                        'পরবর্তী',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),
@@ -409,24 +438,28 @@ class SelectAddressScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 46.h,
-                      child: OutlinedButton(
+                      height: 48.h,
+                      child: ElevatedButton(
                         onPressed: () => Get.back(),
-                        style: OutlinedButton.styleFrom(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFF0FDF4),
                           foregroundColor: AppColors.primaryColor,
+                          elevation: 0,
                           side: BorderSide(
                             color: AppColors.primaryColor,
-                            width: 1.2.w,
+                            width: 1.5.w,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.r),
+                            borderRadius: BorderRadius.circular(24.r),
                           ),
                         ),
                         child: Text(
-                          'বাতিল করুন',
+                          'বাতিল\nকরুন',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.bold,
+                            height: 1.2,
                           ),
                         ),
                       ),
@@ -437,7 +470,7 @@ class SelectAddressScreen extends StatelessWidget {
 
                   Expanded(
                     child: SizedBox(
-                      height: 46.h,
+                      height: 48.h,
                       child: ElevatedButton(
                         onPressed: controller.saveNewAddress,
                         style: ElevatedButton.styleFrom(
@@ -445,14 +478,16 @@ class SelectAddressScreen extends StatelessWidget {
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.r),
+                            borderRadius: BorderRadius.circular(24.r),
                           ),
                         ),
                         child: Text(
-                          'সংরক্ষণ করুন',
+                          'সংরক্ষণ\nকরুন',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.bold,
+                            height: 1.2,
                           ),
                         ),
                       ),
