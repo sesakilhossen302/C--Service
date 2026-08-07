@@ -4,6 +4,7 @@ import '../../AllServicesScreen/all_services_screen.dart';
 import '../../Booking/HelpSupportScreen/help_support_screen.dart';
 import '../../Booking/MyBookingsScreen/my_bookings_screen.dart';
 import '../../CustomerHomeScreen/customer_home_screen.dart';
+import '../../CustomerProfileScreen/customer_profile_screen.dart';
 
 class CustomerNavBarController extends GetxController {
   final selectedIndex = 0.obs;
@@ -13,7 +14,7 @@ class CustomerNavBarController extends GetxController {
     const AllServicesScreen(),
     const MyBookingsScreen(),
     const HelpSupportScreen(),
-    const Center(child: Text('প্রোফাইল স্ক্রিন', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+    const CustomerProfileScreen(),
   ];
 
   void changeIndex(int index) {

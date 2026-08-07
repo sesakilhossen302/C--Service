@@ -11,6 +11,7 @@ import '../../View/Screen/Customer/Booking/SelectAddressScreen/select_address_sc
 import '../../View/Screen/Customer/Booking/SelectDateTimeScreen/select_date_time_screen.dart';
 import '../../View/Screen/Customer/CustomerHomeScreen/customer_home_screen.dart';
 import '../../View/Screen/Customer/CustomerNavBarScreen/customer_nav_bar_screen.dart';
+import '../../View/Screen/Customer/CustomerProfileScreen/customer_profile_screen.dart';
 import '../../View/Screen/Customer/HomePassportScreen/home_passport_screen.dart';
 import '../../View/Screen/Customer/HomeTimelineScreen/home_timeline_screen.dart';
 import '../../View/Screen/Customer/MyReviewsScreen/my_reviews_screen.dart';
@@ -55,6 +56,7 @@ class AppRoute {
   static const String helpSupportScreen = '/help_support_screen';
   static const String contactUsScreen = '/contact_us_screen';
   static const String myBookingsScreen = '/my_bookings_screen';
+  static const String customerProfileScreen = '/customer_profile_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -84,5 +86,6 @@ class AppRoute {
     GetPage(name: helpSupportScreen, page: () => const HelpSupportScreen()),
     GetPage(name: contactUsScreen, page: () => const ContactUsScreen()),
     GetPage(name: myBookingsScreen, page: () => const MyBookingsScreen()),
+    GetPage(name: customerProfileScreen, page: () => const CustomerProfileScreen()),
   ];
 }
