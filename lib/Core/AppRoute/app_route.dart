@@ -5,6 +5,7 @@ import '../../View/Screen/Customer/HomePassportScreen/home_passport_screen.dart'
 import '../../View/Screen/Customer/HomeTimelineScreen/home_timeline_screen.dart';
 import '../../View/Screen/Customer/MyReviewsScreen/my_reviews_screen.dart';
 import '../../View/Screen/Customer/SearchServiceScreen/search_service_screen.dart';
+import '../../View/Screen/Customer/ServiceDetailsScreen/service_details_screen.dart';
 import '../../View/Screen/ForgotPasswordScreen/forgot_password_screen.dart';
 import '../../View/Screen/LoginScreen/login_screen.dart';
 import '../../View/Screen/NotificationScreen/notification_screen.dart';
@@ -33,6 +34,7 @@ class AppRoute {
   static const String homeTimelineScreen = '/home_timeline_screen';
   static const String homePassportScreen = '/home_passport_screen';
   static const String myReviewsScreen = '/my_reviews_screen';
+  static const String serviceDetailsScreen = '/service_details_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -51,5 +53,6 @@ class AppRoute {
     GetPage(name: homeTimelineScreen, page: () => const HomeTimelineScreen()),
     GetPage(name: homePassportScreen, page: () => const HomePassportScreen()),
     GetPage(name: myReviewsScreen, page: () => const MyReviewsScreen()),
+    GetPage(name: serviceDetailsScreen, page: () => const ServiceDetailsScreen()),
   ];
 }

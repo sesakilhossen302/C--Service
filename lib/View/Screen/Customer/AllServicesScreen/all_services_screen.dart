@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import 'Controller/all_services_controller.dart';
 
@@ -147,7 +148,20 @@ class AllServicesScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     final item = controller.filteredServices[index];
-                    return Container(
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoute.serviceDetailsScreen,
+                          arguments: {
+                            'title': item.title,
+                            'price': item.priceText,
+                            'rating': item.rating,
+                            'reviewCount': item.reviewCount,
+                            'emoji': item.iconEmoji,
+                          },
+                        );
+                      },
+                      child: Container(
                       padding: EdgeInsets.all(14.r),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -229,8 +243,9 @@ class AllServicesScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    );
-                  },
+                    ),
+                  );
+                },
                 );
               }),
             ),

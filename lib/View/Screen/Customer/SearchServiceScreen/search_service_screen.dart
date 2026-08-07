@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../Core/AppRoute/app_route.dart';
 import '../../../../Utils/AppColors/app_colors.dart';
 import '../../../Widgegt/CustomBackButton/custom_back_button.dart';
 import 'Controller/search_service_controller.dart';
@@ -136,91 +137,105 @@ class SearchServiceScreen extends StatelessWidget {
                   separatorBuilder: (context, index) => SizedBox(height: 12.h),
                   itemBuilder: (context, index) {
                     final item = controller.filteredServices[index];
-                    return Container(
-                      padding: EdgeInsets.all(14.r),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(18.r),
-                        border: Border.all(color: AppColors.cardBorder, width: 1.w),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha(6),
-                            blurRadius: 8.r,
-                            offset: Offset(0, 2.h),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          // Left Emoji Icon Box
-                          Container(
-                            width: 52.w,
-                            height: 52.h,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFE8F5E9),
-                              borderRadius: BorderRadius.circular(14.r),
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoute.serviceDetailsScreen,
+                          arguments: {
+                            'title': item.title,
+                            'price': item.priceText,
+                            'rating': item.rating,
+                            'reviewCount': item.reviewCount,
+                            'emoji': item.iconEmoji,
+                          },
+                        );
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(14.r),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(18.r),
+                          border: Border.all(color: AppColors.cardBorder, width: 1.w),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(6),
+                              blurRadius: 8.r,
+                              offset: Offset(0, 2.h),
                             ),
-                            child: Center(
-                              child: Text(
-                                item.iconEmoji,
-                                style: TextStyle(fontSize: 26.sp),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            // Left Emoji Icon Box
+                            Container(
+                              width: 52.w,
+                              height: 52.h,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE8F5E9),
+                                borderRadius: BorderRadius.circular(14.r),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  item.iconEmoji,
+                                  style: TextStyle(fontSize: 26.sp),
+                                ),
                               ),
                             ),
-                          ),
 
-                          SizedBox(width: 14.w),
+                            SizedBox(width: 14.w),
 
-                          // Middle Service Details
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  item.title,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.textColor,
-                                  ),
-                                ),
-                                SizedBox(height: 4.h),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star_rounded,
-                                      size: 16.sp,
-                                      color: const Color(0xFFF59E0B),
+                            // Middle Service Details
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item.title,
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.textColor,
                                     ),
-                                    SizedBox(width: 4.w),
-                                    Text(
-                                      '${item.rating} (${item.reviewCount})',
-                                      style: TextStyle(
-                                        fontSize: 12.sp,
-                                        color: AppColors.textGrey,
+                                  ),
+                                  SizedBox(height: 4.h),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star_rounded,
+                                        size: 16.sp,
+                                        color: const Color(0xFFF59E0B),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 4.h),
-                                Text(
-                                  item.priceText,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primaryColor,
+                                      SizedBox(width: 4.w),
+                                      Text(
+                                        '${item.rating} (${item.reviewCount})',
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: AppColors.textGrey,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 4.h),
+                                  Text(
+                                    item.priceText,
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
 
-                          // Right Chevron Arrow
-                          Icon(
-                            Icons.chevron_right_rounded,
-                            color: AppColors.textLightGrey,
-                            size: 22.sp,
-                          ),
-                        ],
+                            // Right Chevron Arrow
+                            Icon(
+                              Icons.chevron_right_rounded,
+                              color: AppColors.textLightGrey,
+                              size: 22.sp,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

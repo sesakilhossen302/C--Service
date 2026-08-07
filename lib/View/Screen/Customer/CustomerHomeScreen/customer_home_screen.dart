@@ -280,33 +280,44 @@ class CustomerHomeScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final item = controller.popularServices[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(18.r),
-                      border: Border.all(color: AppColors.cardBorder, width: 1.w),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          item.iconEmoji,
-                          style: TextStyle(fontSize: 26.sp),
-                        ),
-                        SizedBox(height: 6.h),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4.w),
-                          child: Text(
-                            item.title,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textColor,
+                  return GestureDetector(
+                    onTap: () {
+                      Get.toNamed(
+                        AppRoute.serviceDetailsScreen,
+                        arguments: {
+                          'title': item.title,
+                          'emoji': item.iconEmoji,
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(18.r),
+                        border: Border.all(color: AppColors.cardBorder, width: 1.w),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            item.iconEmoji,
+                            style: TextStyle(fontSize: 26.sp),
+                          ),
+                          SizedBox(height: 6.h),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 4.w),
+                            child: Text(
+                              item.title,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textColor,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
