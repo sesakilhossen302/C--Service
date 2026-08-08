@@ -340,7 +340,19 @@ class StaticString {
   static const String providerTabOngoing = 'provider_tab_ongoing';
   static const String providerTabUpcoming = 'provider_tab_upcoming';
   static const String providerTabCompleted = 'provider_tab_completed';
+
+  // Provider Task Details Screen
+  static const String taskDetailsTitle = 'provider_task_details_title';
+  static const String jobIdPrefix = 'provider_job_id_prefix';
+  static const String providerServicePriceLabel = 'provider_service_price_label';
+  static const String paymentMethodLabel = 'provider_payment_method_label';
+  static const String completeTaskAction = 'provider_complete_task_action';
+  static const String callCustomerAction = 'provider_call_customer_action';
+  static const String viewReviewAction = 'provider_view_review_action';
 }
+
+
+
 
 
 

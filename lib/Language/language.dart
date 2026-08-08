@@ -278,7 +278,18 @@ class Language extends Translations {
           StaticString.providerTabOngoing: 'চলমান',
           StaticString.providerTabUpcoming: 'আসন্ন',
           StaticString.providerTabCompleted: 'সম্পন্ন',
+
+          // Provider Task Details
+          StaticString.taskDetailsTitle: 'কাজের বিবরণ',
+          StaticString.jobIdPrefix: 'কাজ আইডি: ',
+          StaticString.providerServicePriceLabel: 'সেবা মূল্য',
+          StaticString.paymentMethodLabel: 'পেমেন্ট',
+          StaticString.completeTaskAction: 'কাজ সম্পন্ন করুন',
+          StaticString.callCustomerAction: 'গ্রাহককে কল করুন',
+          StaticString.viewReviewAction: 'রিভিউ দেখুন',
         },
+
+
 
 
         'en_US': {
@@ -555,9 +566,20 @@ class Language extends Translations {
           StaticString.providerTabOngoing: 'Ongoing',
           StaticString.providerTabUpcoming: 'Upcoming',
           StaticString.providerTabCompleted: 'Completed',
+
+          // Provider Task Details
+          StaticString.taskDetailsTitle: 'Job Details',
+          StaticString.jobIdPrefix: 'Job ID: ',
+          StaticString.providerServicePriceLabel: 'Service Price',
+          StaticString.paymentMethodLabel: 'Payment',
+          StaticString.completeTaskAction: 'Complete Task',
+          StaticString.callCustomerAction: 'Call Customer',
+          StaticString.viewReviewAction: 'View Review',
         },
       };
 }
+
+
 
 
 

@@ -32,6 +32,7 @@ import '../../View/Screen/OnbordingScreen/onbording_screen.dart';
 import '../../View/Screen/OtpScreen/otp_screen.dart';
 import '../../View/Screen/Provider/ProviderHomeScreen/provider_home_screen.dart';
 import '../../View/Screen/Provider/ProviderNavBarScreen/provider_nav_bar_screen.dart';
+import '../../View/Screen/Provider/ProviderTaskDetailsScreen/provider_task_details_screen.dart';
 import '../../View/Screen/ServiceProviderSignupScreen/service_provider_signup_screen.dart';
 import '../../View/Screen/SignupScreen/signup_screen.dart';
 import '../../View/Screen/SplashScreen/splash_screen.dart';
@@ -73,6 +74,7 @@ class AppRoute {
   static const String termsConditionsScreen = '/terms_conditions_screen';
   static const String settingsScreen = '/settings_screen';
   static const String aiAssistantScreen = '/ai_assistant_screen';
+  static const String providerTaskDetailsScreen = '/provider_task_details_screen';
 
   static List<GetPage> getPages = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -111,6 +113,8 @@ class AppRoute {
     GetPage(name: termsConditionsScreen, page: () => const TermsConditionsScreen()),
     GetPage(name: settingsScreen, page: () => const SettingsScreen()),
     GetPage(name: aiAssistantScreen, page: () => const AiAssistantScreen()),
+    GetPage(name: providerTaskDetailsScreen, page: () => const ProviderTaskDetailsScreen()),
   ];
 }
+
 

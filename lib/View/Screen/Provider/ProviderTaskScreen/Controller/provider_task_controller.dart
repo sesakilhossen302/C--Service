@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../../../Core/AppRoute/app_route.dart';
 import '../Model/provider_task_model.dart';
 
 class ProviderTaskController extends GetxController {
@@ -7,42 +8,38 @@ class ProviderTaskController extends GetxController {
   final allTasks = <ProviderTaskModel>[
     ProviderTaskModel(
       id: '1',
-      title: 'হোম ক্লিনিং',
-      customerName: 'ফারহান সাহেব',
-      location: 'ধানমন্ডি, ঢাকা',
-      dateText: 'আজ',
-      timeText: 'সকাল ১০:০০',
-      priceText: '৳৮০০',
-      status: 'চলমান',
-    ),
-    ProviderTaskModel(
-      id: '2',
+      jobId: 'JOB-440',
       title: 'ডিপ ক্লিনিং',
       customerName: 'সুমাইয়া বেগম',
       location: 'গুলশান, ঢাকা',
       dateText: 'আজ',
       timeText: 'বিকাল ২:০০',
       priceText: '৳১৫০০',
+      paymentMethod: 'নগদ',
       status: 'চলমান',
     ),
     ProviderTaskModel(
-      id: '3',
-      title: 'এসি সার্ভিসিং',
-      customerName: 'রাকিব আহমেদ',
-      location: 'উত্তরা, ঢাকা',
-      dateText: 'আগামীকাল',
-      timeText: 'সকাল ১১:০০',
-      priceText: '৳১২০০',
+      id: '2',
+      jobId: 'JOB-440',
+      title: 'ডিপ ক্লিনিং',
+      customerName: 'সুমাইয়া বেগম',
+      location: 'গুলশান, ঢাকা',
+      dateText: 'আজ',
+      timeText: 'বিকাল ২:০০',
+      priceText: '৳১৫০০',
+      paymentMethod: 'নগদ',
       status: 'আসন্ন',
     ),
     ProviderTaskModel(
-      id: '4',
-      title: 'বাথরুম পরিষ্কার',
-      customerName: 'কামরুল হাসান',
-      location: 'মিরপুর, ঢাকা',
-      dateText: 'গতকাল',
-      timeText: 'সকাল ৯:০০',
-      priceText: '৳৬০০',
+      id: '3',
+      jobId: 'JOB-432',
+      title: 'ইলেকট্রিশিয়ান',
+      customerName: 'তানভীর সাহেব',
+      location: 'মোহাম্মদপুর, ঢাকা',
+      dateText: '২৮ জুন',
+      timeText: 'বিকাল ৩:০০',
+      priceText: '৳৪০০',
+      paymentMethod: 'নগদ',
       status: 'সম্পন্ন',
     ),
   ].obs;
@@ -62,6 +59,6 @@ class ProviderTaskController extends GetxController {
   }
 
   void onTaskTap(ProviderTaskModel task) {
-    // Handle task details view action
+    Get.toNamed(AppRoute.providerTaskDetailsScreen, arguments: {'task': task});
   }
 }
