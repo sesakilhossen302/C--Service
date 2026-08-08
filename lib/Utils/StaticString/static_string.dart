@@ -358,7 +358,17 @@ class StaticString {
   static const String withdrawLabel = 'provider_withdraw_label';
   static const String analyticsLabel = 'provider_analytics_label';
   static const String recentTransactionsTitle = 'provider_recent_transactions_title';
+
+  // Provider Profile Screen
+  static const String providerTotalTasksLabel = 'provider_total_tasks_label';
+  static const String successRateLabel = 'provider_success_rate_label';
+  static const String providerEditProfileTitle = 'provider_edit_profile_title';
+  static const String providerReviewsTitle = 'provider_reviews_title';
+  static const String providerSettingsTitle = 'provider_settings_title';
+  static const String providerHelpTitle = 'provider_help_title';
+  static const String providerLogoutTitle = 'provider_logout_title';
 }
+
 
 
 

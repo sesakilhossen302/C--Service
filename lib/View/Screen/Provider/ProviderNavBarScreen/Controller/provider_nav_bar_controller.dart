@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../Customer/Booking/HelpSupportScreen/help_support_screen.dart';
 import '../../ProviderHomeScreen/provider_home_screen.dart';
 import '../../ProviderIncomeScreen/provider_income_screen.dart';
+import '../../ProviderProfileScreen/provider_profile_screen.dart';
 import '../../ProviderTaskScreen/provider_task_screen.dart';
 
 class ProviderNavBarController extends GetxController {
@@ -13,7 +14,7 @@ class ProviderNavBarController extends GetxController {
     const ProviderTaskScreen(),
     const ProviderIncomeScreen(),
     const HelpSupportScreen(),
-    const Center(child: Text('প্রোফাইল স্ক্রিন', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+    const ProviderProfileScreen(),
   ];
 
   void changeIndex(int index) {

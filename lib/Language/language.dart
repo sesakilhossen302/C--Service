@@ -296,7 +296,17 @@ class Language extends Translations {
           StaticString.withdrawLabel: 'উত্তোলন',
           StaticString.analyticsLabel: 'বিশ্লেষণ',
           StaticString.recentTransactionsTitle: 'সাম্প্রতিক লেনদেন',
+
+          // Provider Profile
+          StaticString.providerTotalTasksLabel: 'কাজ',
+          StaticString.successRateLabel: 'সাফল্য',
+          StaticString.providerEditProfileTitle: 'প্রোফাইল সম্পাদনা',
+          StaticString.providerReviewsTitle: 'রিভিউ',
+          StaticString.providerSettingsTitle: 'সেটিংস',
+          StaticString.providerHelpTitle: 'সাহায্য',
+          StaticString.providerLogoutTitle: 'লগআউট',
         },
+
 
 
 
@@ -594,9 +604,19 @@ class Language extends Translations {
           StaticString.withdrawLabel: 'Withdraw',
           StaticString.analyticsLabel: 'Analytics',
           StaticString.recentTransactionsTitle: 'Recent Transactions',
+
+          // Provider Profile
+          StaticString.providerTotalTasksLabel: 'Tasks',
+          StaticString.successRateLabel: 'Success Rate',
+          StaticString.providerEditProfileTitle: 'Edit Profile',
+          StaticString.providerReviewsTitle: 'Reviews',
+          StaticString.providerSettingsTitle: 'Settings',
+          StaticString.providerHelpTitle: 'Help',
+          StaticString.providerLogoutTitle: 'Logout',
         },
       };
 }
+
 
 
 
