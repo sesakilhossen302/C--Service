@@ -273,7 +273,13 @@ class Language extends Translations {
           StaticString.chipPriceInfo: 'দাম জানতে চাই',
           StaticString.chipHealthScore: 'হেলথ স্কোর',
 
+          // Provider Task
+          StaticString.taskListTitle: 'কাজের তালিকা',
+          StaticString.tabOngoing: 'চলমান',
+          StaticString.tabUpcoming: 'আসন্ন',
+          StaticString.tabCompleted: 'সম্পন্ন',
         },
+
         'en_US': {
           StaticString.appName: 'HomeCare OS',
           StaticString.appSubtitle: 'Complete Home Care',
@@ -541,8 +547,13 @@ class Language extends Translations {
           StaticString.chipAcClean: 'AC Cleaning',
           StaticString.chipHomeClean: 'Home Clean',
           StaticString.chipPriceInfo: 'Check Prices',
-          StaticString.chipHealthScore: 'Health Score',
+          // Provider Task
+          StaticString.taskListTitle: 'Task List',
+          StaticString.tabOngoing: 'Ongoing',
+          StaticString.tabUpcoming: 'Upcoming',
+          StaticString.tabCompleted: 'Completed',
         },
       };
 }
+
 

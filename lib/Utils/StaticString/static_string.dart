@@ -333,7 +333,12 @@ class StaticString {
   static const String chipAcClean = 'chip_ac_clean';
   static const String chipHomeClean = 'chip_home_clean';
   static const String chipPriceInfo = 'chip_price_info';
-  static const String chipHealthScore = 'chip_health_score';
+  // Provider Task Screen
+  static const String taskListTitle = 'provider_task_list_title';
+  static const String tabOngoing = 'provider_tab_ongoing';
+  static const String tabUpcoming = 'provider_tab_upcoming';
+  static const String tabCompleted = 'provider_tab_completed';
 }
+
 
 
