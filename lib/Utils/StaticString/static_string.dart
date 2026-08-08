@@ -349,7 +349,17 @@ class StaticString {
   static const String completeTaskAction = 'provider_complete_task_action';
   static const String callCustomerAction = 'provider_call_customer_action';
   static const String viewReviewAction = 'provider_view_review_action';
+
+  // Provider Income Screen
+  static const String earningsTitle = 'provider_earnings_title';
+  static const String totalBalanceLabel = 'provider_total_balance_label';
+  static const String providerThisMonthLabel = 'provider_this_month_label';
+  static const String lastMonthLabel = 'provider_last_month_label';
+  static const String withdrawLabel = 'provider_withdraw_label';
+  static const String analyticsLabel = 'provider_analytics_label';
+  static const String recentTransactionsTitle = 'provider_recent_transactions_title';
 }
+
 
 
 

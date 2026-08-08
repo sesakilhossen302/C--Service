@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../ProviderHomeScreen/provider_home_screen.dart';
+import '../../ProviderIncomeScreen/provider_income_screen.dart';
 import '../../ProviderTaskScreen/provider_task_screen.dart';
 
 class ProviderNavBarController extends GetxController {
@@ -9,7 +10,7 @@ class ProviderNavBarController extends GetxController {
   final List<Widget> screens = [
     const ProviderHomeScreen(),
     const ProviderTaskScreen(),
-    const Center(child: Text('আয় স্ক্রিন', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+    const ProviderIncomeScreen(),
     const Center(child: Text('সহায়তা স্ক্রিন', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
     const Center(child: Text('প্রোফাইল স্ক্রিন', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
   ];

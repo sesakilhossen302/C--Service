@@ -287,7 +287,17 @@ class Language extends Translations {
           StaticString.completeTaskAction: 'কাজ সম্পন্ন করুন',
           StaticString.callCustomerAction: 'গ্রাহককে কল করুন',
           StaticString.viewReviewAction: 'রিভিউ দেখুন',
+
+          // Provider Income
+          StaticString.earningsTitle: 'আয়',
+          StaticString.totalBalanceLabel: 'মোট ব্যালেন্স',
+          StaticString.providerThisMonthLabel: 'এই মাসে',
+          StaticString.lastMonthLabel: 'গতমাসে',
+          StaticString.withdrawLabel: 'উত্তোলন',
+          StaticString.analyticsLabel: 'বিশ্লেষণ',
+          StaticString.recentTransactionsTitle: 'সাম্প্রতিক লেনদেন',
         },
+
 
 
 
@@ -575,9 +585,19 @@ class Language extends Translations {
           StaticString.completeTaskAction: 'Complete Task',
           StaticString.callCustomerAction: 'Call Customer',
           StaticString.viewReviewAction: 'View Review',
+
+          // Provider Income
+          StaticString.earningsTitle: 'Earnings',
+          StaticString.totalBalanceLabel: 'Total Balance',
+          StaticString.providerThisMonthLabel: 'This Month',
+          StaticString.lastMonthLabel: 'Last Month',
+          StaticString.withdrawLabel: 'Withdraw',
+          StaticString.analyticsLabel: 'Analytics',
+          StaticString.recentTransactionsTitle: 'Recent Transactions',
         },
       };
 }
+
 
 
 
