@@ -274,11 +274,12 @@ class Language extends Translations {
           StaticString.chipHealthScore: 'হেলথ স্কোর',
 
           // Provider Task
-          StaticString.taskListTitle: 'কাজের তালিকা',
-          StaticString.tabOngoing: 'চলমান',
-          StaticString.tabUpcoming: 'আসন্ন',
-          StaticString.tabCompleted: 'সম্পন্ন',
+          StaticString.providerTaskListTitle: 'কাজের তালিকা',
+          StaticString.providerTabOngoing: 'চলমান',
+          StaticString.providerTabUpcoming: 'আসন্ন',
+          StaticString.providerTabCompleted: 'সম্পন্ন',
         },
+
 
         'en_US': {
           StaticString.appName: 'HomeCare OS',
@@ -547,13 +548,16 @@ class Language extends Translations {
           StaticString.chipAcClean: 'AC Cleaning',
           StaticString.chipHomeClean: 'Home Clean',
           StaticString.chipPriceInfo: 'Check Prices',
+          StaticString.chipHealthScore: 'Health Score',
+
           // Provider Task
-          StaticString.taskListTitle: 'Task List',
-          StaticString.tabOngoing: 'Ongoing',
-          StaticString.tabUpcoming: 'Upcoming',
-          StaticString.tabCompleted: 'Completed',
+          StaticString.providerTaskListTitle: 'Task List',
+          StaticString.providerTabOngoing: 'Ongoing',
+          StaticString.providerTabUpcoming: 'Upcoming',
+          StaticString.providerTabCompleted: 'Completed',
         },
       };
 }
+
 
 

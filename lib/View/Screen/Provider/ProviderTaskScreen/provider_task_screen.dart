@@ -25,7 +25,7 @@ class ProviderTaskScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Text(
-                StaticString.taskListTitle.tr,
+                StaticString.providerTaskListTitle.tr,
                 style: TextStyle(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.bold,
@@ -52,17 +52,17 @@ class ProviderTaskScreen extends StatelessWidget {
                   children: [
                     _buildTabItem(
                       index: 0,
-                      label: StaticString.tabOngoing.tr,
+                      label: StaticString.providerTabOngoing.tr,
                       controller: controller,
                     ),
                     _buildTabItem(
                       index: 1,
-                      label: StaticString.tabUpcoming.tr,
+                      label: StaticString.providerTabUpcoming.tr,
                       controller: controller,
                     ),
                     _buildTabItem(
                       index: 2,
-                      label: StaticString.tabCompleted.tr,
+                      label: StaticString.providerTabCompleted.tr,
                       controller: controller,
                     ),
                   ],
