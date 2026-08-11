@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../Core/AppRoute/app_route.dart';
 import '../../../Utils/AppColors/app_colors.dart';
-import '../../../Utils/AppImg/app_img.dart';
+import '../../../Utils/AppIcons/app_icons.dart';
 import '../../../Utils/StaticString/static_string.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -54,11 +55,10 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             children: [
               const Spacer(),
-              Image.asset(
-                AppImg.homeImgFull,
-                width: 140.w,
-                height: 140.h,
-                fit: BoxFit.contain,
+              SvgPicture.asset(
+                AppIcons.logoWhite,
+                width: 120.w,
+                height: 120.h,
               ),
               SizedBox(height: 20.h),
               Text(

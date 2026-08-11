@@ -46,7 +46,6 @@ class OnbordingScreen extends StatelessWidget {
                   width: 96,
                   height: 96,
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
                     borderRadius: BorderRadius.circular(26),
                     boxShadow: [
                       BoxShadow(
@@ -56,19 +55,10 @@ class OnbordingScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(26),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.asset(
-                          AppImg.homeImgFull,
-                          width: 80,
-                          height: 80,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
+                  child: SvgPicture.asset(
+                    AppIcons.logoGreen,
+                    width: 96,
+                    height: 96,
                   ),
                 ),
 
