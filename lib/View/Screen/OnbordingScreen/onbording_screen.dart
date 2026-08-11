@@ -23,14 +23,17 @@ class OnbordingScreen extends StatelessWidget {
             colors: [
               Color(0xFFE9F4EE), // Soft light mint at top
               Color(0xFFF7FAF8), // Smooth transition
-              Colors.white,       // White at bottom
+              Colors.white, // White at bottom
             ],
             stops: [0.0, 0.35, 0.7],
           ),
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 16.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -185,10 +188,7 @@ class OnbordingScreen extends StatelessWidget {
                 Row(
                   children: const [
                     Expanded(
-                      child: Divider(
-                        color: AppColors.cardBorder,
-                        thickness: 1,
-                      ),
+                      child: Divider(color: AppColors.cardBorder, thickness: 1),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -201,10 +201,7 @@ class OnbordingScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Divider(
-                        color: AppColors.cardBorder,
-                        thickness: 1,
-                      ),
+                      child: Divider(color: AppColors.cardBorder, thickness: 1),
                     ),
                   ],
                 ),
