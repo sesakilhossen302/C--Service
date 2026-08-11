@@ -14,19 +14,19 @@ class ForgotPasswordScreen extends StatelessWidget {
     final controller = Get.put(ForgotPasswordController());
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAF8),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10.h),
+              SizedBox(height: 8.h),
 
               // Back Button
               const CustomBackButton(),
 
-              SizedBox(height: 32.h),
+              SizedBox(height: 28.h),
 
               // Title
               Text(
@@ -34,44 +34,34 @@ class ForgotPasswordScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textColor,
+                  color: const Color(0xFF0F172A),
                 ),
               ),
 
-              SizedBox(height: 8.h),
+              SizedBox(height: 6.h),
 
               // Subtitle
               Text(
                 StaticString.forgotPasswordSub,
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColors.textGrey,
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xFF94A3B8),
                   height: 1.4,
                 ),
               ),
 
-              SizedBox(height: 36.h),
+              SizedBox(height: 28.h),
 
-              // Phone Label & Field
-              Text(
-                StaticString.phoneLabel,
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textColor,
-                ),
-              ),
-
-              SizedBox(height: 8.h),
-
+              // Phone Field with +880 Prefix Box (No Label)
               TextField(
                 controller: controller.phoneController,
                 keyboardType: TextInputType.phone,
-                style: TextStyle(fontSize: 14.5.sp),
+                style: TextStyle(fontSize: 14.5.sp, color: const Color(0xFF1E293B)),
                 decoration: InputDecoration(
                   hintText: StaticString.phoneHint,
                   hintStyle: TextStyle(
-                    color: AppColors.textLightGrey,
+                    color: const Color(0xFFCBD5E1),
                     fontSize: 14.sp,
                   ),
                   filled: true,
@@ -80,13 +70,41 @@ class ForgotPasswordScreen extends StatelessWidget {
                     horizontal: 16.w,
                     vertical: 16.h,
                   ),
+                  prefixIcon: Container(
+                    width: 72.w,
+                    height: 52.h,
+                    margin: EdgeInsets.only(right: 12.w),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF8FAF8),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16.r),
+                        bottomLeft: Radius.circular(16.r),
+                      ),
+                      border: const Border(
+                        right: BorderSide(color: Color(0xFFE2E8F0), width: 1),
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      StaticString.countryCodeBD,
+                      style: TextStyle(
+                        fontSize: 14.5.sp,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFF64748B),
+                      ),
+                    ),
+                  ),
+                  prefixIconConstraints: BoxConstraints(
+                    minWidth: 72.w,
+                    minHeight: 52.h,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
-                    borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+                    borderSide: const BorderSide(color: Color(0xFFE2E8F0), width: 1),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
-                    borderSide: const BorderSide(color: AppColors.cardBorder, width: 1),
+                    borderSide: const BorderSide(color: Color(0xFFE2E8F0), width: 1),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
@@ -95,24 +113,24 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 36.h),
+              SizedBox(height: 380.h),
 
-              // Send OTP Button
+              // Send Code Button ("কোড পাঠান")
               SizedBox(
                 width: double.infinity,
                 height: 52.h,
                 child: ElevatedButton(
-                  onPressed: controller.onSendOtpPressed,
+                  onPressed: controller.onSendCodePressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.r),
+                      borderRadius: BorderRadius.circular(20.r),
                     ),
                   ),
                   child: Text(
-                    StaticString.sendOtp,
+                    StaticString.sendCode,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
