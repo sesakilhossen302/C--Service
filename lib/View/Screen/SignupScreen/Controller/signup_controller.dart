@@ -29,6 +29,10 @@ class SignupController extends GetxController {
     // Open privacy policy page
   }
 
+  void onLoginPressed() {
+    Get.toNamed(AppRoute.loginScreen);
+  }
+
   @override
   void onClose() {
     nameController.dispose();
