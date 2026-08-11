@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../Utils/AppColors/app_colors.dart';
+import '../../../Utils/AppIcons/app_icons.dart';
 import '../../../Utils/AppImg/app_img.dart';
 import '../../../Utils/StaticString/static_string.dart';
 import 'Controller/onbording_controller.dart';
@@ -224,14 +226,14 @@ class OnbordingScreen extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.work_outline_rounded,
-                          size: 20,
-                          color: AppColors.textColor,
+                      children: [
+                        SvgPicture.asset(
+                          AppIcons.serviceProvider,
+                          width: 20,
+                          height: 20,
                         ),
-                        SizedBox(width: 8),
-                        Text(
+                        const SizedBox(width: 8),
+                        const Text(
                           StaticString.serviceProviderLogin,
                           style: TextStyle(
                             fontSize: 15,
